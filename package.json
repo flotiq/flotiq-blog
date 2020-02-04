@@ -6,7 +6,7 @@
   "author": "Scott Cooper <scttcper@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby build --prefix-paths && rm -rf public/blog && mkdir -p public/blog && mv public/* public/blog",
     "clean": "rimraf public",
     "dev": "gatsby develop",
     "lint": "eslint src/**/**/*.tsx",
@@ -76,6 +76,7 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "1.6.1",
+    "gatsby-plugin-asset-path": "^1.1.0",
     "rimraf": "2.6.3",
     "typescript": "3.5.3"
   },
