@@ -1,0 +1,15 @@
+name = "flotiq-blog"
+type = "webpack"
+account_id = "4e7c54fde70afb149f74a79322061f97"
+workers_dev = true
+
+[site]
+bucket = "public"
+entry-point = "workers-site"
+
+[env.production]
+# The ID of your domain you're deploying to
+zone_id = "b52754cd5ab659cc183c937774a27846"
+# The route pattern your Workers application will be served at
+route = "flotiq.com/blog/*"
+
