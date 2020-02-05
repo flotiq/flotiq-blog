@@ -6,7 +6,7 @@ module.exports = {
   pathPrefix: '/',
   siteMetadata: {
     title: 'CodeWave',
-    description: 'Effortless headless CMS',
+    description: 'CodeWave is a performance- and scalability-focused web development firm. We deliver custom software solutions and operate cloud-based infrastructure for clients across the globe - from startups to Fortune 500s.',
     siteUrl: 'https://blog.codewave.eu', // full path to blog - no ending slash
   },
   plugins: [
