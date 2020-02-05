@@ -62,7 +62,7 @@ const config: WebsiteConfig = {
   coverImage: 'img/blog-cover.jpg',
   logo: 'img/logo_codewave_white_horizontal.svg',
   lang: 'en',
-  siteUrl: 'https://blog.codewave.eu/',
+  siteUrl: 'https://codewave.eu/blog',
   github: 'https://github.com/cdwv',
   facebook: 'https://www.facebook.com/codewave.eu',
   twitter: 'https://twitter.com/code_wave',

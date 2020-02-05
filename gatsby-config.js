@@ -3,11 +3,11 @@ require('dotenv').config();
 const path = require('path');
 
 module.exports = {
-  pathPrefix: '/',
+  pathPrefix: '/blog',
   siteMetadata: {
     title: 'CodeWave',
     description: 'CodeWave is a performance- and scalability-focused web development firm. We deliver custom software solutions and operate cloud-based infrastructure for clients across the globe - from startups to Fortune 500s.',
-    siteUrl: 'https://blog.codewave.eu', // full path to blog - no ending slash
+    siteUrl: 'https://codewave.eu', // full path to blog - no ending slash
   },
   plugins: [
     {
@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://blog.codewave.eu',
-        sitemap: 'https://blog.codewave.eu/sitemap.xml',
+        host: 'https://codewave.eu/blog',
+        sitemap: 'https://codewave.eu/blog/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
