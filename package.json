@@ -1,6 +1,6 @@
 {
-  "name": "flotiq-blog",
-  "description": "Blog for Flotiq",
+  "name": "codewave-blog",
+  "description": "Blog for Codewave",
   "version": "0.0.0",
   "private": true,
   "author": "Scott Cooper <scttcper@gmail.com>",

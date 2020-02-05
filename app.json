@@ -1,12 +1,12 @@
 {
-  "name": "Flotiq blog",
+  "name": "Codewave blog",
   "env":{
     "GATSBY_FLOTIQ_BASE_URL":{
-      "description": "Base URL for Flotiq API access, defaults to https://api.flotiq.com",
+      "description": "Base URL for Codewave API access, defaults to https://api.flotiq.com",
       "value": "https://api.flotiq.com"
     },
     "FLOTIQ_API_KEY": {
-      "description": "Flotiq API key"
+      "description": "Codewave API key"
     }
   },
   "buildpacks": [

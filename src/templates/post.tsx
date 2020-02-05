@@ -126,12 +126,12 @@ interface PageTemplateProps {
         fixed: any;
       };
     };
-    flotiqBlogPost: {
+    codewaveBlogPost: {
       excerpt: string;
       title: string;
       content: string;
       metaDescription: string;
-      flotiqInternal: {
+      codewaveInternal: {
         createdAt: string;
       };
       headerImage: [{
@@ -177,7 +177,7 @@ interface PageTemplateProps {
 export interface PageContext {
   excerpt: string;
   title: string;
-  flotiqInternal: {
+  codewaveInternal: {
     createdAt: string;
   };
   content: string;
@@ -205,7 +205,7 @@ export interface PageContext {
 }
 
 const PageTemplate: React.FC<PageTemplateProps> = props => {
-  const post = props.data.flotiqBlogPost;
+  const post = props.data.codewaveBlogPost;
   let width = '';
   let height = '';
   // if (post.headerImage && post.headerImage.childImageSharp) {
@@ -228,7 +228,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
         {(post.headerImage) && (
           <meta property="og:image" content={`${config.siteUrl}${post.headerImage[0].id}`} />
         )}
-        <meta property="article:published_time" content={post.flotiqInternal.createdAt} />
+        <meta property="article:published_time" content={post.codewaveInternal.createdAt} />
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
         {post.tags && (
@@ -268,8 +268,8 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
             <article css={[PostFull, !post.headerImage && NoImage]}>
               <PostFullHeader>
                 <PostFullMeta>
-                  <PostFullMetaDate dateTime={post.flotiqInternal.createdAt}>
-                    {post.flotiqInternal.createdAt.substr(0,10)}
+                  <PostFullMetaDate dateTime={post.codewaveInternal.createdAt}>
+                    {post.codewaveInternal.createdAt.substr(0,10)}
                   </PostFullMetaDate>
                   {post.tags &&
                     post.tags.length > 0 && (
@@ -336,12 +336,12 @@ export const query = graphql`
         }
       }
     }
-    flotiqBlogPost( slug: { eq: $slug } ) {
+    codewaveBlogPost( slug: { eq: $slug } ) {
       excerpt
       title
       content
       metaDescription
-      flotiqInternal {
+      codewaveInternal {
         createdAt
       }
       tags {
@@ -363,7 +363,7 @@ export const query = graphql`
         }
       }
     }
-    relatedPosts: allFlotiqBlogPost(
+    relatedPosts: allCodewaveBlogPost(
       filter:{tags: {elemMatch: {tag: {eq:  $primaryTag } } } }
       limit: 3
     ) {

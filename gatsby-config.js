@@ -3,11 +3,11 @@ require('dotenv').config();
 const path = require('path');
 
 module.exports = {
-  pathPrefix: '/blog',
+  pathPrefix: '/',
   siteMetadata: {
-    title: 'Flotiq',
+    title: 'CodeWave',
     description: 'Effortless headless CMS',
-    siteUrl: 'https://flotiq.com', // full path to blog - no ending slash
+    siteUrl: 'https://blog.codewave.eu', // full path to blog - no ending slash
   },
   plugins: [
     {
@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://flotiq.com',
-        sitemap: 'https://flotiq.com/blog/sitemap.xml',
+        host: 'https://blog.codewave.eu',
+        sitemap: 'https://blog.codewave.eu/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },

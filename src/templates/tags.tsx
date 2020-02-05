@@ -29,7 +29,7 @@ interface TagTemplateProps {
         tag: string;
     };
     data: {
-        allFlotiqBlogTag: {
+        allCodewaveBlogTag: {
             edges: Array<{
                 node: {
                     id: string;
@@ -42,7 +42,7 @@ interface TagTemplateProps {
                 };
             }>;
         };
-        allFlotiqBlogPost: {
+        allCodewaveBlogPost: {
             totalCount: number;
             edges: Array<{
                 node: PageContext;
@@ -53,8 +53,8 @@ interface TagTemplateProps {
 
 const Tags: React.FC<TagTemplateProps> = props => {
     const tag = (props.pageContext.tag) ? props.pageContext.tag : '';
-    const {edges, totalCount} = props.data.allFlotiqBlogPost;
-    const tagData = props.data.allFlotiqBlogTag.edges.find(
+    const {edges, totalCount} = props.data.allCodewaveBlogPost;
+    const tagData = props.data.allCodewaveBlogTag.edges.find(
         n => n.node.tag.toLowerCase() === tag.toLowerCase(),
     );
 
@@ -132,7 +132,7 @@ export default Tags;
 
 export const pageQuery = graphql`
   query($tag: String) {
-    allFlotiqBlogTag {
+    allCodewaveBlogTag {
     edges {
       node {
         description
@@ -145,9 +145,9 @@ export const pageQuery = graphql`
       }
     }
   }
-    allFlotiqBlogPost(
+    allCodewaveBlogPost(
       limit: 2000
-      sort: { fields: [flotiqInternal___updatedAt], order: DESC }
+      sort: { fields: [codewaveInternal___updatedAt], order: DESC }
       filter: {tags: {elemMatch: {tag: {eq: $tag}}}}
     ) {
       edges {
@@ -175,7 +175,7 @@ export const pageQuery = graphql`
           }
           bio
         }
-        flotiqInternal {
+        codewaveInternal {
           createdAt
         }
       }

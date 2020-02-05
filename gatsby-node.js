@@ -9,7 +9,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // through `createNodeField` so that the fields still exist and GraphQL won't
   // trip up. An empty string is still required in replacement to `null`.
   switch (node.internal.type) {
-    case 'flotiqBlogPost': {
+    case 'codewaveBlogPost': {
       const { permalink, layout, primaryTag } = node;
       const { relativePath } = getNode(node.parent);
 
@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allFlotiqBlogPost(sort: {fields: flotiqInternal___updatedAt, order: DESC}, limit: 2000) {
+      allCodewaveBlogPost(sort: {fields: codewaveInternal___updatedAt, order: DESC}, limit: 2000) {
     edges {
       node {
         content
@@ -77,14 +77,14 @@ exports.createPages = async ({ graphql, actions }) => {
           }
           bio
         }
-        flotiqInternal {
+        codewaveInternal {
           createdAt
         }
       }
     }
     totalCount
   }
-      allFlotiqBlogAuthor {
+      allCodewaveBlogAuthor {
     edges {
       node {
         id
@@ -107,7 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create post pages
-  const posts = result.data.allFlotiqBlogPost.edges;
+  const posts = result.data.allCodewaveBlogPost.edges;
 
   // Create paginated index
   const postsPerPage = 6;
@@ -157,7 +157,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const tagTemplate = path.resolve('./src/templates/tags.tsx');
   const tags = _.uniq(
     _.flatten(
-      result.data.allFlotiqBlogPost.edges.map(edge => {
+      result.data.allCodewaveBlogPost.edges.map(edge => {
         return _.castArray(_.get(edge, 'node.tags', []));
       }),
     ),
@@ -174,7 +174,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create author pages
   const authorTemplate = path.resolve('./src/templates/author.tsx');
-  result.data.allFlotiqBlogAuthor.edges.forEach(edge => {
+  result.data.allCodewaveBlogAuthor.edges.forEach(edge => {
     createPage({
       path: `/author/${_.kebabCase(edge.node.slug)}/`,
       component: authorTemplate,

@@ -72,13 +72,13 @@ interface AuthorTemplateProps {
         slug: string;
     };
     data: {
-        allFlotiqBlogPost: {
+        allCodewaveBlogPost: {
             totalCount: number;
             edges: Array<{
                 node: PageContext;
             }>;
         };
-        flotiqBlogAuthor: {
+        codewaveBlogAuthor: {
             id: string;
             name: string;
             slug: string;
@@ -92,9 +92,9 @@ interface AuthorTemplateProps {
 }
 
 const Author: React.FC<AuthorTemplateProps> = props => {
-    const author = props.data.flotiqBlogAuthor;
+    const author = props.data.codewaveBlogAuthor;
 
-    const edges = props.data.allFlotiqBlogPost.edges.filter(
+    const edges = props.data.allCodewaveBlogPost.edges.filter(
         edge => {
             return edge.node.author && edge.node.author[0].slug === author.slug;
         }
@@ -141,7 +141,7 @@ const Author: React.FC<AuthorTemplateProps> = props => {
                         <SiteHeaderContent>
                             <img
                                 css={[AuthorProfileImage, AuthorProfileBioImage]}
-                                src={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/100x100/' + props.data.flotiqBlogAuthor.avatar[0].id + '.'  + props.data.flotiqBlogAuthor.avatar[0].extension}
+                                src={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/100x100/' + props.data.codewaveBlogAuthor.avatar[0].id + '.'  + props.data.codewaveBlogAuthor.avatar[0].extension}
                                 alt={author.name}
                             />
                             <SiteTitle>{author.name}</SiteTitle>
@@ -175,7 +175,7 @@ export default Author;
 
 export const pageQuery = graphql`
   query($author: String) {
-    flotiqBlogAuthor(slug: {eq: $author}) {
+    codewaveBlogAuthor(slug: {eq: $author}) {
       bio
       id
       name
@@ -185,7 +185,7 @@ export const pageQuery = graphql`
         id
       }
     }
-    allFlotiqBlogPost(sort: {fields: flotiqInternal___updatedAt, order: DESC}, limit: 2000) {
+    allCodewaveBlogPost(sort: {fields: codewaveInternal___updatedAt, order: DESC}, limit: 2000) {
           edges {
           node {
             content
@@ -211,7 +211,7 @@ export const pageQuery = graphql`
               }
               bio
             }
-            flotiqInternal {
+            codewaveInternal {
               createdAt
             }
           }

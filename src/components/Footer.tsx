@@ -12,7 +12,7 @@ const SiteFooter = css`
   padding-top: 20px;
   padding-bottom: 60px;
   color: #fff;
-  background: ${colors.flotiqBlue};
+  background: ${colors.codewaveBlue};
 `;
 
 const SiteFooterContent = css`
@@ -98,11 +98,11 @@ const Footer: React.FC = () => {
                 GitHub
               </a>
           )}
+          <a href="https://codewave.eu" target="_blank">
+            Codewave.eu
+          </a>
           <a href="https://flotiq.com" target="_blank">
             Flotiq.com
-          </a>
-          <a href="https://flotiq.com/docs" target="_blank">
-            Documentation
           </a>
         </SiteFooterNav>
       </div>

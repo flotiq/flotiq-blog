@@ -82,7 +82,7 @@ export interface IndexProps {
         fluid: any;
       };
     };
-    allFlotiqBlogPost: {
+    allCodewaveBlogPost: {
       edges: Array<{
         node: PageContext;
       }>;
@@ -156,7 +156,7 @@ const IndexPage: React.FC<IndexProps> = props => {
         <main id="site-main" css={[SiteMain, outer]}>
           <div css={inner}>
             <div css={[PostFeed, PostFeedRaise]}>
-              {props.data.allFlotiqBlogPost.edges.map(post => {
+              {props.data.allCodewaveBlogPost.edges.map(post => {
                 return (
                     <PostCard key={post.node.slug} post={post.node} isIndex={true} />
                 );
@@ -176,7 +176,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query blogPageQuery($skip: Int!, $limit: Int!) {
-    logo: file(relativePath: { eq: "img/flotiq-logo-wt.png" }) {
+    logo: file(relativePath: { eq: "img/codewave-logo-wt.png" }) {
       childImageSharp {
         # Specify the image processing specifications right in the query.
         # Makes it trivial to update as your page's design changes.
@@ -194,8 +194,8 @@ export const pageQuery = graphql`
         }
       }
     }
-    allFlotiqBlogPost(
-      sort: { fields: [flotiqInternal___updatedAt], order: DESC },
+    allCodewaveBlogPost(
+      sort: { fields: [codewaveInternal___updatedAt], order: DESC },
       limit: $limit,
       skip: $skip
     ) {
@@ -224,7 +224,7 @@ export const pageQuery = graphql`
           }
           bio
         }
-        flotiqInternal {
+        codewaveInternal {
           createdAt
         }
       }
