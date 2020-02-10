@@ -82,7 +82,7 @@ const config: WebsiteConfig = {
   mailchimpEmailFieldName: 'MERGE0',
   googleSiteVerification: 'GoogleCode',
   footer: 'is based on Flotiq CMS',
-  companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
+  companyLogo: 'https://api.flotiq.com/image/250x180/_media-5e416f1560d0c.png',
   companyName: 'Flotiq'
 };
 
