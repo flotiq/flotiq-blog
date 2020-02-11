@@ -55,15 +55,15 @@ export interface WebsiteConfig {
    */
   footer?: string;
 
-    /**
-     * Company logo - used for json+ld rich snippets
-     */
-    companyLogo?: string;
+  /**
+   * Company logo - used for json+ld rich snippets
+   */
+  companyLogo?: string;
 
-    /**
-     * Company name - used for json+ld rich snippets
-     */
-    companyName?: string;
+  /**
+   * Company name - used for json+ld rich snippets
+   */
+  companyName?: string;
 }
 
 const config: WebsiteConfig = {
@@ -76,11 +76,11 @@ const config: WebsiteConfig = {
   github: 'https://github.com/cdwv',
   facebook: 'https://www.facebook.com/codewave.eu',
   twitter: 'https://twitter.com/code_wave',
-    showSubscribe: false,
-    footer: 'is based on Flotiq CMS',
-    companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
-    companyName: 'Flotiq'
+  showSubscribe: false,
+  footer: 'is based on Flotiq CMS',
+  companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
+  companyName: 'Flotiq',
 
-}
+};
 
 export default config;
