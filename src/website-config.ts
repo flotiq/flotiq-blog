@@ -67,10 +67,10 @@ export interface WebsiteConfig {
 }
 
 const config: WebsiteConfig = {
-  title: 'CodeWave blog',
+  title: 'CodeWave Blog',
   description: 'CodeWave is a performance- and scalability-focused web development firm. We deliver custom software solutions and operate cloud-based infrastructure for clients across the globe - from startups to Fortune 500s.',
-  coverImage: 'img/blog-cover.jpg',
-  logo: 'img/logo_codewave_white_horizontal.svg',
+  coverImage: 'img/cdwv-blog-bg.jpg',
+  logo: 'img/logo_codewave_horizontal.png',
   lang: 'en',
   siteUrl: 'https://codewave.eu/blog',
   github: 'https://github.com/cdwv',
@@ -79,7 +79,7 @@ const config: WebsiteConfig = {
   showSubscribe: false,
   footer: 'is based on Flotiq CMS',
   companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
-  companyName: 'Flotiq',
+  companyName: 'CodeWave',
 
 };
 

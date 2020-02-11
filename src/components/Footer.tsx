@@ -122,10 +122,6 @@ const SiteFooterNav = styled.nav`
     border-radius: 100%;
   }
 
-  a:first-of-type {
-    margin-right: 10px;
-  }
-
   a:first-of-type:before {
     display: none;
   }
