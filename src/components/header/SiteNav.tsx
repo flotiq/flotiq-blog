@@ -11,6 +11,7 @@ import Twitter from '../icons/twitter';
 import YouTube from '../icons/youtube';
 import GitHub from '../icons/github';
 import Flotiq from '../icons/flotiq';
+import Codewave from '../icons/codewave';
 import SubscribeModal from '../subscribe/SubscribeOverlay';
 import SiteNavLogo from './SiteNavLogo';
 
@@ -138,6 +139,9 @@ class SiteNav extends React.Component<SiteNavProps> {
             <li role="menuitem">
               <Link to="/">Home</Link>
             </li>
+          <li role="menuitem">
+              <Link to="/about">About</Link>
+          </li>
           </ul>
         </SiteNavLeft>
         <SiteNavRight>
@@ -188,13 +192,22 @@ class SiteNav extends React.Component<SiteNavProps> {
             )}
                 <a
                     css={SocialLink}
-                    href="https://flotiq.com"
-                    title="Flotiq"
+                    href="https://codewave.eu"
+                    title="Codewave"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                  <Flotiq />
+                  <Codewave />
                 </a>
+              <a
+                  css={SocialLink}
+                  href="https://flotiq.com"
+                  title="Flotiq"
+                  target="_blank"
+                  rel="noopener noreferrer"
+              >
+                  <Flotiq />
+              </a>
           </SocialLinks>
           {config.showSubscribe && (
             <SubscribeButton onClick={this.openModal}>Subscribe</SubscribeButton>

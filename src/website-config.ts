@@ -55,35 +55,32 @@ export interface WebsiteConfig {
    */
   footer?: string;
 
-  /**
-   * Company logo - used for json+ld rich snippets
-   */
-  companyLogo?: string;
+    /**
+     * Company logo - used for json+ld rich snippets
+     */
+    companyLogo?: string;
 
-  /**
-   * Company name - used for json+ld rich snippets
-   */
-  companyName?: string;
+    /**
+     * Company name - used for json+ld rich snippets
+     */
+    companyName?: string;
 }
 
 const config: WebsiteConfig = {
-  title: 'Flotiq blog',
-  description: 'Effortless, headless CMS',
+  title: 'CodeWave blog',
+  description: 'CodeWave is a performance- and scalability-focused web development firm. We deliver custom software solutions and operate cloud-based infrastructure for clients across the globe - from startups to Fortune 500s.',
   coverImage: 'img/blog-cover.jpg',
-  logo: 'img/flotiq-logo-wt.png',
+  logo: 'img/logo_codewave_white_horizontal.svg',
   lang: 'en',
-  siteUrl: 'https://flotiq.com',
-  github: 'https://github.com/flotiq',
-  youtube: 'https://www.youtube.com/channel/UC4wpV-D9mIt1JjN_g_iyXXw',
-  twitter: 'https://twitter.com/flotiq',
-  showSubscribe: false,
-  mailchimpAction: 'https://twitter.us19.list-manage.com/subscribe/post?u=a89b6987ac248c81b0b7f3a0f&amp;id=7d777b7d75',
-  mailchimpName: 'b_a89b6987ac248c81b0b7f3a0f_7d777b7d75',
-  mailchimpEmailFieldName: 'MERGE0',
-  googleSiteVerification: 'GoogleCode',
-  footer: 'is based on Flotiq CMS',
-  companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
-  companyName: 'Flotiq'
-};
+  siteUrl: 'https://codewave.eu/blog',
+  github: 'https://github.com/cdwv',
+  facebook: 'https://www.facebook.com/codewave.eu',
+  twitter: 'https://twitter.com/code_wave',
+    showSubscribe: false,
+    footer: 'is based on Flotiq CMS',
+    companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
+    companyName: 'Flotiq'
+
+}
 
 export default config;

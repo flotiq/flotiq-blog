@@ -2,7 +2,7 @@
 
 > Forked from scttcper/gatsby-casper
 
-See it live on [Flotiq/Blog](https://flotiq.com/blog/)
+See it live on [Codewaveq/Blog](https://codewave.eu/blog/)
 
 ## 🎓 Learning Flotiq
 
@@ -15,4 +15,4 @@ See how to build a blog with Flotiq:
 
 # Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/flotiq/flotiq-blog)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cdwv/cdwv-blog)

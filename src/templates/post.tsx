@@ -29,7 +29,7 @@ const PostTemplate = css`
   }
 
   .post-tag-pill {
-    background-color: ${lighten('.35', colors.flotiqBlue)};
+    background-color: ${lighten('.35', colors.codewaveBlue)};
     padding: 0 5px;
     border-radius: 4px;
     color: white;
@@ -42,7 +42,7 @@ const PostTemplate = css`
 
     &:hover {
       text-decoration: none;
-      background-color: ${lighten('.4', colors.flotiqBlue)};
+      background-color: ${lighten('.4', colors.codewaveBlue)};
     }
   }
 `;
@@ -145,12 +145,12 @@ interface PageTemplateProps {
         fixed: any;
       };
     };
-    flotiqBlogPost: {
+    codewaveBlogPost: {
       excerpt: string;
       title: string;
       content: string;
       metaDescription: string;
-      flotiqInternal: {
+      codewaveInternal: {
         createdAt: string;
         updatedAt: string;
       };
@@ -197,7 +197,7 @@ interface PageTemplateProps {
 export interface PageContext {
   excerpt: string;
   title: string;
-  flotiqInternal: {
+  codewaveInternal: {
     createdAt: string;
     updatedAt: string;
   };
@@ -226,7 +226,7 @@ export interface PageContext {
 }
 
 const PageTemplate: React.FC<PageTemplateProps> = props => {
-  const post = props.data.flotiqBlogPost;
+  const post = props.data.codewaveBlogPost;
   let width = '';
   let height = '';
   // if (post.headerImage && post.headerImage.childImageSharp) {
@@ -249,7 +249,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
         {(post.headerImage) && (
           <meta property="og:image" content={`${config.siteUrl}${post.headerImage[0].id}`} />
         )}
-        <meta property="article:published_time" content={post.flotiqInternal.createdAt} />
+        <meta property="article:published_time" content={post.codewaveInternal.createdAt} />
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
         {post.tags && (
@@ -289,8 +289,8 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
             <article css={[PostFull, !post.headerImage && NoImage]}>
               <PostFullHeader>
                 <PostFullMeta>
-                  <PostFullMetaDate dateTime={post.flotiqInternal.createdAt}>
-                    {post.flotiqInternal.createdAt.substr(0,10)}
+                  <PostFullMetaDate dateTime={post.codewaveInternal.createdAt}>
+                    {post.codewaveInternal.createdAt.substr(0,10)}
                   </PostFullMetaDate>
                   {post.tags &&
                     post.tags.length > 0 && (
@@ -328,8 +328,8 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
           title={post.title}
           image={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/1450x800/' + post.headerImage[0].id + '.' + post.headerImage[0].extension}
           description={post.metaDescription}
-          datePublished={post.flotiqInternal.createdAt}
-          dateModified={post.flotiqInternal.updatedAt}
+          datePublished={post.codewaveInternal.createdAt}
+          dateModified={post.codewaveInternal.updatedAt}
           canonicalUrl={config.siteUrl}
           author={{name: post.author[0].slug}}
           organization={{url: config.siteUrl, logo: config.companyLogo, name:config.companyName}}
@@ -365,14 +365,13 @@ export const query = graphql`
         }
       }
     }
-    flotiqBlogPost( slug: { eq: $slug } ) {
+    codewaveBlogPost( slug: { eq: $slug } ) {
       excerpt
       title
       content
       metaDescription
-      flotiqInternal {
+      codewaveInternal {
         createdAt
-        updatedAt
       }
       tags {
         id
@@ -393,7 +392,7 @@ export const query = graphql`
         }
       }
     }
-    relatedPosts: allFlotiqBlogPost(
+    relatedPosts: allCodewaveBlogPost(
       filter:{tags: {elemMatch: {tag: {eq:  $primaryTag } } } }
       limit: 3
     ) {

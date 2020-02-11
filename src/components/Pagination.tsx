@@ -36,7 +36,7 @@ const navCss = css`
     justify-content: center;
 
     &.active {
-      background-color: ${colors.flotiqGreen};
+      background-color: ${colors.codewaveGreen};
     }
 
     &:hover:not(.active) {

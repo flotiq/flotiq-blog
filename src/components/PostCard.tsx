@@ -26,7 +26,7 @@ const PostCardStyles = css`
   }
 
   .postcard-tag-pill {
-    background-color: ${lighten('.35', colors.flotiqBlue)};
+    background-color: ${lighten('.35', colors.codewaveBlue)};
     padding: 0 4px;
     border-radius: 4px;
     color: white;
@@ -39,7 +39,7 @@ const PostCardStyles = css`
 
     &:hover {
       text-decoration: none;
-      background-color: ${lighten('.4', colors.flotiqBlue)};
+      background-color: ${lighten('.4', colors.codewaveBlue)};
     }
   }
 `;
@@ -163,7 +163,7 @@ const AuthorListItem = styled.li`
   p {
     display: inline-block;
     margin: 0;
-    color: ${colors.flotiqBlue};
+    color: ${colors.codewaveBlue};
     font-size: 11px !important;
     text-transform: uppercase;
     letter-spacing: 1px;

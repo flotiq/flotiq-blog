@@ -10,13 +10,15 @@ import YouTube from "./icons/youtube";
 import Twitter from "./icons/twitter";
 import GitHub from "./icons/github";
 import Flotiq from "./icons/flotiq";
+import Facebook from "./icons/facebook";
+import Codewave from "./icons/codewave";
 
 const SiteFooter = css`
   position: relative;
   padding-top: 20px;
   padding-bottom: 60px;
   color: #fff;
-  background: ${colors.flotiqBlue};
+  background: ${colors.codewaveBlue};
 `;
 
 const SiteFooterContent = css`
@@ -141,11 +143,12 @@ const Footer: React.FC = () => {
         </section>
         <SiteFooterNav>
           <Link to="/">Latest Posts</Link>
-          |
-          <a href="https://flotiq.com/docs" target="_blank">
-            Documentation
-          </a>
           <div className="socialIcons">
+              {config.facebook && (
+                  <a href={config.facebook} target="_blank" rel="noopener noreferrer">
+                      <Facebook />
+                  </a>
+              )}
             {config.youtube && (
               <a href={config.youtube} className="youtube-icon" target="_blank" rel="noopener noreferrer">
                 <YouTube />
@@ -161,6 +164,9 @@ const Footer: React.FC = () => {
                 <GitHub />
               </a>
             )}
+              <a href="https://codewave.eu" target="_blank">
+                  <Codewave />
+              </a>
             <a href="https://flotiq.com" className="flotiq-icon" target="_blank">
               <Flotiq />
             </a>

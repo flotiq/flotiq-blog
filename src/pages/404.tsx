@@ -49,7 +49,7 @@ const ErrorLink = css`
 
 interface NotFoundTemplateProps {
   data: {
-    allFlotiqBlogPost: {
+    allCodewaveBlogPost: {
       totalCount: number;
       edges: Array<{
         node: PageContext;
@@ -59,7 +59,7 @@ interface NotFoundTemplateProps {
 }
 
 const NotFoundPage: React.FC<NotFoundTemplateProps> = props => {
-  const { edges } = props.data.allFlotiqBlogPost;
+  const { edges } = props.data.allCodewaveBlogPost;
 
   return (
     <IndexLayout>
@@ -100,7 +100,7 @@ export default NotFoundPage;
 
 export const pageQuery = graphql`
   query {
-    allFlotiqBlogPost(limit: 3, sort: { fields: [flotiqInternal___updatedAt], order: DESC }) {
+    allCodewaveBlogPost(limit: 3, sort: { fields: [codewaveInternal___updatedAt], order: DESC }) {
       edges {
       node {
         content
@@ -124,7 +124,7 @@ export const pageQuery = graphql`
           }
           bio
         }
-        flotiqInternal {
+        codewaveInternal {
           createdAt
         }
       }

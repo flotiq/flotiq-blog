@@ -11,7 +11,7 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
   apiUrl = baseUrl;
   headers['X-AUTH-TOKEN'] = authToken;
 
-  let response = await fetch(apiUrl + '/api/v1/content/flotiqBlogPost?hydrate=1&status=public', {
+  let response = await fetch(apiUrl + '/api/v1/content/codewaveBlogPost?hydrate=1&status=public', {
     headers: headers,
   });
   if (response.ok) {
@@ -38,13 +38,13 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
         excerpt: datum.excerpt,
         metaDescription: datum.metaDescription,
         relatedPosts: datum.relatedPosts,
-        flotiqInternal: datum.internal,
+        codewaveInternal: datum.internal,
         // required
         id: datum.id,
         parent: null,
         children: [],
         internal: {
-          type: 'FlotiqBlogPost',
+          type: 'CodewaveBlogPost',
           contentDigest: crypto
             .createHash('md5')
             .update(JSON.stringify(datum))
@@ -54,7 +54,7 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
     }));
   }
 
-  response = await fetch(apiUrl + '/api/v1/content/flotiqBlogTag?hydrate=1', {
+  response = await fetch(apiUrl + '/api/v1/content/codewaveBlogTag?hydrate=1', {
     headers: headers,
   });
   if (response.ok) {
@@ -65,13 +65,13 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
         tag: datum.tag,
         description: datum.description,
         image: datum.image,
-        flotiqInternal: datum.internal,
+        codewaveInternal: datum.internal,
         // required
         id: datum.id,
         parent: null,
         children: [],
         internal: {
-          type: 'FlotiqBlogTag',
+          type: 'CodewaveBlogTag',
           contentDigest: crypto
             .createHash('md5')
             .update(JSON.stringify(datum))
@@ -81,7 +81,7 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
     }));
   }
 
-  response = await fetch(apiUrl + '/api/v1/content/flotiqBlogAuthor?hydrate=1', {
+  response = await fetch(apiUrl + '/api/v1/content/codewaveBlogAuthor?hydrate=1', {
     headers: headers,
   });
   if (response.ok) {
@@ -93,13 +93,13 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
         bio: datum.bio,
         avatar: datum.avatar,
         slug: datum.slug,
-        flotiqInternal: datum.internal,
+        codewaveInternal: datum.internal,
         // required
         id: datum.id,
         parent: null,
         children: [],
         internal: {
-          type: 'FlotiqBlogAuthor',
+          type: 'CodewaveBlogAuthor',
           contentDigest: crypto
             .createHash('md5')
             .update(JSON.stringify(datum))
@@ -115,36 +115,36 @@ exports.sourceNodes = async ({ actions }, { baseUrl, authToken }) => {
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
-    type FlotiqBlogPost implements Node {
+    type CodewaveBlogPost implements Node {
       slug: String!
       title: String!
       content: String!
-      headerImage: [FlotiqGallery]!
-      flotiqInternal: FlotiqInternal!
-      tags: [FlotiqBlogTag]!
-      author: [FlotiqBlogAuthor]!
+      headerImage: [CodewaveGallery]
+      codewaveInternal: CodewaveInternal!
+      tags: [CodewaveBlogTag]!
+      author: [CodewaveBlogAuthor]!
       excerpt: String!
       metaDescription: String!
-      relatedPosts: [FlotiqBlogPost]!
+      relatedPosts: [CodewaveBlogPost]
     }
-    type FlotiqBlogTag implements Node {
+    type CodewaveBlogTag implements Node {
       tag: String!
-      description: String!
-      image: [FlotiqGallery]!
-      flotiqInternal: FlotiqInternal!
+      description: String
+      image: [CodewaveGallery]
+      codewaveInternal: CodewaveInternal!
     }
-    type FlotiqBlogAuthor implements Node {
+    type CodewaveBlogAuthor implements Node {
       name: String!
-      bio: String!
-      avatar: [FlotiqGallery]!
+      bio: String
+      avatar: [CodewaveGallery]
       slug: String!
-      flotiqInternal: FlotiqInternal!
+      codewaveInternal: CodewaveInternal!
     }
-    type FlotiqGallery {
+    type CodewaveGallery {
       id: String
       extension: String
     }
-    type FlotiqInternal {
+    type CodewaveInternal {
       createdAt: String!
       deletedAt: String!
       updatedAt: String!

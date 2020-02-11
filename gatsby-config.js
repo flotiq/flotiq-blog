@@ -5,9 +5,9 @@ const path = require('path');
 module.exports = {
   pathPrefix: '/blog',
   siteMetadata: {
-    title: 'Flotiq',
-    description: 'Effortless headless CMS',
-    siteUrl: 'https://flotiq.com', // full path to blog - no ending slash
+    title: 'CodeWave',
+    description: 'CodeWave is a performance- and scalability-focused web development firm. We deliver custom software solutions and operate cloud-based infrastructure for clients across the globe - from startups to Fortune 500s.',
+    siteUrl: 'https://codewave.eu', // full path to blog - no ending slash
   },
   plugins: [
     {
@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://flotiq.com',
-        sitemap: 'https://flotiq.com/blog/sitemap.xml',
+        host: 'https://codewave.eu/blog',
+        sitemap: 'https://codewave.eu/blog/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
