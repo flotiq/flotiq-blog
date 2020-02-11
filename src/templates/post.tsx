@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import * as _ from 'lodash';
-import { setLightness } from 'polished';
+import { setLightness, lighten } from 'polished';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -16,6 +16,7 @@ import PostFullFooterRight from '../components/PostFullFooterRight';
 import ReadNextCard from '../components/ReadNextCard';
 import Subscribe from '../components/subscribe/Subscribe';
 import Wrapper from '../components/Wrapper';
+import SchemaOrg from '../components/SEO/SchemaOrg';
 import IndexLayout from '../layouts';
 import { colors } from '../styles/colors';
 import { inner, outer, SiteHeader, SiteMain } from '../styles/shared';
@@ -25,6 +26,24 @@ const PostTemplate = css`
   .site-main {
     background: #fff;
     padding-bottom: 4vw;
+  }
+
+  .post-tag-pill {
+    background-color: ${lighten('.35', colors.codewaveBlue)};
+    padding: 0 5px;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color .2s ease;
+    min-height: 18px;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      text-decoration: none;
+      background-color: ${lighten('.4', colors.codewaveBlue)};
+    }
   }
 `;
 
@@ -71,7 +90,7 @@ const PostFullMeta = styled.section`
 `;
 
 const PostFullMetaDate = styled.time`
-  color: ${colors.blue};
+  color: ${colors.midgrey};
 `;
 
 export const PostFullTitle = styled.h1`
@@ -133,6 +152,7 @@ interface PageTemplateProps {
       metaDescription: string;
       codewaveInternal: {
         createdAt: string;
+        updatedAt: string;
       };
       headerImage: [{
         id: string;
@@ -179,6 +199,7 @@ export interface PageContext {
   title: string;
   codewaveInternal: {
     createdAt: string;
+    updatedAt: string;
   };
   content: string;
   slug: string;
@@ -275,7 +296,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
                     post.tags.length > 0 && (
                       <>
                         <DateDivider>/</DateDivider>
-                        <Link to={`/tags/${_.kebabCase(post.tags[0].tag)}/`}>
+                        <Link className="post-tag-pill" to={`/tags/${_.kebabCase(post.tags[0].tag)}/`}>
                           {post.tags[0].tag}
                         </Link>
                       </>
@@ -286,11 +307,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
 
               {(post.headerImage && post.headerImage[0].id) && (
                 <PostFullImage>
-                  <img
-                      src={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/1450x800/' + post.headerImage[0].id + '.' + post.headerImage[0].extension}
-                    style={{ height: '100%' }}
-                      alt={post.title}
-                  />
+                  <img src={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/1450x800/' + post.headerImage[0].id + '.' + post.headerImage[0].extension} style={{ height: '100%' }} alt={post.title} />
                 </PostFullImage>
               )}
               <PostContent htmlAst={post.content} />
@@ -305,7 +322,19 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
             </article>
           </div>
         </main>
-
+        <SchemaOrg
+          isBlogPost={true}
+          url={config.siteUrl + props.pathContext.slug}
+          title={post.title}
+          image={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/1450x800/' + post.headerImage[0].id + '.' + post.headerImage[0].extension}
+          description={post.metaDescription}
+          datePublished={post.codewaveInternal.createdAt}
+          dateModified={post.codewaveInternal.updatedAt}
+          canonicalUrl={config.siteUrl}
+          author={{name: post.author[0].slug}}
+          organization={{url: config.siteUrl, logo: config.companyLogo, name:config.companyName}}
+          defaultTitle={post.title}
+        />
         {/* Links to Previous/Next posts */}
         <aside className="read-next" css={outer}>
           <div css={inner}>

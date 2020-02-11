@@ -54,6 +54,16 @@ export interface WebsiteConfig {
    * Appears alongside the footer, after the credits
    */
   footer?: string;
+
+    /**
+     * Company logo - used for json+ld rich snippets
+     */
+    companyLogo?: string;
+
+    /**
+     * Company name - used for json+ld rich snippets
+     */
+    companyName?: string;
 }
 
 const config: WebsiteConfig = {
@@ -66,12 +76,11 @@ const config: WebsiteConfig = {
   github: 'https://github.com/cdwv',
   facebook: 'https://www.facebook.com/codewave.eu',
   twitter: 'https://twitter.com/code_wave',
-  showSubscribe: false,
-  mailchimpAction: 'https://twitter.us19.list-manage.com/subscribe/post?u=a89b6987ac248c81b0b7f3a0f&amp;id=7d777b7d75',
-  mailchimpName: 'b_a89b6987ac248c81b0b7f3a0f_7d777b7d75',
-  mailchimpEmailFieldName: 'MERGE0',
-  googleSiteVerification: 'GoogleCode',
-  footer: 'is based on Flotiq CMS',
-};
+    showSubscribe: false,
+    footer: 'is based on Flotiq CMS',
+    companyLogo: 'https://editor.flotiq.com/fonts/fq-logo.svg',
+    companyName: 'Flotiq'
+
+}
 
 export default config;
