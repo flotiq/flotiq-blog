@@ -84,21 +84,28 @@ const SiteFooterNav = styled.nav`
       opacity: .7;
     }
 
-    &.youtube-icon,
-    &.twitter-icon,
-    &.github-icon,
-    &.flotiq-icon {
+    &.social-icon,
+    &.social-icon,
+    &.social-icon,
+    &.social-icon {
       svg {
         fill: white;
         width: 20px;
         height: auto !important;
       }
-    }
 
-    &.github-icon,
-    &.flotiq-icon {
-      svg {
-            width: 17px;
+      &--github,
+      &--flotiq,
+      &--facebook {
+        svg {
+          width: 17px;
+        }
+      }
+
+      &--codewave {
+        svg {
+          width: 18px;
+        }
       }
     }
   }
@@ -113,10 +120,6 @@ const SiteFooterNav = styled.nav`
     height: 2px;
     background: #fff;
     border-radius: 100%;
-  }
-
-  a:first-of-type {
-    margin-right: 10px;
   }
 
   a:first-of-type:before {
@@ -144,30 +147,30 @@ const Footer: React.FC = () => {
         <SiteFooterNav>
           <Link to="/">Latest Posts</Link>
           <div className="socialIcons">
-              {config.facebook && (
-                  <a href={config.facebook} target="_blank" rel="noopener noreferrer">
-                      <Facebook />
-                  </a>
-              )}
+            {config.facebook && (
+              <a href={config.facebook} className="social-icon social-icon--facebook" target="_blank" rel="noopener noreferrer">
+                <Facebook />
+              </a>
+            )}
             {config.youtube && (
-              <a href={config.youtube} className="youtube-icon" target="_blank" rel="noopener noreferrer">
+              <a href={config.youtube} className="social-icon" target="_blank" rel="noopener noreferrer">
                 <YouTube />
               </a>
             )}
             {config.twitter && (
-              <a href={config.twitter} className="twitter-icon" target="_blank" rel="noopener noreferrer">
+              <a href={config.twitter} className="social-icon" target="_blank" rel="noopener noreferrer">
                 <Twitter />
               </a>
             )}
             {config.github && (
-              <a href={config.github} className="github-icon" target="_blank" rel="noopener noreferrer">
+              <a href={config.github} className="social-icon social-icon--github" target="_blank" rel="noopener noreferrer">
                 <GitHub />
               </a>
             )}
-              <a href="https://codewave.eu" target="_blank">
-                  <Codewave />
-              </a>
-            <a href="https://flotiq.com" className="flotiq-icon" target="_blank">
+            <a href="https://codewave.eu" className="social-icon social-icon--codewave" target="_blank">
+              <Codewave />
+            </a>
+            <a href="https://flotiq.com" className="social-icon social-icon--flotiq" target="_blank">
               <Flotiq />
             </a>
           </div>

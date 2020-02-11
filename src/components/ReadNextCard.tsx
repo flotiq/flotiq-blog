@@ -124,7 +124,7 @@ const ReadNextCardFooter = styled.footer`
   margin: 5px 0 5px 0;
 
   a {
-    color: ${colors.codewaveGreen};
+    color: ${colors.codewaveLightBlue};
     font-weight: 600;
     transition: color .2s ease;
   }
