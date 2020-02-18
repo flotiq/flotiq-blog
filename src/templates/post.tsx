@@ -150,7 +150,7 @@ interface PageTemplateProps {
       title: string;
       content: string;
       metaDescription: string;
-      codewaveInternal: {
+      flotiqInternal: {
         createdAt: string;
         updatedAt: string;
       };
@@ -197,7 +197,7 @@ interface PageTemplateProps {
 export interface PageContext {
   excerpt: string;
   title: string;
-  codewaveInternal: {
+  flotiqInternal: {
     createdAt: string;
     updatedAt: string;
   };
@@ -249,7 +249,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
         {(post.headerImage) && (
           <meta property="og:image" content={`${config.siteUrl}${post.headerImage[0].id}`} />
         )}
-        <meta property="article:published_time" content={post.codewaveInternal.createdAt} />
+        <meta property="article:published_time" content={post.flotiqInternal.createdAt} />
         {/* not sure if modified time possible */}
         {/* <meta property="article:modified_time" content="2018-08-20T15:12:00.000Z" /> */}
         {post.tags && (
@@ -289,8 +289,8 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
             <article css={[PostFull, !post.headerImage && NoImage]}>
               <PostFullHeader>
                 <PostFullMeta>
-                  <PostFullMetaDate dateTime={post.codewaveInternal.createdAt}>
-                    {post.codewaveInternal.createdAt.substr(0,10)}
+                  <PostFullMetaDate dateTime={post.flotiqInternal.createdAt}>
+                    {post.flotiqInternal.createdAt.substr(0,10)}
                   </PostFullMetaDate>
                   {post.tags &&
                     post.tags.length > 0 && (
@@ -328,8 +328,8 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
           title={post.title}
           image={process.env.GATSBY_FLOTIQ_BASE_URL + '/image/1450x800/' + post.headerImage[0].id + '.' + post.headerImage[0].extension}
           description={post.metaDescription}
-          datePublished={post.codewaveInternal.createdAt}
-          dateModified={post.codewaveInternal.updatedAt}
+          datePublished={post.flotiqInternal.createdAt}
+          dateModified={post.flotiqInternal.updatedAt}
           canonicalUrl={config.siteUrl}
           author={{name: post.author[0].slug}}
           organization={{url: config.siteUrl, logo: config.companyLogo, name:config.companyName}}
@@ -370,7 +370,7 @@ export const query = graphql`
       title
       content
       metaDescription
-      codewaveInternal {
+      flotiqInternal {
         createdAt
       }
       tags {

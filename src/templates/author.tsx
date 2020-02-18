@@ -185,7 +185,7 @@ export const pageQuery = graphql`
         id
       }
     }
-    allCodewaveBlogPost(sort: {fields: codewaveInternal___updatedAt, order: DESC}, limit: 2000) {
+    allCodewaveBlogPost(sort: {fields: flotiqInternal___updatedAt, order: DESC}, limit: 2000) {
           edges {
           node {
             content
@@ -211,7 +211,7 @@ export const pageQuery = graphql`
               }
               bio
             }
-            codewaveInternal {
+            flotiqInternal {
               createdAt
             }
           }

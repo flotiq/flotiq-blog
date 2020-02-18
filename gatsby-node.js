@@ -47,7 +47,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allCodewaveBlogPost(sort: {fields: codewaveInternal___updatedAt, order: DESC}, limit: 2000) {
+      allCodewaveBlogPost(sort: {fields: flotiqInternal___updatedAt, order: DESC}, limit: 2000) {
     edges {
       node {
         content
@@ -77,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
           bio
         }
-        codewaveInternal {
+        flotiqInternal {
           createdAt
         }
       }

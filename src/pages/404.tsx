@@ -100,7 +100,7 @@ export default NotFoundPage;
 
 export const pageQuery = graphql`
   query {
-    allCodewaveBlogPost(limit: 3, sort: { fields: [codewaveInternal___updatedAt], order: DESC }) {
+    allCodewaveBlogPost(limit: 3, sort: { fields: [flotiqInternal___updatedAt], order: DESC }) {
       edges {
       node {
         content
@@ -124,7 +124,7 @@ export const pageQuery = graphql`
           }
           bio
         }
-        codewaveInternal {
+        flotiqInternal {
           createdAt
         }
       }
