@@ -1,0 +1,15 @@
+name = "codewave-blog"
+type = "webpack"
+account_id = "4e7c54fde70afb149f74a79322061f97"
+workers_dev = true
+
+[site]
+bucket = "public"
+entry-point = "workers-site"
+
+[env.production]
+# The ID of your domain you're deploying to
+zone_id = "d77a46992a7efac77b1603e05573ab02"
+# The route pattern your Workers application will be served at
+route = "codewave.eu/blog/*"
+
