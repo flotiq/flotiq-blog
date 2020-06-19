@@ -35,6 +35,6 @@ jobs:
         
     - shell: bash
       env:
-        SUPER_SECRET: ${{ secrets.My_Api }}
+        SUPER_SECRET: ${{ secrets.MY_API }}
       run: |
-        echo "$My_Api"
+        echo $MY_API
