@@ -22,18 +22,21 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     
-      
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Enter information to .env file
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-        node -v
-        npm -v
+        echo "GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com" >> .env
+        echo FLOTIQ_API_KEY=$FLOTIQ_API_KEY >> .env
+    
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: npm install
+      
+    - name: Gatsby
+      run: | 
+        npm install -g gatsby-cli
+        gatsby clean
+        gatsby build
         
     - shell: bash
       env:
