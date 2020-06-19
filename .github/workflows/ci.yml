@@ -32,6 +32,8 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        node -v
+        npm -v
         
     - shell: bash
       env:
