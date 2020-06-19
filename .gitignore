@@ -65,7 +65,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+#.env
 
 # =========================
 # Operating System Files
