@@ -26,7 +26,6 @@ jobs:
       run: |
         echo GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com >> .env
         echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env
-        cat .env
       shell: bash
       env: # Or as an environment variable
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
@@ -42,8 +41,13 @@ jobs:
         gatsby clean
         gatsby build
         
-    - shell: bash
-      env:
-        SUPER_SECRET: ${{ secrets.MY_API }}
+    - name: Cloudflare
+      run: |
+        npm install -g @cloudflare/wrangler
+    
+    - name: Enter data to wrangler
       run: |
         echo $MY_API
+            shell: bash
+      env: # Or as an environment variable
+        MY_API: ${{ secrets.MY_API }}
