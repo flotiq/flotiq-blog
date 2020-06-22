@@ -45,8 +45,7 @@ jobs:
       run: |
         npm install -g @cloudflare/wrangler
         sed 's+my-id-worker-account+'"$ACCOUNT_ID"'+g' wrangler.toml
-        ls -al
-        cat wrangler.toml
+        wrangler publish
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
