@@ -29,7 +29,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Download file .env result for fileenv
     - uses: actions/download-artifact@v1
       with:
         name: file .env
@@ -50,7 +49,6 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
-    - name: Download directory result for job build
     - uses: actions/download-artifact@v1
       with:
         name: gatsbypublic
