@@ -48,7 +48,7 @@ jobs:
         mkdir -p .wrangler/config/default.toml
         echo api_token = '"'"$API_TOKEN"'"' > .wrangler/config/default.toml
         ls -al ..
-        echo ----------------------------------------------------
+        echo --------------------------------------------------
         ls -al ../..
       shell: bash
       env: # Or as an environment variable
