@@ -1,28 +1,22 @@
 name: CI
-# Controls when the action will run. Triggers the workflow on push or pull request
+# Controls when the action will run. Triggers the workflow on push 
 # events but only for the master branch
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    runs-on: ubuntu-latest # The type of runner that the job will run on
+    steps: # Steps represent a sequence of tasks that will be executed as part of the job
+    - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     
     - name: Enter data to .env file
       run: |
         echo GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com >> .env
         echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env
       shell: bash
-      env: # Or as an environment variable
+      env:
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
     
     - uses: actions/setup-node@v1
@@ -46,6 +40,6 @@ jobs:
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
         wrangler publish
       shell: bash
-      env: # Or as an environment variable
+      env: 
         API_TOKEN: ${{ secrets.API_TOKEN }}
         ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
