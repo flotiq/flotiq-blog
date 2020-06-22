@@ -50,6 +50,8 @@ jobs:
         ls -al /home/
         echo --------------------------------------------------
         ls -al /home/runner/
+        echo -----------------------------------------------
+        ls -al /home/runner/.wrangler/
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
