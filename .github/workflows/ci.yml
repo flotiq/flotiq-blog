@@ -44,7 +44,7 @@ jobs:
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
-        sed 's+account_id =+account_id = "'"$ACCOUNT_ID"'"+g' wrangler.toml
+        sed 's+my-id-worker-account+'"$ACCOUNT_ID"'+g' wrangler.toml
         ls -al
         cat wrangler.toml
       shell: bash
