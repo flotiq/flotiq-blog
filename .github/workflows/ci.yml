@@ -16,15 +16,15 @@ jobs:
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Enter data to .env file
       run: |
-        echo GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com >> temp
-        echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> temp
+        echo GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com >> .env
+        echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env
       shell: bash
       env:
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
     - uses: actions/upload-artifact@v1
       with:
         name: .env
-        path: temp
+        path: .env
         
   build:
     runs-on: ubuntu-latest
