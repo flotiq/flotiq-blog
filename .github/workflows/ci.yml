@@ -44,10 +44,12 @@ jobs:
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
+        wrangler init --my-static-site
+        cat wrangler.toml
         sed 's+my-id-worker-account+'"$ACCOUNT_ID"'+g' wrangler.toml
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
-        wrangler publish
+        cat wrangler.toml
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
