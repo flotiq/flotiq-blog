@@ -48,6 +48,7 @@ jobs:
     - name: Enter data to wrangler
       run: |
         echo $MY_API
-            shell: bash
+        ls -al
+      shell: bash
       env: # Or as an environment variable
         MY_API: ${{ secrets.MY_API }}
