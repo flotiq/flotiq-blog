@@ -45,13 +45,14 @@ jobs:
       run: |
         npm install -g @cloudflare/wrangler
         wrangler init --site my-static-site
-        sed 's+account_id = ""+account_id = '"'"$ACCOUNT_ID"'"'+g' > wrangler.toml
-        sed 's+bucket = ""+bucket = "./public"+g' > wrangler.toml
+        sed 's+account_id = ""+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml > temp1
+        sed 's+bucket = ""+bucket = "./public"+g' temp1 > wrangler.toml
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
         echo ---------
         cat wrangler.toml
         echo ---
+        cat temp1
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
