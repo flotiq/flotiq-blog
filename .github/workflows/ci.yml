@@ -48,3 +48,4 @@ jobs:
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
+        ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
