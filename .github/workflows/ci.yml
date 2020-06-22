@@ -47,7 +47,7 @@ jobs:
         sed 's+my-id-worker-account+'"$ACCOUNT_ID"'+g' wrangler.toml
         mkdir -p .wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > .wrangler/config/default.toml
-        wrangler publish
+        cat /home/runner/.wrangler/config/default.toml
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
