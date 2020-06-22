@@ -22,13 +22,14 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     
-    - name: Enter information to .env file
-      env: # Or as an environment variable
-        super_secret: ${{ secrets.FLOTIQ_API_KEY }}
+    - name: Enter data to .env file
       run: |
-        echo "GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com" >> .env
+        echo GATSBY_FLOTIQ_BASE_URL=https://api.flotiq.com >> .env
         echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env
         cat .env
+      shell: bash
+      env: # Or as an environment variable
+        FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
     
     - uses: actions/setup-node@v1
       with:
