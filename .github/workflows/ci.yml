@@ -49,10 +49,7 @@ jobs:
         sed 's+bucket = ""+bucket = "./public"+g' temp1 > wrangler.toml
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
-        echo ---------
-        cat wrangler.toml
-        echo ---
-        cat temp1
+        wrangler publish
       shell: bash
       env: # Or as an environment variable
         API_TOKEN: ${{ secrets.API_TOKEN }}
