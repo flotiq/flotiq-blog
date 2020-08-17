@@ -71,11 +71,6 @@ Screenshot
     
     Open a project directory in your code editor of choice and edit `src/templates/index.js`. Save your changes, and the browser will update in real time!
 
-1. **Manage your recipes using Flotiq editor**
-      
-    You can now easily manage your recipes using [Flotiq editor](https://editor.flotiq.com)
-    
-    ![Managing recipes using Flotiq](docs/manage-recipes.png)
 
 # Deploy
 
