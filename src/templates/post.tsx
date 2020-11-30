@@ -106,23 +106,22 @@ export const PostFullTitle = styled.h1`
 
 const PostFullImage = styled.figure`
   margin: 0 -10vw -165px;
-  height: 800px;
+  min-height: 165px;
   background: ${colors.lightgrey} center center;
   background-size: cover;
   border-radius: 5px;
+  overflow: hidden;
 
   @media (max-width: 1170px) {
     margin: 0 -4vw -100px;
-    height: 600px;
+    min-height: 100px;
     border-radius: 0;
   }
 
   @media (max-width: 800px) {
-    height: 400px;
   }
   @media (max-width: 500px) {
     margin-bottom: 4vw;
-    height: 350px;
   }
 `;
 
@@ -347,7 +346,7 @@ const PageTemplate: React.FC<PageTemplateProps> = props => {
                 <PostFullImage>
                   <img alt={post.title}
                     src={'https://api.flotiq.com/image/1450x800/' + post.headerImage[0].id + '.' + post.headerImage[0].extension}
-                    style={{ height: '100%' }}/>
+                    style={{ width: '100%' }}/>
                 </PostFullImage>
               )}
               <PostContent htmlAst={post.content}/>
