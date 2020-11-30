@@ -148,7 +148,12 @@ export const AuthorProfileImage = css`
 
 export const SocialSharing = css`
   position: fixed;
-  left: 50px;
-  bottom: 100px;
+  left: 25px;
+  bottom: 50px;
   width: 35px;
+  z-index: 100;
+
+  @media (max-width: 899px) {
+    display: none;
+  }
   `;
