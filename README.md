@@ -15,7 +15,16 @@ Screenshot
 
 ## Quick start
 
-1. **Start project from template using Gatsby CLI**
+1. **Start the project from template using [Flotiq CLI]((https://github.com/flotiq/flotiq-cli))**
+
+    ```bash
+   npm install -g flotiq-cli
+   flotiq start [flotiqApiKey] [projectName] https://github.com/flotiq/flotiq-blog.git
+    ```
+   * `flotiqApKey` - Read and write API key to your Flotiq account      
+   * `projectName` - project name or project path (if you wish to start or import data from the current directory - use `.`)
+
+1. **You can also start the project from template using Gatsby CLI**
     
     ```bash
     gatsby new flotiq-blog https://github.com/flotiq/flotiq-blog.git
@@ -52,15 +61,17 @@ Screenshot
     gatsby develop
     ```
     
+    This step is optional and is not necessary if you used flotiq-cli to start the project.
+          
     If you wish to import example posts, tags and authors to your account, before running `gatsby develop` run:
     
     ```sh
-    node ./.flotiq/importExample.js
+    flotiq import [flotiqApiKey] .
     ```
     
     It will add 4 images, 1 tag, 1 author and 3 posts to your Flotiq account.
     
-    _Note: You need to put your Read and write API key in `.env` for import to work. You don't need any content types in your account. If you already have tag with ids `flotiqBlogTag-1`, author with `flotiqBlogAuthor-1` or posts with ids `flotiqBlogPost-1`, `flotiqBlogPost-2` and `flotiqBlogPost-3` they will be overwritten._
+    _Note: You need to put your Read and write API key as the `flotiqApiKey` for import to work You don't need any content types in your account. If you already have tag with ids `flotiqBlogTag-1`, author with `flotiqBlogAuthor-1` or posts with ids `flotiqBlogPost-1`, `flotiqBlogPost-2` and `flotiqBlogPost-3` they will be overwritten._
    
 1.  **Open the source code and start editing!**
     
@@ -88,6 +99,6 @@ Or to Netlify:
   
 ## Collaborating
 
-   If you wish to talk with us about this project, feel free to hop on our [discord server](https://discord.gg/FwXcHnX).
+   If you wish to talk with us about this project, feel free to hop on our [![Discord Chat](https://img.shields.io/discord/682699728454025410.svg)](https://discord.gg/FwXcHnX).
    
    If you found a bug, please report it in [issues](https://github.com/flotiq/flotiq-blog/issues).
