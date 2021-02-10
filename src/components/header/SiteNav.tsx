@@ -6,13 +6,14 @@ import { css } from '@emotion/core';
 
 import { SocialLink } from '../../styles/shared';
 import config from '../../website-config';
-import Facebook from '../icons/facebook';
+
 import Twitter from '../icons/twitter';
 import YouTube from '../icons/youtube';
 import GitHub from '../icons/github';
 import Flotiq from '../icons/flotiq';
 import SubscribeModal from '../subscribe/SubscribeOverlay';
 import SiteNavLogo from './SiteNavLogo';
+import Discord from '../icons/discord';
 
 const HomeNavRaise = css`
   @media (min-width: 900px) {
@@ -142,59 +143,29 @@ class SiteNav extends React.Component<SiteNavProps> {
         </SiteNavLeft>
         <SiteNavRight>
           <SocialLinks>
-            {config.facebook && (
-              <a
-                css={SocialLink}
-                href={config.facebook}
-                target="_blank"
-                title="Facebook"
-                rel="noopener noreferrer"
-              >
-                <Facebook />
+            {config.discord && (
+              <a href={config.discord} css={SocialLink} target="_blank" rel="noopener noreferrer">
+                <Discord />
               </a>
             )}
             {config.youtube && (
-                <a
-                    css={SocialLink}
-                    href={config.youtube}
-                    title="YouTube"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                  <YouTube />
-                </a>
+              <a href={config.youtube} css={SocialLink} target="_blank" rel="noopener noreferrer">
+                <YouTube />
+              </a>
             )}
             {config.twitter && (
-              <a
-                css={SocialLink}
-                href={config.twitter}
-                title="Twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={config.twitter} css={SocialLink} target="_blank" rel="noopener noreferrer">
                 <Twitter />
               </a>
             )}
             {config.github && (
-                <a
-                    css={SocialLink}
-                    href={config.github}
-                    title="GitHub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                  <GitHub />
-                </a>
+              <a href={config.github} css={SocialLink} target="_blank" rel="noopener noreferrer">
+                <GitHub />
+              </a>
             )}
-                <a
-                    css={SocialLink}
-                    href="https://flotiq.com"
-                    title="Flotiq"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                  <Flotiq />
-                </a>
+            <a href={config.siteUrl} css={SocialLink} target="_blank" rel="noopener noreferrer">
+              <Flotiq />
+            </a>
           </SocialLinks>
           {config.showSubscribe && (
             <SubscribeButton onClick={this.openModal}>Subscribe</SubscribeButton>
