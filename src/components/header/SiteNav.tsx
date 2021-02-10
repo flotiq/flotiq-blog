@@ -1,5 +1,5 @@
 // tslint:disable:no-http-string
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -51,7 +51,7 @@ const SiteNavLeft = styled.div`
   }
 `;
 
-const NavStyles = css`
+/* const NavStyles = css`
   display: flex;
   margin: 0 0 0 -12px;
   padding: 0;
@@ -76,7 +76,7 @@ const NavStyles = css`
     text-decoration: none;
     opacity: 1;
   }
-`;
+`; */
 
 const SiteNavRight = styled.div`
   flex-shrink: 0;
@@ -134,12 +134,12 @@ class SiteNav extends React.Component<SiteNavProps> {
       <nav css={[isHome && HomeNavRaise, SiteNavStyles]}>
         <SiteNavLeft>
           {!isHome && <SiteNavLogo />}
-          <ul css={NavStyles} role="menu">
-            {/* TODO: mark current nav item - add class nav-current */}
+          {/* <ul css={NavStyles} role="menu">
+             TODO: mark current nav item - add class nav-current
             <li role="menuitem">
               <Link to="/">Home</Link>
             </li>
-          </ul>
+          </ul> */}
         </SiteNavLeft>
         <SiteNavRight>
           <SocialLinks>
