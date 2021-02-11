@@ -6,10 +6,11 @@ import { css } from '@emotion/core';
 import { colors } from '../styles/colors';
 import { outer, inner } from '../styles/shared';
 import config from '../website-config';
-import YouTube from "./icons/youtube";
-import Twitter from "./icons/twitter";
-import GitHub from "./icons/github";
-import Flotiq from "./icons/flotiq";
+import YouTube from './icons/youtube';
+import Twitter from './icons/twitter';
+import GitHub from './icons/github';
+import Flotiq from './icons/flotiq';
+import Discord from './icons/discord';
 
 const SiteFooter = css`
   position: relative;
@@ -82,6 +83,7 @@ const SiteFooterNav = styled.nav`
       opacity: .7;
     }
 
+    &.discord-icon,
     &.youtube-icon,
     &.twitter-icon,
     &.github-icon,
@@ -142,10 +144,15 @@ const Footer: React.FC = () => {
         <SiteFooterNav>
           <Link to="/">Latest Posts</Link>
           |
-          <a href="https://flotiq.com/docs" target="_blank">
+          <a href="https://flotiq.com/docs" target="_blank" rel="noopener noreferrer">
             Documentation
           </a>
           <div className="socialIcons">
+            {config.discord && (
+              <a href={config.discord} className="discord-icon" target="_blank" rel="noopener noreferrer">
+                <Discord />
+              </a>
+            )}
             {config.youtube && (
               <a href={config.youtube} className="youtube-icon" target="_blank" rel="noopener noreferrer">
                 <YouTube />
@@ -161,7 +168,7 @@ const Footer: React.FC = () => {
                 <GitHub />
               </a>
             )}
-            <a href="https://flotiq.com" className="flotiq-icon" target="_blank">
+            <a href={config.siteUrl} className="flotiq-icon" target="_blank" rel="noopener noreferrer">
               <Flotiq />
             </a>
           </div>
