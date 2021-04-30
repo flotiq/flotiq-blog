@@ -35,7 +35,7 @@ jobs:
 
     - name: Cloudflare
       run: |
-        npm install -g @cloudflare/wrangler
+        npm install -g @cloudflare/wrangler@1.13.0
         wrangler init --site flotiq-blog
         sed -i 's+account_id = ""+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml
         sed -i 's+bucket = ""+bucket = "public"+g' wrangler.toml
