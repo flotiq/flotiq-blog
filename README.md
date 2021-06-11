@@ -103,4 +103,3 @@ Or to Netlify:
    
    If you found a bug, please report it in [issues](https://github.com/flotiq/flotiq-blog/issues).
 
-
