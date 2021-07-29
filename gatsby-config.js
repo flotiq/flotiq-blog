@@ -90,5 +90,13 @@ module.exports = {
         siteSpeedSampleRate: 10,
       },
     },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        includeInDevelopment: false, // optional parameter to include script in development
+        id: 2524177,
+        sv: 6,
+      },
+    },
   ],
 };
