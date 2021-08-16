@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
         <section className="copyright">
           <Link to="/">{config.title}</Link> &copy; {new Date().getFullYear()}{' '}
           {config.footer && (
-            <Link to="/">
+            <Link to="https://editor.flotiq.com/register.html">
               | {config.title} {config.footer}
             </Link>
           )}
