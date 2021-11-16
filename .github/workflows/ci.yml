@@ -28,7 +28,7 @@ jobs:
 
     - name: Gatsby
       run: |
-        npm install -g gatsby-cli
+        npm install -g gatsby-cli@2.19.1
         gatsby clean
         gatsby build --prefix-paths
         rm -rf public/blog
