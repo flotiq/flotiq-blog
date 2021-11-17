@@ -1,0 +1,24 @@
+@import '../../style/variables';
+@import '../../style/typography';
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.made-in-flotiq {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: $white;
+  border: 1px solid $light-blue;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  @include font-weight(bold);
+  font-size: 11px;
+  line-height: 20px;
+  width: 115px;
+  height: 24px;
+}

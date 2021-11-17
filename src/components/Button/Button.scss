@@ -1,0 +1,137 @@
+@import "../../style/variables";
+@import "../../style/typography";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary;
+  border-radius: 50px;
+  color: $white;
+  font-size: 14px;
+  @include font-weight(medium);
+  letter-spacing: .25px;
+  line-height: 1;
+  height: 40px;
+  transition: $default-color-transition;
+  padding: 0 20px;
+
+  &:hover {
+    background-color: $primary-2;
+    color: $white;
+  }
+
+  @include media-breakpoint-down(md) {
+    height: 34px;
+    font-size: 12px;
+  }
+
+  &--white {
+    background-color: $white;
+    color: $primary;
+
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
+  &--light-blue {
+    background-color: $light-blue;
+    color: $primary-2;
+  }
+
+  &--icon {
+    width: 20px;
+    height: 20px;
+    background-color: $light-blue;
+    border: none;
+    border-radius: 10px;
+    color: $gray-3;
+    padding: 0;
+
+    &:active,
+    &:focus {
+      background-color: $primary-2 !important;
+      color: $white;
+    }
+  }
+
+  &-mobile-big {
+    @include media-breakpoint-down(sm) {
+      height: 46px;
+      font-size: 18px;
+    }
+  }
+
+  &-with-chevron {
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+    }
+    @include media-breakpoint-up(md)  {
+      padding: 22px 60px 22px 30px;
+      height: 64px;
+      position: relative;
+      font-size: 16px;
+      @include font-weight(semi-bold);
+      &:after {
+        content: url("../../assets/arrow-white.svg");
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &--with-icon {
+    img {
+      height: 10px;
+      margin-left: 10px;
+    }
+  }
+
+  &--large {
+    height: 64px;
+    font-size: 16px;
+    padding: 0 30px;
+
+    &.btn--with-icon {
+      img {
+        height: 14px;
+        margin-left: 20px;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      height: 40px;
+      font-size: 14px;
+      padding: 0 20px;
+
+      &.btn--with-icon {
+        img {
+          height: 10px;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    border-color: transparent;
+    color: $primary;
+    height: auto;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary;
+      text-decoration: underline;
+    }
+  }
+}

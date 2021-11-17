@@ -1,0 +1,20 @@
+@import 'typography';
+
+@font-face {
+  font-family: "HalvarBreitschrift-Bold";
+  src: url('../assets/fonts/Halvar-Breitschrift-Bold.eot');
+  src: url('../assets/fonts/Halvar-Breitschrift-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/Halvar-Breitschrift-Bold.woff2') format('woff2'),
+  url('../assets/fonts/Halvar-Breitschrift-Bold.woff') format('woff');
+  @include font-weight(regular);
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,body {
+  font-family: 'Inter', sans-serif;
+  color: $dark-blue;
+}

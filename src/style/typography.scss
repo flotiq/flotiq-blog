@@ -1,0 +1,147 @@
+@use "sass:math";
+
+// FONT WEIGHTS
+
+@mixin font-weight($weight) {
+  $weights: (
+          thin: 100,
+          extra-light: 200,
+          light: 300,
+          regular: 400,
+          medium: 500,
+          semi-bold: 600,
+          bold: 700,
+          extra-bold: 800,
+          black: 900,
+  );
+
+  $output: $weight;
+  @if map-has-key($weights, $weight) {
+    $output: map-get($weights, $weight);
+  }
+
+  font-weight: $output;
+}
+
+// HEADER DEFAULTS
+
+@mixin header-defaults-halvar {
+  font-family: 'HalvarBreitschrift-Bold', 'Inter', 'sans-serif';
+  @include font-weight(bold);
+}
+
+@mixin header-defaults {
+  @include font-weight(bold);
+}
+
+@mixin header-defaults-inter {
+  font-family: 'Inter', 'sans-serif';
+  font-weight: 400;
+}
+
+// FLUID TYPOGRAPHY
+
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+
+// HEADERS
+
+h1, h2, h3, h4, h5, h6, p, a {
+  margin: 0;
+}
+
+h1 {
+  line-height: 130%;
+  @include header-defaults-halvar;
+  @include fluid-type(320px, 1920px, 36px, 77px);
+}
+
+h2 {
+  @include header-defaults-halvar;
+  @include fluid-type(320px, 1920px, 34px, 44px);
+}
+
+h3 {
+  line-height: 170%;
+  @include header-defaults-inter;
+  @include fluid-type(320px, 1920px, 18px, 28px);
+  text-align: center;
+}
+
+h4 {
+  line-height: 160%;
+  @include header-defaults-inter;
+  @include fluid-type(320px, 1920px, 16px, 22px);
+  &.bold {
+    line-height: 140%;
+    @include font-weight(bold);
+  }
+}
+
+h5 {
+  line-height: 160%;
+  @include header-defaults-inter;
+  @include fluid-type(320px, 1920px, 16px, 18px);
+  font-weight: 400;
+}
+
+.text {
+  &-s {
+    line-height: 140%;
+    font-size: 14px;
+    @include font-weight(light);
+  }
+
+  &-m {
+    line-height: 24px;
+    @include fluid-type(320px, 1920px, 14px, 16px);
+  }
+
+  &-l {
+    line-height: 28px;
+    @include fluid-type(320px, 1920px, 16px, 18px);
+  }
+
+  &-xl {
+    line-height: 130%;
+    @include fluid-type(320px, 1920px, 18px, 24px);
+  }
+}
+
+.link {
+  &-s {
+    line-height: 20px;
+    font-size: 14px;
+  }
+
+  &-m {
+    line-height: 130%;
+    @include fluid-type(320px, 1920px, 16px, 18px);
+  }
+
+  &-l {
+    line-height: 130%;
+    @include fluid-type(320px, 1920px, 20px, 24px);
+  }
+}
