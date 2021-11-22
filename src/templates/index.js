@@ -1,16 +1,18 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import { Container } from 'react-bootstrap';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { Row, Col, Container } from 'react-bootstrap';
 import Navbar from '../components/Navbar/Navbar';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
 import Footer from '../sections/Footer/Footer';
-import { getReadingTime } from '../helpers/readingTime';
 import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import PostCard from '../components/PostCard/PostCard';
+import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
+import Pagination from '../components/Pagination/Pagination';
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
+    const skip = pageContext.currentPage === 1 ? 3 : 0;
     return (
         <main>
             <Helmet>
@@ -21,20 +23,41 @@ const IndexPage = ({ data }) => {
                 </title>
             </Helmet>
             <Navbar />
-            <Container fluid>
-                {posts.map((post) => (
-                    <div onClick={() => { window.location.href = `/${post.slug}`; }}>
-                        {
-                            post.headerImage[0].extension !== 'svg'
-                                ? <GatsbyImage image={getImage(post.headerImage[0].localFile)} alt={post.title} />
-                                : <img src={`https://api.flotiq.com${post.headerImage[0].url}`} alt={post.title} />
-                        }
-                        {post.tags.map((tag) => (
-                            <a href={`/tags/${tag.tag}`}>{tag.tag_name}</a>))}
-                        <h2>{post.title}</h2>
-                        <span>{getReadingTime(post.content.blocks)}</span>
-                    </div>
-                ))}
+            <Container fluid className="container-fluid__bigger-padding mt-5">
+                {pageContext.currentPage === 1 && (
+                    <>
+                        <Row>
+                            <Col lg={8} md={8} sm={12} sx={12}>
+                                <PostCard
+                                    post={posts[0]}
+                                    key={posts[0].id}
+                                    showDescription
+                                    additionalClass="post-card__no-height"
+                                />
+                            </Col>
+                            <Col>
+                                <PostCard post={posts[1]} key={posts[1].id} additionalClass="post-card__no-height" />
+                                <PostCard post={posts[2]} key={posts[2].id} additionalClass="post-card__no-height" />
+                            </Col>
+                        </Row>
+                        <Row className="pt-5 pb-5 mb-5">
+                            <JoinNewsletter />
+                        </Row>
+                    </>
+                )}
+                <Row xs={1} sm={1} md={2} lg={3}>
+                    {posts.map((post, index) => (index >= skip ? (
+                        <Col key={post.id}>
+                            <PostCard post={post} />
+                        </Col>
+                    ) : null))}
+                </Row>
+                {pageContext.currentPage !== 1 && (
+                    <Row className="pt-5 pb-5 mb-5">
+                        <JoinNewsletter />
+                    </Row>
+                )}
+                <Pagination page={pageContext.currentPage} numOfPages={pageContext.numPages} />
             </Container>
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
@@ -88,7 +111,7 @@ export const pageQuery = graphql`
                     url
                     localFile {
                         childImageSharp {
-                            gatsbyImageData
+                            gatsbyImageData(layout: FULL_WIDTH)
                         }
                     }
                 }

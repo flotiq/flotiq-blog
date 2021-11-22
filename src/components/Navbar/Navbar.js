@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import Button from '../Button/Button';
 import './Navbar.scss';
-import Logo from '../../assets/Logo.svg';
+import Logo from '../../assets/Logo3.svg';
+import Logo2 from '../../assets/Logo4.svg';
+import Search from '../../assets/search.svg';
+import SearchDark from '../../assets/search-dark.svg';
 
 const CustomNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
     return (
         <Navbar collapseOnSelect expand="md" sticky="top" id="navbar" className={isOpen ? 'open' : ''}>
             <Container fluid>
                 <Navbar.Brand href="/">
-                    <img src={Logo} alt="Flotiq" />
+                    <img src={Logo} alt="Flotiq" className="d-sm-none d-none d-lg-inline d-md-inline" />
+                    <img src={Logo2} alt="Flotiq" className="d-sm-inline d-lg-none d-md-none" />
                 </Navbar.Brand>
                 <div className="mobile-header-right">
                     <Nav className="d-sm-inline d-lg-none d-md-none">
@@ -19,7 +24,30 @@ const CustomNavbar = () => {
                                 Go to Flotiq
                             </Nav.Item>
                         </Button>
+                        <Nav.Item>
+                            <form action="/search/" className={`search ${searchOpen ? 'open' : ''}`}>
+                                <input
+                                    name="q"
+                                    placeholder="Type to search..."
+                                    required
+                                    className="search-input"
+                                    autoComplete="off"
+                                    onFocus={() => setSearchOpen(true)}
+                                    onBlur={() => setSearchOpen(false)}
+                                />
+                                <Button additionalClasses={['btn--icon', 'search-button']} click={() => {}}>
+                                    <img src={Search} alt="search" />
+                                </Button>
+                            </form>
+
+                        </Nav.Item>
                     </Nav>
+                    <Button
+                        additionalClasses={['btn--icon', 'search-open-button']}
+                        click={() => setSearchOpen(!searchOpen)}
+                    >
+                        <img src={SearchDark} alt="search" />
+                    </Button>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setIsOpen(!isOpen)} />
                 </div>
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -61,6 +89,22 @@ const CustomNavbar = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav className="d-none d-md-flex d-lg-flex">
+                        <Nav.Item>
+                            <form action="/search/" className={`search ${searchOpen ? 'open' : ''}`}>
+                                <input
+                                    name="q"
+                                    placeholder="Type to search..."
+                                    required
+                                    className="search-input"
+                                    autoComplete="off"
+                                    onFocus={() => setSearchOpen(true)}
+                                    onBlur={() => setSearchOpen(false)}
+                                />
+                                <Button additionalClasses={['btn--icon', 'search-button']} click={() => {}}>
+                                    <img src={Search} alt="search" />
+                                </Button>
+                            </form>
+                        </Nav.Item>
                         <Button click={() => window.open('https://editor.flotiq.com/register.html')}>
                             <Nav.Item>
                                 Go to Flotiq

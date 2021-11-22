@@ -9,6 +9,7 @@ module.exports = {
         title: 'Flotiq',
         description: 'Effortless headless CMS',
         siteUrl: 'https://flotiq.com', // full path to blog - no ending slash
+        apiKey: process.env.SCOPED_FLOTIQ_API_KEY,
     },
     plugins: [
         'gatsby-plugin-sass',
@@ -91,6 +92,12 @@ module.exports = {
                         type: 'image/png',
                     },
                 ],
+            },
+        },
+        {
+            resolve: 'gatsby-plugin-disqus',
+            options: {
+                shortname: 'flotiq',
             },
         },
     ],

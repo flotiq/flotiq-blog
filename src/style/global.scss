@@ -1,3 +1,4 @@
+@import 'variables';
 @import 'typography';
 
 @font-face {
@@ -17,4 +18,10 @@ html {
 html,body {
   font-family: 'Inter', sans-serif;
   color: $dark-blue;
+}
+
+.container-fluid__bigger-padding {
+  padding-right: calc(15px + 2.5rem);
+  padding-left: calc(15px + 2.5rem);
+  min-height: 20vh;
 }

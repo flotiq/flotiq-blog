@@ -1,0 +1,16 @@
+@import '../../style/variables';
+@import '../../style/typography';
+
+.tag-pill {
+  background: $light-blue;
+  border-radius: 4px;
+  color: $primary;
+  @include font-weight(semi-bold);
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+  & +.tag-pill {
+    margin-left: 10px;
+  }
+}

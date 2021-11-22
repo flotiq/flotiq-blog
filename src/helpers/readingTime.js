@@ -17,7 +17,7 @@ export const getReadingTime = (content) => {
             block.data.items.forEach((item) => {
                 numOfWords += item.content.replace('&nbsp;', ' ').split(' ').length;
                 if (item.items) {
-                    item.forEach((subitem) => {
+                    item.items.forEach((subitem) => {
                         numOfWords += subitem.content.replace('&nbsp;', ' ').split(' ').length;
                         if (subitem.items) {
                             subitem.items.forEach((subsubitem) => {

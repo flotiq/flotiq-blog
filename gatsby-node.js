@@ -6,62 +6,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const result = await graphql(`
         query MainQuery {
-            allFlotiqBlogPost(sort: {fields: flotiqInternal___updatedAt, order: DESC}, limit: 2000) {
+            allFlotiqBlogPost(sort: {fields: publish_date, order: DESC}, limit: 10000) {
                 edges {
                     node {
-                        content {
-                            blocks {
-                                data {
-                                    alignment
-                                    anchor
-                                    caption
-                                    extension
-                                    fileName
-                                    height
-                                    items {
-                                        content
-                                        items {
-                                            content
-                                            items {
-                                                content
-                                            }
-                                        }
-                                    }
-                                    level
-                                    message
-                                    stretched
-                                    style
-                                    text
-                                    title
-                                    url
-                                    width
-                                    withBackground
-                                    withBorder
-                                }
-                                tunes {
-                                    alignmentTuneTool {
-                                        alignment
-                                    }
-                                }
-                                id
-                                type
-                            }
-                        }
                         id
                         slug
-                        title
                         tags {
                             id
                             tag
+                            tag_name
                             description
-                            image {
-                                id
-                                extension
-                            }
-                        }
-                        headerImage {
-                            extension
-                            id
                         }
                         author {
                             id
@@ -72,9 +26,6 @@ exports.createPages = async ({ graphql, actions }) => {
                                 id
                             }
                             bio
-                        }
-                        flotiqInternal {
-                            createdAt
                         }
                     }
                 }
@@ -122,6 +73,17 @@ exports.createPages = async ({ graphql, actions }) => {
         });
     });
 
+    let tags = _.uniq(
+        _.flatten(
+            result.data.allFlotiqBlogPost.edges.map((edge) => _.castArray(_.get(edge, 'node.tags', []))),
+        ),
+    );
+    const tmpTags = {};
+    tags.forEach((tag) => {
+        tmpTags[tag.id] = tag;
+    });
+    tags = Object.values(tmpTags);
+
     posts.forEach(({ node }, index) => {
         const { slug } = node;
         const prev = index === 0 ? null : posts[index - 1].node;
@@ -136,23 +98,21 @@ exports.createPages = async ({ graphql, actions }) => {
                 prev,
                 next,
                 primaryTag: (node.tags && node.tags[0]) ? node.tags[0].tag : '',
+                tags,
             },
         });
     });
 
     // Create tag pages
     const tagTemplate = path.resolve('./src/templates/tags.js');
-    const tags = _.uniq(
-        _.flatten(
-            result.data.allFlotiqBlogPost.edges.map((edge) => _.castArray(_.get(edge, 'node.tags', []))),
-        ),
-    );
+
     tags.forEach((tag) => {
         createPage({
             path: `/tags/${tag.tag}/`,
             component: tagTemplate,
             context: {
                 tag: tag.tag,
+                tags,
             },
         });
     });
@@ -165,6 +125,7 @@ exports.createPages = async ({ graphql, actions }) => {
             component: authorTemplate,
             context: {
                 author: edge.node.slug,
+                tags,
             },
         });
     });

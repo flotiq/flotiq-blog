@@ -1,0 +1,54 @@
+@import "../../style/variables";
+@import "../../style/typography";
+
+.socials-item {
+  width: 36px;
+  height: 36px;
+  background: rgba($gray-3, .4);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  transition: all .3s;
+  cursor: pointer;
+  &:hover {
+    background: $primary;
+  }
+  em {
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+  &.linkedin-share-button {
+    em {
+      background-image: url('../../assets/linkedin.svg');
+    }
+  }
+  &.facebook-share-button {
+    em {
+      background-image: url('../../assets/facebook.svg');
+    }
+  }
+  &.twitter-share-button {
+    em {
+      background-image: url('../../assets/twitter.svg');
+    }
+  }
+  &.link-share-button {
+    em {
+      background-image: url('../../assets/link.svg');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.copied {
+        background-image: none;
+        color: $white;
+        font-size: 10px;
+        @include font-weight(bold);
+      }
+    }
+  }
+}

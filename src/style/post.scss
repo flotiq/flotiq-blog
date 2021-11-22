@@ -1,0 +1,99 @@
+@import "variables";
+@import "typography";
+
+.post-date {
+  font-size: 14px;
+  line-height: 20px;
+  @include font-weight(semi-bold);
+  color: $gray-3;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $gray-3;
+  &-image {
+    margin: 0 20px 0 40px;
+  }
+  a {
+    @include font-weight(semi-bold);
+  }
+}
+
+.post-image {
+  border-radius: 10px;
+}
+
+.floating-socials {
+  position: sticky;
+  top: 100px;
+  margin-bottom: 60px;
+}
+
+.bottom-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-title {
+    color: $gray-3;
+    @include font-weight(semi-bold);
+  }
+  .socials-item {
+    margin: 20px 10px 0 10px;
+  }
+}
+
+.join-newsletter-floating {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+}
+
+.related {
+  display: flex;
+  justify-content: space-between;
+  .see-all {
+    display: block;
+    color: $primary;
+    padding-right: 30px;
+    position: relative;
+    &:after {
+      content: url("../assets/text-arrow.svg");
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+.post-reading {
+  height: 68px;
+  position: sticky;
+  z-index: 1030;
+  background: white;
+  top: 0;
+  padding-right: 0;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  &-content {
+    display: flex;
+    align-items: center;
+    padding-left: 70px;
+    img {
+      height: 50px;
+      margin-right: 40px;
+    }
+  }
+  &-progress {
+    height: 5px;
+    background: $primary;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

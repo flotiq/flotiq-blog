@@ -1,0 +1,57 @@
+@import '../../style/variables';
+@import "../../style/typography";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.join-newsletter {
+  &-box {
+    display: flex;
+    min-height: 110px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    background: $white;
+  }
+  &-subscription {
+    border: 2px solid $gray-3;
+    border-radius: 40px;
+    padding: 12px 24px;
+    width: 100%;
+    max-width: 365px;
+    &:focus, &:focus-visible {
+      border: 2px solid $primary;
+      outline: none;
+    }
+    &-button {
+      @include media-breakpoint-down(sm) {
+        font-size: 14px;
+      }
+      @include media-breakpoint-up(md)  {
+        padding: 16px 60px 16px 30px;
+        height: 52px;
+        position: relative;
+        font-size: 16px;
+        @include font-weight(semi-bold);
+        &:after {
+          content: '';
+          background-image: url("../../assets/send.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 20px 20px;
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 16px;
+          right: 20px;
+        }
+      }
+    }
+  }
+  &-close-btn {
+    background: none;
+    border: none;
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../style/variables';
+
+.pagination {
+  justify-content: center;
+  .visually-hidden {
+    display: none;
+  }
+  .page-link {
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    color: $gray-3;
+  }
+  .page-item:first-child .page-link {
+    content: url('../../assets/text-arrow.svg');
+    transform: rotate(180deg);
+    margin: 0 30px;
+  }
+  .page-item:last-child .page-link {
+    content: url('../../assets/text-arrow.svg');
+    margin: 0 30px;
+  }
+  .page-item:first-child.disabled .page-link {
+    content: url('../../assets/text-arrow-gray.svg');
+    transform: rotate(180deg);
+  }
+  .page-item:last-child.disabled .page-link {
+    content: url('../../assets/text-arrow-gray.svg');
+  }
+}

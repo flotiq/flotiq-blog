@@ -79,7 +79,7 @@ h1 {
 
 h2 {
   @include header-defaults-halvar;
-  @include fluid-type(320px, 1920px, 34px, 44px);
+  @include fluid-type(320px, 1920px, 22px, 24px);
 }
 
 h3 {
@@ -144,4 +144,9 @@ h5 {
     line-height: 130%;
     @include fluid-type(320px, 1920px, 20px, 24px);
   }
+}
+
+.text-gray {
+  color: $gray-3;
+  @include font-weight(semi-bold);
 }

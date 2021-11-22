@@ -38,6 +38,9 @@
       color: $white;
     }
   }
+  &__with-border {
+    border: 1px solid $gray-3;
+  }
 
   &--light-blue {
     background-color: $light-blue;
@@ -47,16 +50,12 @@
   &--icon {
     width: 20px;
     height: 20px;
-    background-color: $light-blue;
+    background-color: transparent;
     border: none;
-    border-radius: 10px;
-    color: $gray-3;
     padding: 0;
-
-    &:active,
-    &:focus {
-      background-color: $primary-2 !important;
-      color: $white;
+    border-radius: 0;
+    &:hover {
+      background-color: transparent;
     }
   }
 
