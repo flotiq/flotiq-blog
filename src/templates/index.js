@@ -9,6 +9,7 @@ import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
 import PostCard from '../components/PostCard/PostCard';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import Pagination from '../components/Pagination/Pagination';
+import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 
 const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
@@ -59,6 +60,7 @@ const IndexPage = ({ data, pageContext }) => {
                 )}
                 <Pagination page={pageContext.currentPage} numOfPages={pageContext.numPages} />
             </Container>
+            <FlotiqPlatform />
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
             <MadeInFlotiq />

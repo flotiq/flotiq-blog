@@ -1,0 +1,21 @@
+@import "../../style/variables";
+
+.flotiq-platform {
+  background: $dark-blue;
+  text-align: center;
+  h3 {
+    color: $white;
+  }
+  &-image {
+    max-width: 900px;
+  }
+
+  .button-container {
+    display: flex;
+    width: 30%;
+    margin: 0 auto;
+    padding: 40px 0 80px 0;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
