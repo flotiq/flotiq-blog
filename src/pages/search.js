@@ -23,7 +23,7 @@ const SearchPage = ({ location }) => {
     tags = Object.values(tags);
     useEffect(() => {
         fetch(`https://api.flotiq.com/api/v1/search?q=${q}`
-            + '&fields%5B%5D=title&fields%5B%5D=content&page=1&limit=200'
+            + '&fields%5B%5D=title^5&fields%5B%5D=content&page=1&limit=200'
             + '&content_type%5B%5D=flotiqBlogPost&filters%5Bstatus%5D=public'
             + `&auth_token=${siteMeta.site.siteMetadata.apiKey}`)
             .then((response) => response.json())
@@ -33,12 +33,18 @@ const SearchPage = ({ location }) => {
                     resultData.data.forEach((data) => {
                         ids.push(data.item.id);
                     });
+                    console.log(ids);
                     fetch('https://api.flotiq.com/api/v1/content/flotiqBlogPost?limit=200&hydrate=1'
                     + `&ids[]=${ids.join('&ids[]=')}&auth_token=${siteMeta.site.siteMetadata.apiKey}`)
                         .then((response) => response.json())
                         .then((resData) => {
                             if (resData.data) {
-                                setPosts(resData.data);
+                                console.log(resData.data);
+                                const tmpPosts = [];
+                                ids.forEach((id) => {
+                                    tmpPosts.push(resData.data.find((data) => data.id === id));
+                                });
+                                setPosts(tmpPosts);
                             }
                         });
                 }
@@ -71,7 +77,7 @@ const SearchPage = ({ location }) => {
                 <Row xs={1} sm={1} md={2} lg={3}>
                     {posts.map((post) => (
                         <Col key={post.id}>
-                            <PostCard post={post} />
+                            <PostCard post={post} showDescription />
                         </Col>
                     ))}
                 </Row>

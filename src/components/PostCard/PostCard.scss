@@ -8,6 +8,10 @@
   justify-content: space-between;
   height: 100%;
   transition: all .7s ease;
+  h2 {
+    padding-right: 30px;
+    transition: all .7s ease;
+  }
   &-image {
     border-radius: 10px;
     max-width: 100%;
@@ -16,7 +20,10 @@
     height: unset;
   }
   &:hover {
-    margin: -15px -15px 0;
+    padding: 15px;
+    h2 {
+      padding-right: 0;
+    }
   }
 }
 

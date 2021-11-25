@@ -52,7 +52,7 @@ const CustomNavbar = () => {
                 </div>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="https://flotiq.com/#features" onClick={() => setIsOpen(false)}>
+                        <Nav.Link href="https://flotiq.com/features" onClick={() => setIsOpen(false)}>
                             Features
                         </Nav.Link>
                         <Nav.Link href="https://flotiq.com/#solutions" onClick={() => setIsOpen(false)}>

@@ -8,7 +8,7 @@ const CustomPagination = ({ page, numOfPages }) => (
         { page > 1 && (
             <>
                 <Pagination.Item href="/">{1}</Pagination.Item>
-                { page > 5 && <Pagination.Ellipsis />}
+                { page > 4 && <Pagination.Ellipsis />}
             </>
         )}
 
