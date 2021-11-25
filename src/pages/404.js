@@ -1,54 +1,52 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { Helmet } from 'react-helmet';
+import { Container } from 'react-bootstrap';
+import { graphql, useStaticQuery } from 'gatsby';
+import HeaderImage from '../assets/404-header.png';
+import Button from '../components/Button/Button';
+import Navbar from '../components/Navbar/Navbar';
+import Footer from '../sections/Footer/Footer';
+import CookieInfo from '../components/CookieInfo/CookieInfo';
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-// markup
 const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
+    const data = useStaticQuery(query);
+    return (
+        <main className="light-blue-background">
+            <Helmet>
+                <title>
+                    Page not found -
+                    {' '}
+                    {data.allFlotiqMainSettings.nodes[0].title}
+                </title>
+            </Helmet>
+            <Navbar />
+            <Container className="text-center pt-5 pb-5">
+                <img src={HeaderImage} alt="404" className="pt-5 pb-5" />
+                <h1 className="pb-5">Whooops!</h1>
+                <p className="text-gray pb-2">404 Not Found</p>
+                <h4 className="pb-3">Sorry, the page you are looking for doesn&apos;t exist</h4>
+                <Button
+                    click={() => { window.location.href = '/'; }}
+                    additionalClasses={['btn-with-chevron mt-5 mb-5 ml-auto mr-auto']}
+                >
+                    Go back Home
+                </Button>
+            </Container>
+            <Footer />
+            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
+        </main>
+    );
+};
 
-export default NotFoundPage
+const query = graphql`
+  query NotFoundQuery {
+    allFlotiqMainSettings {
+      nodes {
+        cookie_policy_popup_text
+        title
+      }
+    }
+  }
+`;
+
+export default NotFoundPage;
