@@ -45,7 +45,7 @@ Screenshot
 
    The next step is to configure our application to know from where it has to fetch the data.
 
-   You need to create a file called `.env` inside the root of the directory, with the following structure:
+   You need to create a file called `.env.development` inside the root of the directory, with the following structure:
 
     ```
     FLOTIQ_API_KEY=YOUR FLOTIQ API KEY
