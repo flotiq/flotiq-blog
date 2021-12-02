@@ -17,11 +17,43 @@ const IndexPage = ({ data, pageContext }) => {
     return (
         <main>
             <Helmet>
+                <html lang="en" />
                 <title>
                     Blog
                     {' - '}
                     {data.allFlotiqMainSettings.nodes[0].title}
                 </title>
+                <meta name="description" content={data.allFlotiqMainSettings.nodes[0].description} />
+                <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content={`Blog - ${data.allFlotiqMainSettings.nodes[0].title}`}
+                />
+                <meta property="og:url" content={window.location.href} />
+                {data.allFlotiqMainSettings.nodes[0].facebook_url && (
+                    <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                {data.allFlotiqMainSettings.nodes[0].facebook_url && (
+                    <meta property="article:author" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                <meta name="twitter:card" content="summary" />
+                <meta
+                    name="twitter:title"
+                    content={`Blog - ${data.allFlotiqMainSettings.nodes[0].title}`}
+                />
+                <meta name="twitter:url" content={window.location.href} />
+                {data.allFlotiqMainSettings.nodes[0].twitter_url
+                && (
+                    <meta
+                        name="twitter:site"
+                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                    />
+                )}
+                {data.allFlotiqMainSettings.nodes[0].twitter_url && (
+                    <meta
+                        name="twitter:creator"
+                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                    />
+                )}
             </Helmet>
             <Navbar />
             <Container fluid className="container-fluid__bigger-padding mt-5">
@@ -133,6 +165,9 @@ export const pageQuery = graphql`
             nodes {
                 cookie_policy_popup_text
                 title
+                description
+                facebook_url
+                twitter_url
             }
         }
     }

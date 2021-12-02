@@ -52,11 +52,62 @@ const PostPage = ({ data, pageContext }) => {
     return (
         <main>
             <Helmet>
+                <html lang="en" />
                 <title>
                     {post.title}
                     {' - '}
                     {data.allFlotiqMainSettings.nodes[0].title}
                 </title>
+                <meta name="description" content={post.metaDescription} />
+                <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
+                <meta property="og:type" content="article" />
+                <meta property="og:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
+                <meta property="og:description" content={post.metaDescription} />
+                <meta property="og:url" content={window.location.href} />
+                {(post.headerImage) && (
+                    <meta
+                        property="og:image"
+                        content={window.location.origin + post.headerImage[0].localFile.publicURL}
+                    />
+                )}
+                <meta property="article:published_time" content={post.publish_date} />
+                {post.tags && (
+                    <meta property="article:tag" content={post.tags[0].tag_name} />
+                )}
+
+                {data.allFlotiqMainSettings.nodes[0].facebook_url && (
+                    <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                {data.allFlotiqMainSettings.nodes[0].facebook_url && (
+                    <meta property="article:author" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
+                <meta name="twitter:description" content={post.metaDescription} />
+                <meta name="twitter:url" content={window.location.href} />
+                {(post.headerImage) && (
+                    <meta
+                        name="twitter:image"
+                        content={window.location.origin + post.headerImage[0].localFile.publicURL}
+                    />
+                )}
+                <meta name="twitter:label1" content="Written by" />
+                <meta name="twitter:data1" content={post.author[0].name} />
+                <meta name="twitter:label2" content="Filed under" />
+                {post.tags && <meta name="twitter:data2" content={post.tags[0].tag} />}
+                {data.allFlotiqMainSettings.nodes[0].twitter_url
+                && (
+                    <meta
+                        name="twitter:site"
+                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                    />
+                )}
+                {data.allFlotiqMainSettings.nodes[0].twitter_url && (
+                    <meta
+                        name="twitter:creator"
+                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                    />
+                )}
+                {post.headerImage[0] && <meta property="og:image:width" content={post.headerImage[0].width} />}
+                {post.headerImage[0] && <meta property="og:image:height" content={post.headerImage[0].height} />}
             </Helmet>
             <Navbar />
             <div ref={progress}>
@@ -231,7 +282,10 @@ export const query = graphql`
             headerImage {
                 extension
                 url
+                width
+                height
                 localFile {
+                    publicURL
                     childImageSharp {
                         gatsbyImageData(layout: FULL_WIDTH)
                     }
@@ -303,6 +357,8 @@ export const query = graphql`
             nodes {
                 cookie_policy_popup_text
                 title
+                facebook_url
+                twitter_url
             }
         }
     }

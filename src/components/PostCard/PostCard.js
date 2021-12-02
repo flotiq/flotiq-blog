@@ -37,7 +37,7 @@ const PostCard = ({ post, showDescription, additionalClass }) => (
                     <TagPill tag={tag} key={tag.id} />))}
             </div>
             <h2 className="mt-3">{post.title}</h2>
-            {showDescription && <div className="mt-3">{post.excerpt}</div>}
+            {showDescription && <div className="mt-3 post-card-description">{post.excerpt}</div>}
         </div>
         {post.content && typeof post.content === 'object' && (
             <p className="mt-3 mb-3 reading-time">{getReadingTime(post.content.blocks)}</p>
