@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import PostCard from '../components/PostCard/PostCard';
-import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
@@ -18,11 +17,43 @@ const TagsPage = ({ data, pageContext }) => {
     return (
         <main>
             <Helmet>
+                <html lang="en" />
                 <title>
                     {tagData.tag_name}
                     {' - '}
                     {data.allFlotiqMainSettings.nodes[0].title}
                 </title>
+                <meta name="description" content={tagData.description} />
+                <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content={`${tagData.tag_name} - ${data.allFlotiqMainSettings.nodes[0].title}`}
+                />
+                <meta property="og:url" content={window.location.href} />
+                {data.allFlotiqMainSettings.nodes[0].facebook_url && (
+                    <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                {data.allFlotiqMainSettings.nodes[0].facebook_url && (
+                    <meta property="article:author" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                <meta name="twitter:card" content="summary" />
+                <meta
+                    name="twitter:title"
+                    content={`${tagData.tag_name} - ${data.allFlotiqMainSettings.nodes[0].title}`}
+                />
+                <meta name="twitter:url" content={window.location.href} />
+                {data.allFlotiqMainSettings.nodes[0].twitter_url
+                && (
+                    <meta
+                        name="twitter:site"
+                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                    />
+                )}
+                {data.allFlotiqMainSettings.nodes[0].twitter_url && (
+                    <meta
+                        name="twitter:creator"
+                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                    />
+                )}
             </Helmet>
             <Navbar />
             <Container>
