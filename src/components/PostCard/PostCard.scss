@@ -12,6 +12,10 @@
     padding-right: 30px;
     transition: all .7s ease;
   }
+  &-description {
+    padding-right: 30px;
+    transition: all .7s ease;
+  }
   &-image {
     border-radius: 10px;
     max-width: 100%;
@@ -22,6 +26,9 @@
   &:hover {
     padding: 15px;
     h2 {
+      padding-right: 0;
+    }
+    .post-card-description {
       padding-right: 0;
     }
   }
