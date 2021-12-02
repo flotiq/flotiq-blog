@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'typography';
 
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
 @font-face {
   font-family: "HalvarBreitschrift-Bold";
   src: url('../assets/fonts/Halvar-Breitschrift-Bold.eot');
@@ -21,9 +25,15 @@ html,body {
 }
 
 .container-fluid__bigger-padding {
-  padding-right: calc(15px + 2.5rem);
-  padding-left: calc(15px + 2.5rem);
+  padding-right: $paddingBigger;
+  padding-left: $paddingBigger;
   min-height: 20vh;
+
+  @include media-breakpoint-down(sm) {
+    padding-right: $paddingBig;
+    padding-left: $paddingBig;
+  }
+
 }
 
 .light-blue-background {

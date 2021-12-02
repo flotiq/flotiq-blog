@@ -5,7 +5,6 @@ import './Navbar.scss';
 import Logo from '../../assets/Logo3.svg';
 import Logo2 from '../../assets/Logo4.svg';
 import Search from '../../assets/search.svg';
-import SearchDark from '../../assets/search-dark.svg';
 
 const CustomNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +13,11 @@ const CustomNavbar = () => {
         <Navbar collapseOnSelect expand="md" sticky="top" id="navbar" className={isOpen ? 'open' : ''}>
             <Container fluid>
                 <Navbar.Brand href="/">
-                    <img src={Logo} alt="Flotiq" className="d-sm-none d-none d-lg-inline d-md-inline" />
-                    <img src={Logo2} alt="Flotiq" className="d-sm-inline d-lg-none d-md-none" />
+                    <img src={Logo} alt="Flotiq" className="d-none d-lg-inline" />
+                    <img src={Logo2} alt="Flotiq" className="d-inline d-lg-none" />
                 </Navbar.Brand>
                 <div className="mobile-header-right">
-                    <Nav className="d-sm-inline d-lg-none d-md-none">
+                    <Nav className="d-inline d-md-none">
                         <Button click={() => window.open('https://editor.flotiq.com/register.html')}>
                             <Nav.Item>
                                 Go to Flotiq
@@ -26,18 +25,20 @@ const CustomNavbar = () => {
                         </Button>
                         <Nav.Item>
                             <form action="/search/" className={`search ${searchOpen ? 'open' : ''}`}>
-                                <input
-                                    name="q"
-                                    placeholder="Type to search..."
-                                    required
-                                    className="search-input"
-                                    autoComplete="off"
-                                    onFocus={() => setSearchOpen(true)}
-                                    onBlur={() => setSearchOpen(false)}
-                                />
-                                <Button additionalClasses={['btn--icon', 'search-button']} click={() => {}}>
-                                    <img src={Search} alt="search" />
-                                </Button>
+                                <div className="position-relative">
+                                    <input
+                                        name="q"
+                                        placeholder="Type to search..."
+                                        required
+                                        className="search-input"
+                                        autoComplete="off"
+                                        onFocus={() => setSearchOpen(true)}
+                                        onBlur={() => setSearchOpen(false)}
+                                    />
+                                    <Button additionalClasses={['btn--icon', 'search-button']} click={() => {}}>
+                                        <img src={Search} alt="search" />
+                                    </Button>
+                                </div>
                             </form>
 
                         </Nav.Item>
@@ -46,12 +47,12 @@ const CustomNavbar = () => {
                         additionalClasses={['btn--icon', 'search-open-button']}
                         click={() => setSearchOpen(!searchOpen)}
                     >
-                        <img src={SearchDark} alt="search" />
+                        <span />
                     </Button>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setIsOpen(!isOpen)} />
                 </div>
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-3">
                         <Nav.Link href="https://flotiq.com/features" onClick={() => setIsOpen(false)}>
                             Features
                         </Nav.Link>

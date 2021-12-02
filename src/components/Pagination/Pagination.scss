@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
 @import '../../style/variables';
 
 .pagination {
@@ -31,5 +34,12 @@
   }
   .page-item:last-child.disabled .page-link {
     content: url('../../assets/text-arrow-gray.svg');
+  }
+
+  @include media-breakpoint-down(sm) {
+    .page-item:first-child .page-link,
+    .page-item:last-child .page-link {
+      margin: 0 0;
+    }
   }
 }

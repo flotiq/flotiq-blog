@@ -78,13 +78,13 @@ const PostPage = ({ data, pageContext }) => {
                     <p className="text-center post-date pt-4 pb-4">
                         {moment(post.publish_date).format('DD MMM YYYY') }
                     </p>
-                    <h1 className="text-center pr-5 pl-5">{post.title}</h1>
-                    <div className="text-center pt-4 pb-4">
+                    <h1 className="text-center px-0 px-sm-3 px-md-5">{post.title}</h1>
+                    <div className="text-center py-4">
                         {post.tags.map((tag) => (
                             <TagPill tag={tag} key={tag.id} />))}
                     </div>
-                    <h4 className="text-center pb-5">{post.excerpt}</h4>
-                    <div className="author-box pb-5">
+                    <h4 className="text-center pb-4 pb-sm-5">{post.excerpt}</h4>
+                    <div className="author-box pb-4 pb-sm-5">
                         <span className="reading-time">{getReadingTime(post.content.blocks)}</span>
                         <GatsbyImage
                             alt={post.author[0].name}
@@ -97,7 +97,7 @@ const PostPage = ({ data, pageContext }) => {
                             <a href={`/author/${post.author[0].slug}`}>{post.author[0].name}</a>
                         </span>
                     </div>
-                    <div className="pt-3 pb-5">
+                    <div className="pt-3 pb-4 pb-sm-5">
                         <GatsbyImage
                             alt={post.title}
                             image={getImage(post.headerImage[0].localFile)}
@@ -106,7 +106,7 @@ const PostPage = ({ data, pageContext }) => {
                     </div>
                     <Row>
                         <Col lg={1} md={1} sm={0} xs={0}>
-                            <div className="floating-socials d-md-block d-lg-block d-sm-none d-xs-none">
+                            <div className="floating-socials d-none d-md-block">
                                 <SharePostButtons />
                             </div>
                         </Col>
@@ -127,7 +127,7 @@ const PostPage = ({ data, pageContext }) => {
                                 <SharePostButtons />
                             </div>
                         </div>
-                        <div className="mt-5 pb-5 mb-5">
+                        <div className="my-5 pb-5">
                             <CommentCount config={disqusConfig} placeholder="..." />
                             <Disqus config={disqusConfig} />
                         </div>
@@ -146,11 +146,13 @@ const PostPage = ({ data, pageContext }) => {
                             </strong>
                             <a href={`/tags/${post.tags[0].tag}`} className="see-all">See all</a>
                         </h4>
-                        <Row xs={1} sm={1} md={3} lg={3}>
-                            {data.relatedPostsFromTags.nodes.map((relatedPost) => (
-                                <Col key={relatedPost.id}><PostCard post={relatedPost} /></Col>
-                            ))}
-                        </Row>
+                        <div className="related-posts">
+                            <Row xs={1} sm={1} md={3} lg={3}>
+                                {data.relatedPostsFromTags.nodes.map((relatedPost) => (
+                                    <Col key={relatedPost.id}><PostCard post={relatedPost} /></Col>
+                                ))}
+                            </Row>
+                        </div>
                     </>
                 )}
                 <DiscoverMoreTopics tags={pageContext.tags} primaryTag={pageContext.primaryTag} />
