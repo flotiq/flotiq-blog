@@ -4,9 +4,6 @@ import { Container } from 'react-bootstrap';
 import highlight from 'highlight.js';
 
 const Header = ({ block }) => {
-    useEffect(() => {
-        highlight.highlightAll();
-    }, []);
     switch (block.data.level) {
     case 1:
         return (
@@ -132,31 +129,36 @@ const Code = ({ block }) => {
     );
 };
 
-const TextContent = ({ content }) => (
-    <Container className="text-content">
-        {content.map((block) => {
-            switch (block.type) {
-            case 'header':
-                return <Header block={block} key={block.id} />;
-            case 'paragraph':
-                return <Text block={block} key={block.id} />;
-            case 'list':
-                return <List block={block.data} key={block.id} />;
-            case 'image':
-                return <Image block={block.data} key={block.id} />;
-            case 'quote':
-                return <Quote block={block.data} key={block.id} />;
-            case 'youtubeEmbed':
-                return <YouTubeEmbed block={block.data} key={block.id} />;
-            case 'table':
-                return <Table block={block.data} key={block.id} />;
-            case 'code':
-                return <Code block={block.data} key={block.id} />;
-            default:
-                return null;
-            }
-        })}
-    </Container>
-);
+const TextContent = ({ content }) => {
+    useEffect(() => {
+        highlight.highlightAll();
+    }, []);
+    return (
+        <Container className="text-content">
+            {content.map((block) => {
+                switch (block.type) {
+                case 'header':
+                    return <Header block={block} key={block.id} />;
+                case 'paragraph':
+                    return <Text block={block} key={block.id} />;
+                case 'list':
+                    return <List block={block.data} key={block.id} />;
+                case 'image':
+                    return <Image block={block.data} key={block.id} />;
+                case 'quote':
+                    return <Quote block={block.data} key={block.id} />;
+                case 'youtubeEmbed':
+                    return <YouTubeEmbed block={block.data} key={block.id} />;
+                case 'table':
+                    return <Table block={block.data} key={block.id} />;
+                case 'code':
+                    return <Code block={block.data} key={block.id} />;
+                default:
+                    return null;
+                }
+            })}
+        </Container>
+    );
+};
 
 export default TextContent;
