@@ -30,3 +30,8 @@ $gradient-1: linear-gradient(90deg, $gradient-1-start 20%, $gradient-1-end 100%)
 $gradient-1-reversed: linear-gradient(90deg, $gradient-1-end 20%, $gradient-1-start 100%);
 $gradient-2: linear-gradient(90deg, $gradient-2-start 10%, $gradient-2-end 80%);
 $gradient-2-reversed: linear-gradient(90deg, $gradient-2-end 10%, $gradient-2-start 80%);
+
+
+// CONTAINER
+$paddingBig: calc(15px + 0.5rem);
+$paddingBigger: calc(15px + 0.5rem);

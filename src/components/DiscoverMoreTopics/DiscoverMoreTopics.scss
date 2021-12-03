@@ -1,7 +1,48 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "src/style/variables";
+
 .discover {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
+  h4 {
+    white-space: nowrap;
+    margin: 15px 15px 0 0;
+  }
+
   .btn {
-    margin-left: 10px;
+    display: inline-block;
+    margin: 10px 5px;
+    white-space: nowrap;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .discover {
+    display: block;
+
+    h4 {
+      white-space: normal;
+      margin: 15px 15px 5px 0;
+    }
+    .discover-tags {
+      margin-left: calc(0px - #{$paddingBig});
+      margin-right: calc(0px - #{$paddingBig});
+      display: flex;
+      overflow-x: scroll;
+
+      .btn:first-child {
+        margin-left: $paddingBig;
+      }
+      .btn:last-child {
+         margin-right: $paddingBig;
+      }
+      &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+      }
+    }
   }
 }

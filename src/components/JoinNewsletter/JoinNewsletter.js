@@ -29,33 +29,47 @@ const JoinNewsletter = () => {
                             noValidate
                         >
                             <div id="mc_embed_signup_scroll" className="join-newsletter-box">
-                                <h4><strong>Join our newsletter</strong></h4>
-                                <input
-                                    type="email"
-                                    name="EMAIL"
-                                    className="email join-newsletter-subscription"
-                                    id="mce-EMAIL"
-                                    placeholder="Enter your email address"
-                                    required
-                                />
-                                <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                                <div className="join-newsletter-box-header">
+                                    <h4><strong>Join our newsletter</strong></h4>
+                                    <button
+                                        aria-label="Close"
+                                        className="join-newsletter-close-btn d-inline-block d-md-none"
+                                        onClick={() => dismiss()}
+                                    >
+                                        <img
+                                            alt="Close join newsletter box"
+                                            src={Close}
+                                        />
+                                    </button>
+                                </div>
+                                <div className="join-newsletter-box-form">
                                     <input
-                                        type="text"
-                                        name="b_5f7db102d539d8f65a3639f8d_da58181767"
-                                        tabIndex="-1"
+                                        type="email"
+                                        name="EMAIL"
+                                        className="email join-newsletter-subscription"
+                                        id="mce-EMAIL"
+                                        placeholder="Enter your email address"
+                                        required
                                     />
+                                    <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+                                        <input
+                                            type="text"
+                                            name="b_5f7db102d539d8f65a3639f8d_da58181767"
+                                            tabIndex="-1"
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        name="subscribe"
+                                        id="mc-embedded-subscribe"
+                                        className="btn join-newsletter-subscription-button"
+                                    >
+                                        Subscribe
+                                    </button>
                                 </div>
                                 <button
-                                    type="submit"
-                                    name="subscribe"
-                                    id="mc-embedded-subscribe"
-                                    className="btn join-newsletter-subscription-button"
-                                >
-                                    Subscribe
-                                </button>
-                                <button
                                     aria-label="Close"
-                                    className="join-newsletter-close-btn"
+                                    className="join-newsletter-close-btn d-none d-md-inline-block"
                                     onClick={() => dismiss()}
                                 >
                                     <img
