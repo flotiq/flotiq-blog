@@ -120,6 +120,8 @@ export const pageQuery = graphql`
                     blocks {
                         data {
                             caption
+                            code
+                            content
                             items {
                                 content
                                 items {

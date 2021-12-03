@@ -4,6 +4,9 @@ export const getReadingTime = (content) => {
         if (block.data.caption) {
             numOfWords += block.data.caption.replace('&nbsp;', ' ').split(' ').length;
         }
+        if (block.data.code) {
+            numOfWords += block.data.code.replace('&nbsp;', ' ').split(' ').length;
+        }
         if (block.data.message) {
             numOfWords += block.data.message.replace('&nbsp;', ' ').split(' ').length;
         }
@@ -26,6 +29,13 @@ export const getReadingTime = (content) => {
                         }
                     });
                 }
+            });
+        }
+        if (block.data.content) {
+            block.data.content.forEach((row) => {
+                row.forEach((column) => {
+                    numOfWords += column.replace('&nbsp;', ' ').split(' ').length;
+                });
             });
         }
     });

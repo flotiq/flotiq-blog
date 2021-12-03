@@ -85,6 +85,28 @@ const YouTubeEmbed = ({ block }) => {
     );
 };
 
+const Table = ({ block }) => (
+    <table className="table text-content-table">
+        {block.content.map((row, index) => (block.withHeadings && index === 0 ? (
+            <thead>
+                <tr>
+                    {row.map((column) => (
+                        <th>{column}</th>
+                    ))}
+                </tr>
+            </thead>
+        ) : (
+            <thead>
+                <tr>
+                    {row.map((column) => (
+                        <td>{column}</td>
+                    ))}
+                </tr>
+            </thead>
+        )))}
+    </table>
+);
+
 const TextContent = ({ content }) => (
     <Container className="text-content">
         {content.map((block) => {
@@ -101,6 +123,8 @@ const TextContent = ({ content }) => (
                 return <Quote block={block.data} key={block.id} />;
             case 'youtubeEmbed':
                 return <YouTubeEmbed block={block.data} key={block.id} />;
+            case 'table':
+                return <Table block={block.data} key={block.id} />;
             default:
                 return null;
             }

@@ -46,4 +46,18 @@
       color: $gray-3;
     }
   }
+  &-table {
+    border: 1px solid rgba($gray-3, .2);
+    thead {
+      th {
+        background: $gray-3;
+        color: $white;
+        @include font-weight(semi-bold);
+        border: 1px solid $gray-3;
+      }
+    }
+    td {
+      border-top: 1px solid rgba($gray-3, .2);
+    }
+  }
 }

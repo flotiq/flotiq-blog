@@ -235,6 +235,8 @@ export const query = graphql`
                         alignment
                         anchor
                         caption
+                        code
+                        content
                         extension
                         fileName
                         height
@@ -257,6 +259,7 @@ export const query = graphql`
                         width
                         withBackground
                         withBorder
+                        withHeadings
                     }
                     tunes {
                         alignmentTuneTool {
