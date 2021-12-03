@@ -48,12 +48,24 @@
   }
   &-table {
     border: 1px solid rgba($gray-3, .2);
+    overflow-x: scroll;
+    @include media-breakpoint-down(sm) {
+      max-width: 100%;
+      display: block;
+      &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+      }
+    }
     thead {
       th {
         background: $gray-3;
         color: $white;
         @include font-weight(semi-bold);
         border: 1px solid $gray-3;
+        @include media-breakpoint-down(sm) {
+          @include font-weight(medium);
+        }
       }
     }
     td {

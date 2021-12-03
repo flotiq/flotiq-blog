@@ -1,8 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import './TextContent.scss';
 import { Container } from 'react-bootstrap';
+import highlight from 'highlight.js';
 
 const Header = ({ block }) => {
+    useEffect(() => {
+        highlight.highlightAll();
+    }, []);
     switch (block.data.level) {
     case 1:
         return (
@@ -86,7 +90,7 @@ const YouTubeEmbed = ({ block }) => {
 };
 
 const Table = ({ block }) => (
-    <table className="table text-content-table">
+    <table className="table text-content-table mt-2 mb-4">
         {block.content.map((row, index) => (block.withHeadings && index === 0 ? (
             <thead>
                 <tr>
@@ -99,13 +103,34 @@ const Table = ({ block }) => (
             <thead>
                 <tr>
                     {row.map((column) => (
-                        <td>{column}</td>
+                        <td className="text-m">{column}</td>
                     ))}
                 </tr>
             </thead>
         )))}
     </table>
 );
+
+const Code = ({ block }) => {
+    let language = 'bash';
+    let { code } = block;
+    if (block.code.indexOf('```') === 0) {
+        // eslint-disable-next-line prefer-destructuring
+        language = block.code.split('```')[1];
+        const blocks = block.code.split('\n');
+        blocks.splice(0, 1);
+        code = blocks.join('\n');
+    }
+    return (
+        <div
+            className="text-content-code mt-2 mb-4"
+        >
+            <pre>
+                <code dangerouslySetInnerHTML={{ __html: code }} className={`language-${language}`} />
+            </pre>
+        </div>
+    );
+};
 
 const TextContent = ({ content }) => (
     <Container className="text-content">
@@ -125,6 +150,8 @@ const TextContent = ({ content }) => (
                 return <YouTubeEmbed block={block.data} key={block.id} />;
             case 'table':
                 return <Table block={block.data} key={block.id} />;
+            case 'code':
+                return <Code block={block.data} key={block.id} />;
             default:
                 return null;
             }
