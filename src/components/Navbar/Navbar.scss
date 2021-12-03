@@ -9,17 +9,13 @@
   max-width: 1920px;
   margin: 0 auto;
   background: $white;
-  //box-shadow: 0 1px 50px rgba(0, 0, 0, 0.05);
   @media (max-width: 1200px) {
     padding: 1.5rem 1rem;
   }
   @media (max-width: 992px) {
     padding: 1.5rem .4rem;
   }
-  @media (max-width: 768px) {
-    padding: .5rem .4rem;
-  }
-  @media (max-width: 767.98px) {
+  @include media-breakpoint-down(sm) {
     padding: .5rem .5rem 1rem 1.5rem;
     transition: background-color .5s;
     height: 64px;
@@ -43,14 +39,14 @@
 
 .navbar-collapse {
   justify-content: space-between;
-  @media (max-width: 767.98px) {
+  @include media-breakpoint-down(sm) {
     height: calc(100vh - 48px) !important;
   }
 }
 .navbar-light {
   .navbar-nav {
     align-items: center;
-    @media (max-width: 767.98px) {
+    @include media-breakpoint-down(sm) {
       align-items: flex-start;
       &.mr-auto {
         padding-top: 20px;
@@ -72,7 +68,7 @@
         padding-right: .4rem;
         font-size: 12px;
       }
-      @media (max-width: 767.98px) {
+      @include media-breakpoint-down(sm) {
         color: transparent;
         @include font-weight(semi-bold);
         font-size: 22px;
@@ -92,7 +88,8 @@
       }
     }
     .nav-item {
-      @media (max-width: 767.98px) {
+      white-space: nowrap;
+      @include media-breakpoint-down(sm) {
         width: 100%;
       }
       &.show .dropdown-toggle::after {
@@ -131,7 +128,7 @@
   top: calc(50% - 5px);
   position: absolute;
   transition: all .5s, opacity 0s;
-  @media (max-width: 767.98px) {
+  @include media-breakpoint-down(sm) {
     top: 20px;
     width: 20px;
     height: 20px;
@@ -186,7 +183,7 @@
   }
 }
 
-@media (max-width: 767.98px) {
+@include media-breakpoint-down(sm) {
   .dropdown-menu {
     background: none;
     border: none;
@@ -205,6 +202,17 @@
 .mobile-header-right {
   display: flex;
   flex-direction: row;
+  align-items: center;
+    .btn {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+}
+
+.search-open-button span {
+  width: 20px;
+  height: 20px;
+  content: url('../../assets/search.svg');
 }
 
 .open {
@@ -214,7 +222,7 @@
     left: 1.5rem;
     right: 1rem;
   }
-  .search-open-button {
+  .search-open-button span {
     content: url('../../assets/search-white.svg');
   }
 }
@@ -232,9 +240,21 @@
   position: relative;
   width: 100%;
   transition: all 1s;
-  @media (max-width: 767.98px) {
+  @include media-breakpoint-down(sm) {
     display: none;
+    padding: 10px 20px;
   }
+
+  @include media-breakpoint-down(md) {
+    input {
+      font-size: 12px;
+      height: 34px;
+    }
+    img {
+      transform: scale(.8);
+    }
+  }
+
   &-input {
     border: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
@@ -242,7 +262,7 @@
     padding: 10px 20px 10px 40px;
     margin-right: 20px;
     width: calc(100% - 20px);
-    @media (max-width: 767.98px) {
+    @include media-breakpoint-down(sm) {
       width: 100%;
       margin-right: 0;
     }
@@ -255,7 +275,8 @@
   &-button {
     position: absolute;
     left: 15px;
-    top: 12px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   &-open-button {
     margin: .5rem 0 .5rem 1.5rem;
@@ -268,7 +289,7 @@
   &.open {
     width: 200%;
     margin-left: -100%;
-    @media (max-width: 767.98px) {
+    @include media-breakpoint-down(sm) {
       display: block;
       position: absolute;
       top: 55px;
