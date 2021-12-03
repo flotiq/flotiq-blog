@@ -1,0 +1,20 @@
+{
+  "id": "features-4",
+  "name": "Content governance",
+  "order": 4,
+  "main_icon": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/_media/_media-5e39725973d92"
+    }
+  ],
+  "menu_icon": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/_media/_media-5e39725973d91"
+    }
+  ],
+  "long_description": "Stay in control of your content. Define validation rules, add or change properties and create connections between content types. All without writing code or asking the development team for help. As a content editor you're fully empowered to design your governance model for content.",
+  "short_description": "Be as flexible about your content model as you want, without asking the developers for help",
+  "long_description_header": "Be as flexible about your content model as you want, without asking the developers for help"
+}

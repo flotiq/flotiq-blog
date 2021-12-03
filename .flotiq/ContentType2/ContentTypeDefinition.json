@@ -1,6 +1,6 @@
 {
   "name": "flotiqBlogAuthor",
-  "label": "Flotiq blog author",
+  "label": "Blog author",
   "schemaDefinition": {
     "type": "object",
     "allOf": [

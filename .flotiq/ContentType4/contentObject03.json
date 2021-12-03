@@ -1,0 +1,20 @@
+{
+  "id": "features-3",
+  "name": "Content versioning",
+  "order": 3,
+  "main_icon": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/_media/_media-5e39725973d92"
+    }
+  ],
+  "menu_icon": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/_media/_media-5e39725973d91"
+    }
+  ],
+  "long_description": "Smoothly coordinate work across your team. You can always revert changes or browse version history.",
+  "short_description": "All content changes are automatically versioned",
+  "long_description_header": "All content changes are automatically versioned"
+}

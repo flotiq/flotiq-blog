@@ -1,0 +1,20 @@
+{
+  "id": "features-1",
+  "name": "Easy-to-use content editing",
+  "order": 1,
+  "main_icon": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/_media/_media-5e39725973d92"
+    }
+  ],
+  "menu_icon": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/_media/_media-5e39725973d91"
+    }
+  ],
+  "long_description": "Effortlessly create content, using familiar tools that let you format text, place images, and structure content on the site. Built-in content validation lets you avoid mistakes.",
+  "short_description": "User-friendly editing workflow",
+  "long_description_header": "User-friendly editing workflow"
+}

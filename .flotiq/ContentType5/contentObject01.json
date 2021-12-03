@@ -1,0 +1,41 @@
+{
+      "id": "static_pages-1",
+      "header": "Privacy policy",
+      "content": {
+        "time": 1636446129938,
+        "blocks": [
+          {
+            "id": "jvFSwjtNDV",
+            "data": {
+              "text": "Lorem ipsum",
+              "level": 3,
+              "anchor": ""
+            },
+            "type": "header",
+            "tunes": {
+              "alignmentTuneTool": {
+                "alignment": "left"
+              }
+            }
+          },
+          {
+            "id": "ccCjJJ_-As",
+            "data": {
+              "text": "Lorem ipsum"
+            },
+            "type": "paragraph",
+            "tunes": {
+              "alignmentTuneTool": {
+                "alignment": "left"
+              }
+            }
+          }
+        ],
+        "version": "2.22.0"
+      },
+      "seo_image": [],
+      "seo_title": "Privacy Policy",
+      "subheader": "for Flotiq CMS",
+      "seo_keywords": "",
+      "seo_description": ""
+    }

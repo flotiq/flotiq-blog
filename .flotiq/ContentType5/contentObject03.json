@@ -1,0 +1,53 @@
+{
+  "id": "static_pages-3",
+  "header": "Cookie Policy",
+  "content": {
+    "time": 1638363453156,
+    "blocks": [
+      {
+        "id": "eJ7WAVC17b",
+        "data": {
+          "text": "Lorem ipsum"
+        },
+        "type": "paragraph",
+        "tunes": {
+          "alignmentTuneTool": {
+            "alignment": "left"
+          }
+        }
+      },
+      {
+        "id": "9JdmU2zSEs",
+        "data": {
+          "text": "Lorem ipsum",
+          "level": 3,
+          "anchor": ""
+        },
+        "type": "header",
+        "tunes": {
+          "alignmentTuneTool": {
+            "alignment": "left"
+          }
+        }
+      },
+      {
+        "id": "IHnqK5ZVwA",
+        "data": {
+          "text": "Lorem ipsum"
+        },
+        "type": "paragraph",
+        "tunes": {
+          "alignmentTuneTool": {
+            "alignment": "left"
+          }
+        }
+      }
+    ],
+    "version": "2.22.0"
+  },
+  "seo_image": [],
+  "seo_title": "Cookie Policy",
+  "subheader": "for Flotiq CMS",
+  "seo_keywords": "",
+  "seo_description": ""
+}

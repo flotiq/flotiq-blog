@@ -1,6 +1,6 @@
 {
   "name": "flotiqBlogTag",
-  "label": "Flotiq blog tag",
+  "label": "Blog tag",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -12,14 +12,12 @@
         "properties": {
           "tag": {
             "type": "string",
+            "pattern": "^[a-zA-Z0-9-]*$",
             "minLength": 1
           },
-          "image": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataSource"
-            },
-            "minItems": 0
+          "tag_name": {
+            "type": "string",
+            "minLength": 1
           },
           "description": {
             "type": "string"
@@ -28,32 +26,30 @@
       }
     ],
     "required": [
+      "tag_name",
       "tag"
     ],
     "additionalProperties": false
   },
   "metaDefinition": {
     "order": [
+      "tag_name",
       "tag",
-      "description",
-      "image"
+      "description"
     ],
     "propertiesConfig": {
       "tag": {
         "label": "Tag",
         "unique": true,
+        "helpText": "Slug for tag",
+        "inputType": "text"
+      },
+      "tag_name": {
+        "label": "Tag name",
+        "unique": true,
         "helpText": "",
         "inputType": "text",
         "isTitlePart": true
-      },
-      "image": {
-        "label": "Image",
-        "unique": false,
-        "helpText": "",
-        "inputType": "datasource",
-        "validation": {
-          "relationContenttype": "_media"
-        }
       },
       "description": {
         "label": "Description",

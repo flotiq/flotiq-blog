@@ -1,0 +1,53 @@
+{
+      "id": "static_pages-2",
+      "header": "Terms of Service",
+      "content": {
+        "time": 1636446880635,
+        "blocks": [
+          {
+            "id": "pC3XdUPTpn",
+            "data": {
+              "text": "Lorem ipsum"
+            },
+            "type": "paragraph",
+            "tunes": {
+              "alignmentTuneTool": {
+                "alignment": "left"
+              }
+            }
+          },
+          {
+            "id": "0mlAB0eAgb",
+            "data": {
+              "text": "I. Lorem ipsum",
+              "level": 3,
+              "anchor": ""
+            },
+            "type": "header",
+            "tunes": {
+              "alignmentTuneTool": {
+                "alignment": "left"
+              }
+            }
+          },
+          {
+            "id": "rIzavQh9CD",
+            "data": {
+              "text": "Lorem ipsum"
+            },
+            "type": "paragraph",
+            "tunes": {
+              "alignmentTuneTool": {
+                "alignment": "left"
+              }
+            }
+          }
+        ],
+        "version": "2.22.0"
+      },
+      "seo_image": [],
+      "seo_title": "Terms of Service",
+      "subheader": "for Flotiq CMS",
+      "seo_keywords": "",
+      "seo_description": ""
+    }

@@ -1,0 +1,114 @@
+{
+  "name": "features",
+  "label": "Features",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "order": {
+            "type": "number",
+            "default": 1
+          },
+          "main_icon": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "menu_icon": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "long_description": {
+            "type": "string"
+          },
+          "short_description": {
+            "type": "string"
+          },
+          "long_description_header": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "main_icon",
+      "menu_icon",
+      "short_description",
+      "long_description_header",
+      "long_description",
+      "order"
+    ],
+    "propertiesConfig": {
+      "name": {
+        "label": "Name",
+        "unique": true,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "order": {
+        "label": "Order",
+        "unique": false,
+        "helpText": "",
+        "inputType": "number"
+      },
+      "main_icon": {
+        "label": "Main icon",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "menu_icon": {
+        "label": "Menu icon",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "long_description": {
+        "label": "Long description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "short_description": {
+        "label": "Short description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "long_description_header": {
+        "label": "Long description header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      }
+    }
+  }
+}

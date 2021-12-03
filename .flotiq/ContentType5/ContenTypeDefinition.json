@@ -1,0 +1,137 @@
+{
+  "name": "static_pages",
+  "label": "Static pages",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "header": {
+            "type": "string"
+          },
+          "content": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "number"
+              },
+              "blocks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "seo_image": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "seo_title": {
+            "type": "string"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "seo_keywords": {
+            "type": "string"
+          },
+          "seo_description": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "required": [],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "header",
+      "subheader",
+      "content",
+      "seo_title",
+      "seo_description",
+      "seo_image",
+      "seo_keywords"
+    ],
+    "propertiesConfig": {
+      "header": {
+        "label": "Header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "content": {
+        "label": "Content",
+        "unique": false,
+        "helpText": "",
+        "inputType": "block",
+        "blockEditorTypes": [
+          "header"
+        ]
+      },
+      "seo_image": {
+        "label": "SEO image",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "seo_title": {
+        "label": "SEO title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "subheader": {
+        "label": "Subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "seo_keywords": {
+        "label": "SEO keywords",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "seo_description": {
+        "label": "SEO description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      }
+    }
+  }
+}

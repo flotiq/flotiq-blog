@@ -1,6 +1,6 @@
 {
   "name": "flotiqBlogPost",
-  "label": "Flotiq blog post",
+  "label": "Blog post",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -38,8 +38,40 @@
             "minLength": 1
           },
           "content": {
-            "type": "string",
-            "minLength": 1
+            "type": "object",
+            "minLength": 1,
+            "properties": {
+              "time": {
+                "type": "number"
+              },
+              "blocks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "version": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
           },
           "excerpt": {
             "type": "string",
@@ -52,12 +84,9 @@
             },
             "minItems": 0
           },
-          "relatedPosts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataSource"
-            },
-            "minItems": 0
+          "publish_date": {
+            "type": "string",
+            "pattern": "^$|^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T?(([0-1]?[0-9]|2[0-3]):[0-5][0-9])?$"
           },
           "metaDescription": {
             "type": "string",
@@ -81,17 +110,17 @@
       "slug",
       "title",
       "status",
+      "publish_date",
       "excerpt",
       "metaDescription",
       "content",
       "headerImage",
       "tags",
-      "author",
-      "relatedPosts"
+      "author"
     ],
     "propertiesConfig": {
       "slug": {
-        "label": "slug",
+        "label": "Slug",
         "unique": true,
         "helpText": "",
         "inputType": "text"
@@ -109,7 +138,7 @@
       "title": {
         "label": "Title",
         "unique": false,
-        "helpText": "",
+        "helpText": "Title of the page - Google displays 50-60 characters.",
         "inputType": "text",
         "isTitlePart": true
       },
@@ -135,17 +164,28 @@
       "content": {
         "label": "Content",
         "unique": false,
-        "helpText": "",
-        "inputType": "richtext"
+        "helpText": "If you wish to add code with specific language highlight add ```language name``` as the first line of the block, it will not be displayed",
+        "inputType": "block",
+        "blockEditorTypes": [
+          "header",
+          "list",
+          "image",
+          "youtubeEmbed",
+          "quote",
+          "warning",
+          "delimiter",
+          "code",
+          "table"
+        ]
       },
       "excerpt": {
         "label": "Excerpt",
         "unique": false,
-        "helpText": "",
+        "helpText": "Article excerpt shown on blog post lists",
         "inputType": "textarea"
       },
       "headerImage": {
-        "label": "Header image",
+        "label": "Header Image",
         "unique": false,
         "helpText": "",
         "inputType": "datasource",
@@ -153,20 +193,16 @@
           "relationContenttype": "_media"
         }
       },
-      "relatedPosts": {
-        "label": "Related posts",
+      "publish_date": {
+        "label": "Publish date",
         "unique": false,
         "helpText": "",
-        "inputType": "datasource",
-        "validation": {
-          "relationMultiple": true,
-          "relationContenttype": "flotiqBlogPost"
-        }
+        "inputType": "dateTime"
       },
       "metaDescription": {
-        "label": "Meta description",
+        "label": "Meta Description",
         "unique": false,
-        "helpText": "",
+        "helpText": "Page description - shown by Google in search results, limited to 160 chars.",
         "inputType": "textarea"
       }
     }
