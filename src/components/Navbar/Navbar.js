@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
+import { graphql, useStaticQuery } from 'gatsby';
 import Button from '../Button/Button';
 import './Navbar.scss';
 import Logo from '../../assets/Logo3.svg';
@@ -9,9 +10,78 @@ import Search from '../../assets/search.svg';
 const CustomNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
+    const [visible, setVisible] = React.useState(false);
+    const data = useStaticQuery(query);
     return (
         <Navbar collapseOnSelect expand="md" sticky="top" id="navbar" className={isOpen ? 'open' : ''}>
-            <Container fluid>
+            <Container fluid className="position-relative">
+                {visible
+                && (
+                    <div className="features-tab-dropdown-menu d-none d-md-block">
+                        <div className="row">
+                            <div className="col-6 col-xl-4">
+                                {data.allFeatures.nodes.map((feature, index) => (index < 5 ? (
+                                    <a
+                                        href={`https://flotiq.com/features?feature=${index}`}
+                                        className="dropdown-item"
+                                        key={feature.id}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <span className="dropdown-item__icon">
+                                            <img src={feature.menu_icon[0].localFile.publicURL} alt={feature.name} />
+                                        </span>
+                                        {feature.name}
+                                    </a>
+                                ) : null))}
+                            </div>
+                            <div className="col-6 col-xl-4">
+                                {data.allFeatures.nodes.map((feature, index) => (index > 4 && index < 10 ? (
+                                    <a
+                                        href={`https://flotiq.com/features?feature=${index}`}
+                                        className="dropdown-item"
+                                        key={feature.id}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <span className="dropdown-item__icon">
+                                            <img src={feature.menu_icon[0].localFile.publicURL} alt={feature.name} />
+                                        </span>
+                                        {feature.name}
+                                    </a>
+                                ) : null))}
+                                <div className="dropdown-item dropdown-item__missing-feature d-flex d-xl-none">
+                                    <p>Missing a feature?</p>
+                                    <a href="mailto:hello@flotiq.com" className="link-with-arrow">
+                                        Request new feature
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="col-6 col-xl-4 d-none d-xl-block">
+                                {data.allFeatures.nodes.map((feature, index) => (index > 9 ? (
+                                    <a
+                                        href={`https://flotiq.com/features?feature=${index}`}
+                                        className="dropdown-item"
+                                        key={feature.id}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <span className="dropdown-item__icon">
+                                            <img src={feature.menu_icon[0].localFile.publicURL} alt={feature.name} />
+                                        </span>
+                                        {feature.name}
+                                    </a>
+                                ) : null))}
+                                <div className="dropdown-item dropdown-item__missing-feature">
+                                    <p>Missing a feature?</p>
+                                    <a href="mailto:hello@flotiq.com" className="link-with-arrow">
+                                        Request new feature
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
                 <Navbar.Brand href="/">
                     <img src={Logo} alt="Flotiq" className="d-none d-lg-inline" />
                     <img src={Logo2} alt="Flotiq" className="d-inline d-lg-none" />
@@ -53,16 +123,38 @@ const CustomNavbar = () => {
                 </div>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-3">
-                        <Nav.Link href="https://flotiq.com/features" onClick={() => setIsOpen(false)}>
-                            Features
-                        </Nav.Link>
-                        <Nav.Link href="https://flotiq.com/#solutions" onClick={() => setIsOpen(false)}>
+                        <Nav.Item
+                            role="button"
+                            className="dropdown-toggle nav-link nav-link__features-dropdown d-none d-md-block"
+                            onClick={() => setVisible(!visible)}
+                        >
+                            {visible ? <span className="nav-link__opened">Features</span>
+                                : <span className="nav-link__closed">Features</span>}
+                        </Nav.Item>
+                        <NavDropdown title="Features" id="basic-nav-dropdown" className=" d-block d-md-none">
+                            {data.allFeatures.nodes.map((feature, index) => (
+                                <a
+                                    href={`/features?feature=${index}`}
+                                    className="dropdown-item"
+                                    key={feature.id}
+                                >
+                                    {feature.name}
+                                </a>
+                            ))}
+                        </NavDropdown>
+                        <Nav.Link
+                            href="https://flotiq.com/#solutions"
+                            onClick={() => { setIsOpen(false); setVisible(false); }}
+                        >
                             Solutions
                         </Nav.Link>
-                        <Nav.Link href="https://flotiq.com/pricing" onClick={() => setIsOpen(false)}>
+                        <Nav.Link
+                            href="https://flotiq.com/pricing"
+                            onClick={() => { setIsOpen(false); setVisible(false); }}
+                        >
                             Pricing
                         </Nav.Link>
-                        <NavDropdown title="Resources" id="basic-nav-dropdown">
+                        <NavDropdown title="Resources" id="basic-nav-dropdown" onClick={() => setVisible(false)}>
                             <a
                                 href="https://flotiq.com/"
                                 className="dropdown-item"
@@ -129,5 +221,22 @@ const CustomNavbar = () => {
         </Navbar>
     );
 };
+
+const query = graphql`
+    query MenuQuery {
+        allFeatures {
+            nodes {
+                id
+                name
+                order
+                menu_icon {
+                    localFile {
+                        publicURL
+                    }
+                }
+            }
+        }
+    }
+`;
 
 export default CustomNavbar;

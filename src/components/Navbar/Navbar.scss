@@ -301,3 +301,114 @@
     }
   }
 }
+
+.nav-link__features-dropdown {
+  padding-right: 1.5rem !important;
+
+  @media(max-width: 992px) {
+    padding-right: 1rem !important;
+  }
+
+  &:after {
+    display: none;
+  }
+
+  .nav-link__opened,
+  .nav-link__closed {
+    position: relative;
+
+    &:after {
+      content: '';
+      border: none;
+      background: url("../../assets/arrow-down.svg") top left no-repeat;
+      background-size: cover;
+      width: 10px;
+      height: 10px;
+      top: calc(50% - 5px);
+      right: -13px;
+      position: absolute;
+      transition: all .5s, opacity 0s;
+      @media (max-width: 767.98px) {
+        top: 20px;
+        width: 20px;
+        height: 20px;
+        right: .5rem;
+        opacity: 0;
+      }
+    }
+  }
+
+  .nav-link__opened {
+    &:after {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.features-tab-dropdown-menu {
+  padding: 20px 0;
+  position: absolute;
+  width: calc(100% - 60px);
+  background-color: $white;
+  top: 60px;
+  left: 30px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 29px;
+    height: 29px;
+    background: #FFFFFF;
+    transform: rotate(45deg);
+    top: -5px;
+    z-index: 0;
+    left: 220px;
+
+    @media(max-width: 992px) {
+      left: 160px;
+    }
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    white-space: normal;
+
+    &__icon {
+      width: 80px;
+      display: block;
+      text-align: center;
+
+      img {
+        height: 30px;
+      }
+    }
+
+    &__missing-feature {
+      margin-top: 18px;
+      padding-left: 40px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+
+      p {
+        color: $gray-3;
+        font-size: 15px;
+        border-bottom: 1px solid $gray-3;
+        width: 75%;
+        padding-bottom: 10px;
+      }
+
+      a {
+        margin-top: 10px;
+        color: $dark-blue;
+        font-size: 15px;
+      }
+    }
+  }
+}

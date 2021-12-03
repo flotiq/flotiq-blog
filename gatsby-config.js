@@ -47,6 +47,7 @@ module.exports = {
                     'flotiqBlogAuthor',
                     'flotiqBlogPost',
                     'flotiqBlogTag',
+                    'features',
                 ],
             },
         },
