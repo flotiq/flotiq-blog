@@ -39,9 +39,10 @@
       }
 
       img {
-        max-width: 90%;
+        height: 30px;
         &.store-img {
           padding: 1.2em 0 0 0;
+          height: unset;
         }
       }
     }
@@ -215,6 +216,7 @@
   &-header {
     &-logo {
       margin-bottom: 35px;
+      width: 38px;
     }
     .store-img {
       margin: 10px 40px 30px 0;

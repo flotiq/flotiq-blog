@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import { graphql, useStaticQuery } from 'gatsby';
-import Logo from '../../assets/Logo2.svg';
+import Logo from '../../assets/Logo5.svg';
 import gplay from '../../assets/gplay.svg';
 import appstore from '../../assets/appstore.svg';
 import FooterAccordion from './FooterAccordion/FooterAccordion';
