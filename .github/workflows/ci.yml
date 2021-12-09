@@ -17,12 +17,12 @@ jobs:
       run: |
         echo FLOTIQ_BASE_URL=https://api.flotiq.com >> .env.production
         echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env.production
-        echo SCOPED_FLOTIQ_API_KEY="$SCOPED_GATSBY_FLOTIQ_API_KEY" >> .env.production
-        echo GA_TRACKING_ID="GA_TRACKING_ID" >> .env.production
+        echo SCOPED_FLOTIQ_API_KEY="$SCOPED_FLOTIQ_API_KEY" >> .env.production
+        echo GA_TRACKING_ID="$GA_TRACKING_ID" >> .env.production
       shell: bash
       env:
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
-        SCOPED_GATSBY_FLOTIQ_API_KEY: ${{ secrets.SCOPED_GATSBY_FLOTIQ_API_KEY }}
+        SCOPED_FLOTIQ_API_KEY: ${{ secrets.SCOPED_FLOTIQ_API_KEY }}
         GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
 
     - uses: actions/setup-node@v1
