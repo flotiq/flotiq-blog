@@ -80,7 +80,7 @@
       top: 19px;
       width: 14px;
       height: 12px;
-      background: url('../../assets/send.svg');
+      background: url('../../assets/send.svg') no-repeat;
       border: none;
     }
   }
@@ -210,6 +210,27 @@
           background: #0077B5;
         }
       }
+      &.reddit {
+        em:before {
+          content: url('../../assets/reddit.svg');
+          width: 15px;
+          height: 15px;
+          line-height: 15px;
+        }
+        &:hover {
+          background: #ff4500;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &-ue {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    img {
+      max-width: 100%;
     }
   }
 

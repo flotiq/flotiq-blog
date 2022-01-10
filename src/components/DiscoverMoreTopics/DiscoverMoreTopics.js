@@ -10,13 +10,14 @@ const DiscoverMoreTopics = ({ tags, primaryTag }) => (
         <div className="discover-tags">
             {tags.map((tag) => (
                 <Button
-                    click={() => { window.location.href = `/tags/${tag.tag}`; }}
                     additionalClasses={
                         tag.tag === primaryTag ? [] : ['btn--white', 'btn__with-border']
                     }
                     key={tag.id}
                 >
-                    {tag.tag_name}
+                    <a href={`/tags/${tag.tag}`}>
+                        {tag.tag_name}
+                    </a>
                 </Button>
             ))}
         </div>

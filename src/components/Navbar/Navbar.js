@@ -14,6 +14,10 @@ const CustomNavbar = () => {
     const data = useStaticQuery(query);
     return (
         <Navbar collapseOnSelect expand="md" sticky="top" id="navbar" className={isOpen ? 'open' : ''}>
+            {visible
+            && (
+                <div className="backdrop" onClick={() => setVisible(false)} />
+            )}
             <Container fluid className="position-relative">
                 {visible
                 && (
@@ -143,7 +147,7 @@ const CustomNavbar = () => {
                             ))}
                         </NavDropdown>
                         <Nav.Link
-                            href="https://flotiq.com/#solutions"
+                            href="https://flotiq.com/solutions"
                             onClick={() => { setIsOpen(false); setVisible(false); }}
                         >
                             Solutions

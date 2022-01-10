@@ -7,6 +7,7 @@ import appstore from '../../assets/appstore.svg';
 import FooterAccordion from './FooterAccordion/FooterAccordion';
 import FooterSocials from './FooterSocials/FooterSocials';
 import FooterColumns from './FooterColumns/FooterColumns';
+import FooterBottomImage from '../../assets/footer-bottom-image.jpg';
 
 const Footer = () => {
     const data = useStaticQuery(query);
@@ -47,6 +48,15 @@ const Footer = () => {
                         <a href="https://flotiq.com/cookie-policy/" className="text-s">Cookie Policy</a>
                     </div>
                     <FooterSocials data={data.allFlotiqMainSettings.nodes[0]} />
+                </div>
+                <div className="main-footer-ue mt-3 mb-3">
+                    <img
+                        src={FooterBottomImage}
+                        alt="European Funds Smart Growth,
+                           Republic of Poland,
+                           Polish Investment & Trade Agency PFR Group,
+                           European Union European Regional Development Fund"
+                    />
                 </div>
             </div>
         </footer>

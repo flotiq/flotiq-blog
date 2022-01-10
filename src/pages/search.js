@@ -47,7 +47,7 @@ const SearchPage = ({ location }) => {
                         });
                 }
             });
-    }, [siteMeta.site.siteMetadata.apiKey]);
+    }, [q, siteMeta.site.siteMetadata.apiKey]);
     return (
         <main>
             <Helmet>

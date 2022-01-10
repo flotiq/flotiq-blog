@@ -20,16 +20,17 @@ import Sygnet from '../assets/sygnet.svg';
 
 const PostPage = ({ data, pageContext }) => {
     const post = data.flotiqBlogPost;
-    const disqusConfig = {
-        url: `${data.site.siteMetadata.siteUrl}/${post.slug}`,
-        identifier: post.slug,
-        title: post.title,
-    };
     const [offset, setOffset] = useState(0);
     const [visible, setVisible] = useState(false);
     const [progressBar, setProgressBar] = useState(0);
     const [progressHeight, setProgressHeight] = useState(0);
     const progress = useRef(0);
+    const [url, setUrl] = useState('');
+    const [origin, setOrigin] = useState('');
+    useEffect(() => {
+        setUrl(window.location.href.split('/?')[0]);
+        setOrigin(window.location.origin);
+    }, []);
 
     useEffect(() => {
         window.onscroll = () => {
@@ -49,6 +50,14 @@ const PostPage = ({ data, pageContext }) => {
         const width = (offset / height) * 100;
         setProgressBar(width <= 100 ? width : 100);
     }, [offset]);
+    if (!post) {
+        return (<div>NO DATA</div>);
+    }
+    const disqusConfig = {
+        url: `${data.site.siteMetadata.siteUrl}/${post.slug}`,
+        identifier: post.slug,
+        title: post.title,
+    };
     return (
         <main>
             <Helmet>
@@ -63,11 +72,11 @@ const PostPage = ({ data, pageContext }) => {
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
                 <meta property="og:description" content={post.metaDescription} />
-                <meta property="og:url" content={window.location.href} />
+                <meta property="og:url" content={url} />
                 {(post.headerImage) && (
                     <meta
                         property="og:image"
-                        content={window.location.origin + post.headerImage[0].localFile.publicURL}
+                        content={origin + post.headerImage[0].localFile.publicURL}
                     />
                 )}
                 <meta property="article:published_time" content={post.publish_date} />
@@ -82,11 +91,11 @@ const PostPage = ({ data, pageContext }) => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
                 <meta name="twitter:description" content={post.metaDescription} />
-                <meta name="twitter:url" content={window.location.href} />
+                <meta name="twitter:url" content={url} />
                 {(post.headerImage) && (
                     <meta
                         name="twitter:image"
-                        content={window.location.origin + post.headerImage[0].localFile.publicURL}
+                        content={origin + post.headerImage[0].localFile.publicURL}
                     />
                 )}
                 <meta name="twitter:label1" content="Written by" />
