@@ -10,6 +10,7 @@ module.exports = {
         description: 'Effortless headless CMS',
         siteUrl: 'https://flotiq.com', // full path to blog - no ending slash
         apiKey: process.env.SCOPED_FLOTIQ_API_KEY,
+        pathPrefix: process.env.NODE_ENV === 'production' ? '/blog' : '',
     },
     plugins: [
         'gatsby-plugin-sass',
