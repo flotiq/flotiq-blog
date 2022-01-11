@@ -11,6 +11,7 @@ import FooterBottomImage from '../../assets/footer-bottom-image.jpg';
 
 const Footer = () => {
     const data = useStaticQuery(query);
+    const year = new Date().getFullYear();
     return (
         <footer className="main-footer">
             <div className="main-footer-inner">
@@ -40,7 +41,11 @@ const Footer = () => {
                 </div>
                 <div className="main-footer-subfooter">
                     <div className="main-footer-subfooter--opacity text-s">
-                        © 2021 Flotiq
+                        ©
+                        {' '}
+                        {year}
+                        {' '}
+                        Flotiq
                     </div>
                     <div className="main-footer-subfooter--opacity">
                         <a href="https://flotiq.com/privacy-policy/" className="text-s">Privacy Policy</a>
