@@ -16,6 +16,20 @@
     display: inline-block;
     margin: 10px 5px;
     white-space: nowrap;
+    a {
+      color: $white;
+    }
+    &--white {
+      a {
+        color: $primary;
+      }
+    }
+    &:hover {
+      a {
+        color: $white;
+        text-decoration: none;
+      }
+    }
   }
 }
 

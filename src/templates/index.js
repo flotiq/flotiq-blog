@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { Row, Col, Container } from 'react-bootstrap';
 import Navbar from '../components/Navbar/Navbar';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
 import Footer from '../sections/Footer/Footer';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import Pagination from '../components/Pagination/Pagination';
@@ -14,23 +14,29 @@ import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
     const skip = pageContext.currentPage === 1 ? 3 : 0;
+    const [url, setUrl] = useState('');
+    useEffect(() => {
+        setUrl(window.location.href.split('/?')[0]);
+    }, []);
     return (
         <main>
             <Helmet>
                 <html lang="en" />
                 <title>
-                    Blog
-                    {' - '}
-                    {data.allFlotiqMainSettings.nodes[0].title}
+                    Flotiq - API first headless CMS | Blog for developers and content editors
                 </title>
-                <meta name="description" content={data.allFlotiqMainSettings.nodes[0].description} />
+                <meta
+                    name="description"
+                    content="The Flotiq's blog helps developers and content editors to
+                    simplify workflow and create effortless experience"
+                />
                 <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Blog - ${data.allFlotiqMainSettings.nodes[0].title}`}
+                    content="Flotiq - API first headless CMS | Blog for developers and content editors"
                 />
-                <meta property="og:url" content={window.location.href} />
+                <meta property="og:url" content={url} />
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
                     <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
@@ -38,9 +44,9 @@ const IndexPage = ({ data, pageContext }) => {
                 <meta name="twitter:card" content="summary" />
                 <meta
                     name="twitter:title"
-                    content={`Blog - ${data.allFlotiqMainSettings.nodes[0].title}`}
+                    content="Flotiq - API first headless CMS | Blog for developers and content editors"
                 />
-                <meta name="twitter:url" content={window.location.href} />
+                <meta name="twitter:url" content={url} />
                 {data.allFlotiqMainSettings.nodes[0].twitter_url
                 && (
                     <meta
@@ -95,7 +101,7 @@ const IndexPage = ({ data, pageContext }) => {
             <FlotiqPlatform />
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
         </main>
     );
 };
@@ -155,10 +161,6 @@ export const pageQuery = graphql`
                     id
                     name
                     slug
-                    avatar {
-                        extension
-                        id
-                    }
                     bio
                 }
             }

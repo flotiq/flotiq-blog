@@ -72,17 +72,13 @@ exports.createPages = async ({ graphql, actions }) => {
             },
         });
     });
-
-    let tags = _.uniq(
-        _.flatten(
-            result.data.allFlotiqBlogPost.edges.map((edge) => _.castArray(_.get(edge, 'node.tags', []))),
-        ),
-    );
     const tmpTags = {};
-    tags.forEach((tag) => {
-        tmpTags[tag.id] = tag;
+    posts.forEach((edge) => {
+        edge.node.tags.forEach((tag) => {
+            tmpTags[tag.id] = tag;
+        });
     });
-    tags = Object.values(tmpTags);
+    const tags = Object.values(tmpTags);
 
     posts.forEach(({ node }, index) => {
         const { slug } = node;

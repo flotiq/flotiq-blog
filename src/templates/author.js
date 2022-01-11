@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -6,12 +6,16 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 
 const AuthorPage = ({ data, pageContext }) => {
     const author = data.flotiqBlogAuthor;
+    const [url, setUrl] = useState('');
+    useEffect(() => {
+        setUrl(window.location.href.split('/?')[0]);
+    }, []);
     return (
         <main>
             <Helmet>
@@ -25,14 +29,14 @@ const AuthorPage = ({ data, pageContext }) => {
                 <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
                 <meta property="og:type" content="profile" />
                 <meta property="og:title" content={`${author.name} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
-                <meta property="og:url" content={window.location.href} />
+                <meta property="og:url" content={url} />
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
                     <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
                     <meta property="article:author" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:title" content={`${author.name} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
-                <meta name="twitter:url" content={window.location.href} />
+                <meta name="twitter:url" content={url} />
                 {data.allFlotiqMainSettings.nodes[0].twitter_url
                 && (
                     <meta
@@ -67,7 +71,7 @@ const AuthorPage = ({ data, pageContext }) => {
             </Container>
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
         </main>
     );
 };

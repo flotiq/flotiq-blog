@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
@@ -6,7 +6,7 @@ import PostCard from '../components/PostCard/PostCard';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 
 const TagsPage = ({ data, pageContext }) => {
@@ -14,6 +14,10 @@ const TagsPage = ({ data, pageContext }) => {
     const tagData = data.allFlotiqBlogTag.edges.find(
         (n) => n.node.tag.toLowerCase() === tag.toLowerCase(),
     ).node;
+    const [url, setUrl] = useState('');
+    useEffect(() => {
+        setUrl(window.location.href.split('/?')[0]);
+    }, []);
     return (
         <main>
             <Helmet>
@@ -30,7 +34,7 @@ const TagsPage = ({ data, pageContext }) => {
                     property="og:title"
                     content={`${tagData.tag_name} - ${data.allFlotiqMainSettings.nodes[0].title}`}
                 />
-                <meta property="og:url" content={window.location.href} />
+                <meta property="og:url" content={url} />
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
                     <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
@@ -40,7 +44,7 @@ const TagsPage = ({ data, pageContext }) => {
                     name="twitter:title"
                     content={`${tagData.tag_name} - ${data.allFlotiqMainSettings.nodes[0].title}`}
                 />
-                <meta name="twitter:url" content={window.location.href} />
+                <meta name="twitter:url" content={url} />
                 {data.allFlotiqMainSettings.nodes[0].twitter_url
                 && (
                     <meta
@@ -72,7 +76,7 @@ const TagsPage = ({ data, pageContext }) => {
             </Container>
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
         </main>
     );
 };
@@ -139,10 +143,6 @@ export const pageQuery = graphql`
                     id
                     name
                     slug
-                    avatar {
-                        extension
-                        id
-                    }
                     bio
                 }
                 flotiqInternal {
