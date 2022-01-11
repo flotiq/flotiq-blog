@@ -6,7 +6,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 
@@ -71,7 +71,7 @@ const AuthorPage = ({ data, pageContext }) => {
             </Container>
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
         </main>
     );
 };

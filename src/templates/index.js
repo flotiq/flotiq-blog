@@ -5,7 +5,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Navbar from '../components/Navbar/Navbar';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
 import Footer from '../sections/Footer/Footer';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import Pagination from '../components/Pagination/Pagination';
@@ -101,7 +101,7 @@ const IndexPage = ({ data, pageContext }) => {
             <FlotiqPlatform />
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
         </main>
     );
 };

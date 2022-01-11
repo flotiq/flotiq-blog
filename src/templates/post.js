@@ -10,7 +10,7 @@ import TextContent from '../sections/TextContent/TextContent';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
 import TagPill from '../components/TagPill/TagPill';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
@@ -219,7 +219,7 @@ const PostPage = ({ data, pageContext }) => {
             </Container>
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
             <div className="join-newsletter-floating">
                 <JoinNewsletter />
             </div>

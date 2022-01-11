@@ -6,7 +6,7 @@ import PostCard from '../components/PostCard/PostCard';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeInFlotiq from '../components/MadeInFlotiq/MadeInFlotiq';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 
 const TagsPage = ({ data, pageContext }) => {
@@ -76,7 +76,7 @@ const TagsPage = ({ data, pageContext }) => {
             </Container>
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeInFlotiq />
+            <MadeWithFlotiq />
         </main>
     );
 };
