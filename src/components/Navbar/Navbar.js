@@ -86,7 +86,7 @@ const CustomNavbar = () => {
                         </div>
                     </div>
                 )}
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/blog/">
                     <img src={Logo} alt="Flotiq" className="d-none d-lg-inline" />
                     <img src={Logo2} alt="Flotiq" className="d-inline d-lg-none" />
                 </Navbar.Brand>

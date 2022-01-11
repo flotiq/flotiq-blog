@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { Row, Col, Container } from 'react-bootstrap';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Helmet } from 'react-helmet';
@@ -154,7 +154,7 @@ const PostPage = ({ data, pageContext }) => {
                         <span>
                             By
                             {' '}
-                            <a href={`/author/${post.author[0].slug}`}>{post.author[0].name}</a>
+                            <Link to={`/author/${post.author[0].slug}`}>{post.author[0].name}</Link>
                         </span>
                     </div>
                     <div className="pt-3 pb-4 pb-sm-5">

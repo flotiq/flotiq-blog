@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { getReadingTime } from '../../helpers/readingTime';
 import './PostCard.scss';
@@ -7,7 +8,7 @@ import TagPill from '../TagPill/TagPill';
 const PostCard = ({ post, showDescription, additionalClass }) => (
 
     <div
-        onClick={() => { window.location.href = `/${post.slug}`; }}
+        onClick={() => navigate(`/${post.slug}`)}
         className={`post-card pb-4 ${additionalClass}`}
     >
         <div>
