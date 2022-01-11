@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Button from '../Button/Button';
 import './DiscoverMoreTopics.scss';
 
@@ -15,9 +16,9 @@ const DiscoverMoreTopics = ({ tags, primaryTag }) => (
                     }
                     key={tag.id}
                 >
-                    <a href={`/tags/${tag.tag}`}>
+                    <Link to={`/tags/${tag.tag}`}>
                         {tag.tag_name}
-                    </a>
+                    </Link>
                 </Button>
             ))}
         </div>
