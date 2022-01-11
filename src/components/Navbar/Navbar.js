@@ -86,7 +86,7 @@ const CustomNavbar = () => {
                         </div>
                     </div>
                 )}
-                <Navbar.Brand href="/blog/">
+                <Navbar.Brand href={`${data.site.siteMetadata.pathPrefix}/`}>
                     <img src={Logo} alt="Flotiq" className="d-none d-lg-inline" />
                     <img src={Logo2} alt="Flotiq" className="d-inline d-lg-none" />
                 </Navbar.Brand>
@@ -98,7 +98,10 @@ const CustomNavbar = () => {
                             </Nav.Item>
                         </Button>
                         <Nav.Item>
-                            <form action="/search/" className={`search ${searchOpen ? 'open' : ''}`}>
+                            <form
+                                action={`${data.site.siteMetadata.pathPrefix}/search/`}
+                                className={`search ${searchOpen ? 'open' : ''}`}
+                            >
                                 <div className="position-relative">
                                     <input
                                         name="q"
@@ -187,7 +190,10 @@ const CustomNavbar = () => {
                     </Nav>
                     <Nav className="d-none d-md-flex d-lg-flex">
                         <Nav.Item>
-                            <form action="/search/" className={`search ${searchOpen ? 'open' : ''}`}>
+                            <form
+                                action={`${data.site.siteMetadata.pathPrefix}/search/`}
+                                className={`search ${searchOpen ? 'open' : ''}`}
+                            >
                                 <input
                                     name="q"
                                     placeholder="Type to search..."
@@ -238,6 +244,11 @@ const query = graphql`
                         publicURL
                     }
                 }
+            }
+        }
+        site {
+            siteMetadata {
+                pathPrefix
             }
         }
     }
