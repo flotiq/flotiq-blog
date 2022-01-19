@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { Row, Col, Container } from 'react-bootstrap';
-import { Helmet } from 'react-helmet';
 import * as queryString from 'query-string';
-import PostCard from '../components/PostCard/PostCard';
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
+
 import Navbar from '../components/Navbar/Navbar';
-import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
+import PostCard from '../components/PostCard/PostCard';
+import Footer from '../sections/Footer/Footer';
 
 const SearchPage = ({ location }) => {
     const siteMeta = useStaticQuery(query);

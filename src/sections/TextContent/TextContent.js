@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
 import './TextContent.scss';
-import { Container } from 'react-bootstrap';
+
 import highlight from 'highlight.js';
+import React, { Fragment, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 
 const Header = ({ block }) => {
     switch (block.data.level) {

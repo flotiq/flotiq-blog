@@ -1,8 +1,10 @@
+import './JoinNewsletter.scss';
+
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
+
 import Close from '../../assets/close-black.svg';
-import './JoinNewsletter.scss';
 
 const COOKIE_KEY2 = 'fq_join_newsletter_dismiss';
 

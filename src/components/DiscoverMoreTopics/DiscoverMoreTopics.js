@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import Button from '../Button/Button';
 import './DiscoverMoreTopics.scss';
+
+import { Link } from 'gatsby';
+import React from 'react';
+
+import Button from '../Button/Button';
 
 const DiscoverMoreTopics = ({ tags, primaryTag }) => (
     <div className="discover pb-5 mb-0 mb-sm-5">

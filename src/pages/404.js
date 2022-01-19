@@ -1,12 +1,14 @@
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
-import { Container } from 'react-bootstrap';
 import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
+import { Container } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
+
 import HeaderImage from '../assets/404-header.png';
-import Button from '../components/Button/Button';
 import Navbar from '../components/Navbar/Navbar';
-import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
+import Button from '../components/Button/Button';
+
+import Footer from '../sections/Footer/Footer';
 
 const NotFoundPage = () => {
     const data = useStaticQuery(query);

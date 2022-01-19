@@ -1,8 +1,10 @@
-import React from 'react';
+import './PostCard.scss';
+
 import { navigate } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import React from 'react';
+
 import { getReadingTime } from '../../helpers/readingTime';
-import './PostCard.scss';
 import TagPill from '../TagPill/TagPill';
 
 const PostCard = ({ post, showDescription, additionalClass }) => (

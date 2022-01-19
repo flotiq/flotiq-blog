@@ -1,8 +1,10 @@
+import './FlotiqPlatform.scss';
+
 import React from 'react';
 import { Container } from 'react-bootstrap';
+
 import Image from '../../assets/blog-footer-image.svg';
 import Button from '../../components/Button/Button';
-import './FlotiqPlatform.scss';
 
 const FlotiqPlatform = () => (
     <Container fluid className="flotiq-platform">

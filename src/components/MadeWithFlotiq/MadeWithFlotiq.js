@@ -1,5 +1,7 @@
-import React from 'react';
 import './MadeWithFlotiq.scss';
+
+import React from 'react';
+
 import Logo from '../../assets/favicons/favicon-16x16.png';
 
 const MadeWithFlotiq = () => (

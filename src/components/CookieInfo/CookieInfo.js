@@ -1,7 +1,9 @@
+import './CookieInfo.scss';
+
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+
 import CloseCircle from '../../assets/close-circle.svg';
-import './CookieInfo.scss';
 
 const COOKIE_KEY = 'fq_cookies_message_dismiss';
 
