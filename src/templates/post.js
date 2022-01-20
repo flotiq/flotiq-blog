@@ -1,22 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
-import moment from 'moment';
 import { graphql, Link } from 'gatsby';
-import { Row, Col, Container } from 'react-bootstrap';
+import { CommentCount, Disqus } from 'gatsby-plugin-disqus';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import moment from 'moment';
+import React, { useEffect, useRef, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus';
-import { getReadingTime } from '../helpers/readingTime';
-import TextContent from '../sections/TextContent/TextContent';
+
+import Sygnet from '../assets/sygnet.svg';
+
 import Navbar from '../components/Navbar/Navbar';
-import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
+import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
+import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
-import TagPill from '../components/TagPill/TagPill';
-import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
-import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
-import Sygnet from '../assets/sygnet.svg';
+import TagPill from '../components/TagPill/TagPill';
+import { getReadingTime } from '../helpers/readingTime';
+import Footer from '../sections/Footer/Footer';
+import TextContent from '../sections/TextContent/TextContent';
 
 const PostPage = ({ data, pageContext }) => {
     const post = data.flotiqBlogPost;

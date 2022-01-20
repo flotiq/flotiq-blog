@@ -1,8 +1,9 @@
-import { Col, Row } from 'react-bootstrap';
 import React from 'react';
-import Logo from '../../../assets/Logo5.svg';
-import gplay from '../../../assets/gplay.svg';
+import { Col, Row } from 'react-bootstrap';
+
 import appstore from '../../../assets/appstore.svg';
+import gplay from '../../../assets/gplay.svg';
+import Logo from '../../../assets/Logo5.svg';
 import SubscriptionForm from '../SubscriptionForm/SubscriptionForm';
 
 const FooterColumns = ({ data }) => (

@@ -1,13 +1,15 @@
-import React from 'react';
 import './Footer.scss';
+
 import { graphql, useStaticQuery } from 'gatsby';
-import Logo from '../../assets/Logo5.svg';
-import gplay from '../../assets/gplay.svg';
+import React from 'react';
+
 import appstore from '../../assets/appstore.svg';
-import FooterAccordion from './FooterAccordion/FooterAccordion';
-import FooterSocials from './FooterSocials/FooterSocials';
-import FooterColumns from './FooterColumns/FooterColumns';
 import FooterBottomImage from '../../assets/footer-bottom-image.jpg';
+import gplay from '../../assets/gplay.svg';
+import Logo from '../../assets/Logo5.svg';
+import FooterAccordion from './FooterAccordion/FooterAccordion';
+import FooterColumns from './FooterColumns/FooterColumns';
+import FooterSocials from './FooterSocials/FooterSocials';
 
 const Footer = () => {
     const data = useStaticQuery(query);

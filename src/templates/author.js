@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import { Col, Container, Row } from 'react-bootstrap';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
+
 import Navbar from '../components/Navbar/Navbar';
-import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
+import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
-import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
+import Footer from '../sections/Footer/Footer';
 
 const AuthorPage = ({ data, pageContext }) => {
     const author = data.flotiqBlogAuthor;

@@ -1,7 +1,8 @@
+import './Pagination.scss';
+
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import './Pagination.scss';
-import { graphql, useStaticQuery } from 'gatsby';
 
 const CustomPagination = ({ page, numOfPages }) => {
     const data = useStaticQuery(query);

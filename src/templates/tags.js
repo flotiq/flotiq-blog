@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import PostCard from '../components/PostCard/PostCard';
+
 import Navbar from '../components/Navbar/Navbar';
-import Footer from '../sections/Footer/Footer';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
+import PostCard from '../components/PostCard/PostCard';
+import Footer from '../sections/Footer/Footer';
 
 const TagsPage = ({ data, pageContext }) => {
     const tag = (pageContext.tag) ? pageContext.tag : '';

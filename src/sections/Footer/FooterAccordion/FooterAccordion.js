@@ -1,5 +1,6 @@
-import { Accordion, Card } from 'react-bootstrap';
 import React from 'react';
+import { Accordion, Card } from 'react-bootstrap';
+
 import ContextAwareToggle from '../ContextAwareToggle/ContextAwareToggle';
 import SubscriptionForm from '../SubscriptionForm/SubscriptionForm';
 

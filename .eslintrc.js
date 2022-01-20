@@ -10,6 +10,7 @@ module.exports = {
         'airbnb',
         'eslint:recommended',
     ],
+    "plugins": ["simple-import-sort"],
     rules: {
     /* Enforces the usage of Windows line endings: \r\n for CRLF */
     // 'linebreak-style': ['error', 'linux'],
@@ -48,5 +49,7 @@ module.exports = {
         'no-underscore-dangle': 0,
         'jsx-a11y/click-events-have-key-events': 0,
         'jsx-a11y/no-static-element-interactions': 0,
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
     },
 };

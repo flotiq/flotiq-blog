@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import { Row, Col, Container } from 'react-bootstrap';
+
 import Navbar from '../components/Navbar/Navbar';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
-import Footer from '../sections/Footer/Footer';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
-import PostCard from '../components/PostCard/PostCard';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
-import Pagination from '../components/Pagination/Pagination';
+import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
+import Pagination from '../components/Pagination/Pagination';
+import PostCard from '../components/PostCard/PostCard';
+import Footer from '../sections/Footer/Footer';
 
 const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
