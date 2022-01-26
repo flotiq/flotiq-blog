@@ -7,3 +7,18 @@ $grid-gutter-width: 40px;
 @import 'global';
 @import 'typography';
 @import 'post';
+
+@import './components/Button';
+@import './components/CookieInfo';
+@import './components/DiscoverMoreTopics';
+@import './components/JoinNewsletter';
+@import './components/MadeWithFlotiq';
+@import './components/Navbar';
+@import './components/Pagination';
+@import './components/PostCard';
+@import './components/SharePostButtons';
+@import './components/TagPill';
+
+@import './sections/FlotiqPlatform';
+@import './sections/Footer';
+@import './sections/TextContent';

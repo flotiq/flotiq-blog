@@ -1,14 +1,11 @@
-import './Navbar.scss';
-
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-import Button from '../Button/Button';
-
 import Logo from '../../assets/Logo3.svg';
 import Logo2 from '../../assets/Logo4.svg';
 import Search from '../../assets/search.svg';
+import Button from '../Button/Button';
 
 const CustomNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);

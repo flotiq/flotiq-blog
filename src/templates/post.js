@@ -7,17 +7,13 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
 import Sygnet from '../assets/sygnet.svg';
-
-import Navbar from '../components/Navbar/Navbar';
-import CookieInfo from '../components/CookieInfo/CookieInfo';
-import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
+import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import PostCard from '../components/PostCard/PostCard';
 import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
 import TagPill from '../components/TagPill/TagPill';
 import { getReadingTime } from '../helpers/readingTime';
-import Footer from '../sections/Footer/Footer';
+import Layout from '../layouts/layout';
 import TextContent from '../sections/TextContent/TextContent';
 
 const PostPage = ({ data, pageContext }) => {
@@ -61,7 +57,7 @@ const PostPage = ({ data, pageContext }) => {
         title: post.title,
     };
     return (
-        <main>
+        <Layout>
             <Helmet>
                 <html lang="en" />
                 <title>
@@ -120,7 +116,6 @@ const PostPage = ({ data, pageContext }) => {
                 {post.headerImage[0] && <meta property="og:image:width" content={post.headerImage[0].width} />}
                 {post.headerImage[0] && <meta property="og:image:height" content={post.headerImage[0].height} />}
             </Helmet>
-            <Navbar />
             <div ref={progress}>
                 <Container
                     fluid
@@ -128,7 +123,7 @@ const PostPage = ({ data, pageContext }) => {
                     style={{ opacity: visible ? 1 : 0, height: `${progressHeight}px` }}
                 >
                     <div className="post-reading-content">
-                        <img src={Sygnet} alt="Flotiq" />
+                        <Link to="/"><img src={Sygnet} alt="Flotiq" /></Link>
                         <div>
                             <p><strong>{post.title}</strong></p>
                             <span className="reading-time">{getReadingTime(post.content.blocks)}</span>
@@ -219,13 +214,10 @@ const PostPage = ({ data, pageContext }) => {
                 )}
                 <DiscoverMoreTopics tags={pageContext.tags} primaryTag={pageContext.primaryTag} />
             </Container>
-            <Footer />
-            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
             <div className="join-newsletter-floating">
                 <JoinNewsletter />
             </div>
-        </main>
+        </Layout>
     );
 };
 

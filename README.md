@@ -65,7 +65,7 @@ Screenshot
 
     ```sh
     cd flotiq-blog
-    npm install
+    yarn install
     gatsby develop
     ```
 

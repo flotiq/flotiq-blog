@@ -1,5 +1,3 @@
-import './Pagination.scss';
-
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Pagination } from 'react-bootstrap';

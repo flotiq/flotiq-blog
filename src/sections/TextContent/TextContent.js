@@ -1,5 +1,3 @@
-import './TextContent.scss';
-
 import highlight from 'highlight.js';
 import React, { Fragment, useEffect } from 'react';
 import { Container } from 'react-bootstrap';

@@ -4,12 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
-import Navbar from '../components/Navbar/Navbar';
-import CookieInfo from '../components/CookieInfo/CookieInfo';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
 import PostCard from '../components/PostCard/PostCard';
-import Footer from '../sections/Footer/Footer';
+import Layout from '../layouts/layout';
 
 const AuthorPage = ({ data, pageContext }) => {
     const author = data.flotiqBlogAuthor;
@@ -18,7 +15,7 @@ const AuthorPage = ({ data, pageContext }) => {
         setUrl(window.location.href.split('/?')[0]);
     }, []);
     return (
-        <main>
+        <Layout>
             <Helmet>
                 <html lang="en" />
                 <title>
@@ -52,7 +49,6 @@ const AuthorPage = ({ data, pageContext }) => {
                     />
                 )}
             </Helmet>
-            <Navbar />
             <Container>
                 <h1 className="text-center pt-4 pb-4">
                     <GatsbyImage alt={author.name} image={getImage(author.avatar[0].localFile)} className="mr-4" />
@@ -70,10 +66,7 @@ const AuthorPage = ({ data, pageContext }) => {
                 </Row>
                 <DiscoverMoreTopics tags={pageContext.tags} primaryTag={{}} />
             </Container>
-            <Footer />
-            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
-        </main>
+        </Layout>
     );
 };
 
