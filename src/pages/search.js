@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
-import Navbar from '../components/Navbar/Navbar';
 import CookieInfo from '../components/CookieInfo/CookieInfo';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
+import Navbar from '../components/Navbar/Navbar';
 import PostCard from '../components/PostCard/PostCard';
 import Footer from '../sections/Footer/Footer';
 
@@ -76,11 +76,11 @@ const SearchPage = ({ location }) => {
                 <Row xs={1} sm={1} md={2} lg={3}>
                     {posts.map((post) => (
                         <Col key={post.id}>
-                            <PostCard post={post} showDescription />
+                            <PostCard post={post} showDescription pathPrefix={siteMeta.site.siteMetadata.pathPrefix} />
                         </Col>
                     ))}
                 </Row>
-                <DiscoverMoreTopics tags={tags} primaryTag={{}} />
+                <DiscoverMoreTopics tags={tags} primaryTag={{}} pathPrefix={siteMeta.site.siteMetadata.pathPrefix} />
             </Container>
             <Footer />
             <CookieInfo cookieText={siteMeta.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
@@ -94,6 +94,7 @@ const query = graphql`
         site {
             siteMetadata {
                 apiKey
+                pathPrefix
             }
         }
         allFlotiqMainSettings {

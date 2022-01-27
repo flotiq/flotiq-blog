@@ -66,10 +66,14 @@ const TagsPage = ({ data, pageContext }) => {
             <Container fluid className="container-fluid__bigger-padding">
                 <Row xs={1} sm={1} md={3} lg={3}>
                     {data.allFlotiqBlogPost.nodes.map((post) => (
-                        <Col key={post.id}><PostCard post={post} /></Col>
+                        <Col key={post.id}><PostCard post={post} pathPrefix={data.site.siteMetadata.pathPrefix} /></Col>
                     ))}
                 </Row>
-                <DiscoverMoreTopics tags={pageContext.tags} primaryTag={tagData} />
+                <DiscoverMoreTopics
+                    tags={pageContext.tags}
+                    primaryTag={tagData}
+                    pathPrefix={data.site.siteMetadata.pathPrefix}
+                />
             </Container>
         </Layout>
     );
@@ -79,6 +83,11 @@ export default TagsPage;
 
 export const pageQuery = graphql`
     query($tag: String) {
+        site {
+            siteMetadata {
+                pathPrefix
+            }
+        }
         allFlotiqBlogTag {
             edges {
                 node {

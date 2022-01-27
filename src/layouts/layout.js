@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import CookieInfo from '../components/CookieInfo/CookieInfo';
@@ -9,6 +9,13 @@ import Footer from '../sections/Footer/Footer';
 
 const Layout = ({ children, navbarSettings = {}, mainSettings = {} }) => {
     const data = useStaticQuery(query);
+    useEffect(() => {
+        console.log('asd');
+        return () => {
+            console.log('def');
+            window.scrollTo(0, 0);
+        };
+    }, []);
     return (
         <main {...mainSettings}>
             <Helmet>
