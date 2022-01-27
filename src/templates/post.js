@@ -202,9 +202,9 @@ const PostPage = ({ data, pageContext }) => {
                             <strong>
                                 Posts related to
                                 {' '}
-                                <a href={`/tags/${post.tags[0].tag}`}>{post.tags[0].tag_name}</a>
+                                <Link to={`/tags/${post.tags[0].tag}`}>{post.tags[0].tag_name}</Link>
                             </strong>
-                            <a href={`/tags/${post.tags[0].tag}`} className="see-all">See all</a>
+                            <Link to={`/tags/${post.tags[0].tag}`} className="see-all">See all</Link>
                         </h4>
                         <div className="related-posts">
                             <Row xs={1} sm={1} md={3} lg={3}>
