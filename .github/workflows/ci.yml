@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  build:
+  build-production:
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -43,6 +43,57 @@ jobs:
       run: |
         npm install -g @cloudflare/wrangler
         wrangler init --site flotiq-blog
+        sed -i 's+account_id = '\'\''+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml
+        sed -i 's+bucket = ""+bucket = "public"+g' wrangler.toml
+        sed -i 's+zone_id = '\'\''+zone_id = '"'"$ZONE_ID"'"'+g' wrangler.toml
+        sed -i 's+workers_dev = true++g' wrangler.toml
+        echo "[env.production]" >> wrangler.toml
+        echo "route = 'flotiq.com/blog/*'" >> wrangler.toml
+        echo 'zone_id = '"'"$ZONE_ID"'" >> wrangler.toml
+        mkdir -p /home/runner/.wrangler/config/
+        echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
+        cat wrangler.toml
+        wrangler publish --env=production
+      shell: bash
+      env:
+        API_TOKEN: ${{ secrets.API_TOKEN }}
+        ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
+        ZONE_ID: ${{ secrets.ZONE_ID }}
+  build-staging:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Enter data to .env file
+      run: |
+        echo FLOTIQ_BASE_URL=https://api.flotiq.com >> .env.production
+        echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env.production
+        echo SCOPED_FLOTIQ_API_KEY="$SCOPED_FLOTIQ_API_KEY" >> .env.production
+        echo GA_TRACKING_ID="$GA_TRACKING_ID" >> .env.production
+      shell: bash
+      env:
+        FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
+        SCOPED_FLOTIQ_API_KEY: ${{ secrets.SCOPED_FLOTIQ_API_KEY }}
+        GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - run: npm install
+
+    - name: Gatsby
+      run: |
+        npm install -g gatsby-cli
+        gatsby clean
+        gatsby build --prefix-paths
+        rm -rf public/blog
+        mkdir -p public/blog
+        find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
+
+    - name: Cloudflare
+      run: |
+        npm install -g @cloudflare/wrangler
+        wrangler init --site flotiq-blog-staging
         sed -i 's+account_id = '\'\''+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml
         sed -i 's+bucket = ""+bucket = "public"+g' wrangler.toml
         sed -i 's+zone_id = '\'\''+zone_id = '"'"$ZONE_ID"'"'+g' wrangler.toml
