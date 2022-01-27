@@ -201,9 +201,16 @@ const PostPage = ({ data, pageContext }) => {
                             <strong>
                                 Posts related to
                                 {' '}
-                                <a href={`/tags/${post.tags[0].tag}`}>{post.tags[0].tag_name}</a>
+                                <a href={`/${data.site.siteMetadata.pathPrefix}/tags/${post.tags[0].tag}`}>
+                                    {post.tags[0].tag_name}
+                                </a>
                             </strong>
-                            <a href={`/tags/${post.tags[0].tag}`} className="see-all">See all</a>
+                            <a
+                                href={`/${data.site.siteMetadata.pathPrefix}/tags/${post.tags[0].tag}`}
+                                className="see-all"
+                            >
+                                See all
+                            </a>
                         </h4>
                         <div className="related-posts">
                             <Row xs={1} sm={1} md={3} lg={3}>
