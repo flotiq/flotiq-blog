@@ -53,7 +53,7 @@ jobs:
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
         cat wrangler.toml
-        wrangler publish --env=production
+        wrangler publish --env=staging
       shell: bash
       env:
         API_TOKEN: ${{ secrets.API_TOKEN }}
