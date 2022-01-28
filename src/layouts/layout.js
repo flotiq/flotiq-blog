@@ -20,9 +20,9 @@ const Layout = ({ children, navbarSettings = {}, mainSettings = {} }) => {
             </Helmet>
             <Navbar {...navbarSettings} />
             {children}
+            <MadeWithFlotiq />
             <Footer />
             <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
         </main>
     );
 };

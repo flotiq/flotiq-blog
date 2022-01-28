@@ -34,7 +34,7 @@ const CookieInfo = ({ cookieText }) => {
                         />
                     </button>
                 </div>
-            ) : ''
+            ) : null
     );
 };
 
