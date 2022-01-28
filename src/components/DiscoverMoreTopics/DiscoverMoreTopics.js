@@ -1,8 +1,9 @@
+import { Link } from 'gatsby';
 import React from 'react';
 
 import Button from '../Button/Button';
 
-const DiscoverMoreTopics = ({ tags, primaryTag, pathPrefix }) => (
+const DiscoverMoreTopics = ({ tags, primaryTag }) => (
     <div className="discover pb-5 mb-0 mb-sm-5">
         <h4>
             <strong>Discover more topics</strong>
@@ -15,9 +16,9 @@ const DiscoverMoreTopics = ({ tags, primaryTag, pathPrefix }) => (
                     }
                     key={tag.id}
                 >
-                    <a href={`${pathPrefix}/tags/${tag.tag}`}>
+                    <Link to={`/tags/${tag.tag}`}>
                         {tag.tag_name}
-                    </a>
+                    </Link>
                 </Button>
             ))}
         </div>

@@ -69,7 +69,6 @@ const IndexPage = ({ data, pageContext }) => {
                                     key={posts[0].id}
                                     showDescription
                                     additionalClass="post-card__no-height"
-                                    pathPrefix={data.site.siteMetadata.pathPrefix}
                                 />
                             </Col>
                             <Col>
@@ -77,13 +76,11 @@ const IndexPage = ({ data, pageContext }) => {
                                     post={posts[1]}
                                     key={posts[1].id}
                                     additionalClass="post-card__no-height"
-                                    pathPrefix={data.site.siteMetadata.pathPrefix}
                                 />
                                 <PostCard
                                     post={posts[2]}
                                     key={posts[2].id}
                                     additionalClass="post-card__no-height"
-                                    pathPrefix={data.site.siteMetadata.pathPrefix}
                                 />
                             </Col>
                         </Row>
@@ -93,7 +90,7 @@ const IndexPage = ({ data, pageContext }) => {
                 <Row xs={1} sm={1} md={2} lg={3}>
                     {posts.map((post, index) => (index >= skip ? (
                         <Col key={post.id}>
-                            <PostCard post={post} pathPrefix={data.site.siteMetadata.pathPrefix} />
+                            <PostCard post={post} />
                         </Col>
                     ) : null))}
                 </Row>
@@ -113,11 +110,6 @@ export default IndexPage;
 
 export const pageQuery = graphql`
     query blogPageQuery($skip: Int!, $limit: Int!) {
-        site {
-            siteMetadata {
-                pathPrefix
-            }
-        }
         allFlotiqBlogPost(
             sort: { fields: [publish_date], order: DESC },
             limit: $limit,

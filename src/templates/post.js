@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { CommentCount, Disqus } from 'gatsby-plugin-disqus';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import moment from 'moment';
@@ -123,7 +123,7 @@ const PostPage = ({ data, pageContext }) => {
                     style={{ opacity: visible ? 1 : 0, height: `${progressHeight}px` }}
                 >
                     <div className="post-reading-content">
-                        <a href={`${data.site.siteMetadata.pathPrefix}/`}><img src={Sygnet} alt="Flotiq" /></a>
+                        <Link to="/"><img src={Sygnet} alt="Flotiq" /></Link>
                         <div>
                             <p><strong>{post.title}</strong></p>
                             <span className="reading-time">{getReadingTime(post.content.blocks)}</span>
@@ -138,7 +138,7 @@ const PostPage = ({ data, pageContext }) => {
                     <h1 className="text-center px-0 px-sm-3 px-md-5">{post.title}</h1>
                     <div className="text-center py-4">
                         {post.tags.map((tag) => (
-                            <TagPill tag={tag} key={tag.id} pathPrefix={data.site.siteMetadata.pathPrefix} />))}
+                            <TagPill tag={tag} key={tag.id} />))}
                     </div>
                     <h4 className="text-center pb-4 pb-sm-5">{post.excerpt}</h4>
                     <div className="author-box pb-4 pb-sm-5">
@@ -151,9 +151,9 @@ const PostPage = ({ data, pageContext }) => {
                         <span>
                             By
                             {' '}
-                            <a href={`${data.site.siteMetadata.pathPrefix}/author/${post.author[0].slug}`}>
+                            <Link to={`/author/${post.author[0].slug}`}>
                                 {post.author[0].name}
-                            </a>
+                            </Link>
                         </span>
                     </div>
                     <div className="pt-3 pb-4 pb-sm-5">
@@ -201,16 +201,16 @@ const PostPage = ({ data, pageContext }) => {
                             <strong>
                                 Posts related to
                                 {' '}
-                                <a href={`/${data.site.siteMetadata.pathPrefix}/tags/${post.tags[0].tag}`}>
+                                <Link to={`/tags/${post.tags[0].tag}`}>
                                     {post.tags[0].tag_name}
-                                </a>
+                                </Link>
                             </strong>
-                            <a
-                                href={`/${data.site.siteMetadata.pathPrefix}/tags/${post.tags[0].tag}`}
+                            <Link
+                                to={`/tags/${post.tags[0].tag}`}
                                 className="see-all"
                             >
                                 See all
-                            </a>
+                            </Link>
                         </h4>
                         <div className="related-posts">
                             <Row xs={1} sm={1} md={3} lg={3}>
@@ -226,7 +226,6 @@ const PostPage = ({ data, pageContext }) => {
                 <DiscoverMoreTopics
                     tags={pageContext.tags}
                     primaryTag={pageContext.primaryTag}
-                    pathPrefix={data.site.siteMetadata.pathPrefix}
                 />
             </Container>
             <div className="join-newsletter-floating">
@@ -243,7 +242,6 @@ export const query = graphql`
         site {
             siteMetadata {
                 siteUrl
-                pathPrefix
             }
         }
         flotiqBlogPost( slug: { eq: $slug }, status: {eq: "public"} ) {

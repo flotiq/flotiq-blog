@@ -76,11 +76,11 @@ const SearchPage = ({ location }) => {
                 <Row xs={1} sm={1} md={2} lg={3}>
                     {posts.map((post) => (
                         <Col key={post.id}>
-                            <PostCard post={post} showDescription pathPrefix={siteMeta.site.siteMetadata.pathPrefix} />
+                            <PostCard post={post} showDescription />
                         </Col>
                     ))}
                 </Row>
-                <DiscoverMoreTopics tags={tags} primaryTag={{}} pathPrefix={siteMeta.site.siteMetadata.pathPrefix} />
+                <DiscoverMoreTopics tags={tags} primaryTag={{}} />
             </Container>
             <Footer />
             <CookieInfo cookieText={siteMeta.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
@@ -94,7 +94,6 @@ const query = graphql`
         site {
             siteMetadata {
                 apiKey
-                pathPrefix
             }
         }
         allFlotiqMainSettings {

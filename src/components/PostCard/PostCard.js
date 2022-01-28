@@ -1,16 +1,17 @@
+import { Link } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { getReadingTime } from '../../helpers/readingTime';
 import TagPill from '../TagPill/TagPill';
 
-const PostCard = ({ post, showDescription, additionalClass, pathPrefix }) => (
+const PostCard = ({ post, showDescription, additionalClass }) => (
 
     <div
         className={`post-card pb-4 ${additionalClass}`}
     >
         <div>
-            <a href={`${pathPrefix}/${post.slug}`} className="post-card-link">
+            <Link to={`/${post.slug}`} className="post-card-link">
                 {
                 // eslint-disable-next-line no-nested-ternary
                     post.headerImage ? (
@@ -32,20 +33,20 @@ const PostCard = ({ post, showDescription, additionalClass, pathPrefix }) => (
                                 />
                             )) : null
                 }
-            </a>
+            </Link>
             <div className="mt-3">
                 {post.tags && post.tags.map((tag) => (
-                    <TagPill tag={tag} key={tag.id} pathPrefix={pathPrefix} />))}
+                    <TagPill tag={tag} key={tag.id} />))}
             </div>
-            <a href={`${pathPrefix}/${post.slug}`} className="post-card-link">
+            <Link to={`/${post.slug}`} className="post-card-link">
                 <h2 className="mt-3">{post.title}</h2>
                 {showDescription && <div className="mt-3 post-card-description">{post.excerpt}</div>}
-            </a>
+            </Link>
         </div>
         {post.content && typeof post.content === 'object' && (
-            <a href={`${pathPrefix}/${post.slug}`} className="post-card-link">
+            <Link to={`/${post.slug}`} className="post-card-link">
                 <p className="mt-3 mb-3 reading-time">{getReadingTime(post.content.blocks)}</p>
-            </a>
+            </Link>
         )}
     </div>
 );
