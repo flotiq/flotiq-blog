@@ -19,6 +19,7 @@
     "@restart/ui": "0.2.3",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.6.0",
+    "flotiq-components-react": "https://github.com/flotiq/flotiq-components-react.git",
     "gatsby": "^4.4.0",
     "gatsby-plugin-disqus": "^1.2.3",
     "gatsby-plugin-google-analytics": "^4.4.0",

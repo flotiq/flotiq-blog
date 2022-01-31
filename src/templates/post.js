@@ -1,6 +1,8 @@
+import { Content } from 'flotiq-components-react';
 import { graphql, Link } from 'gatsby';
 import { CommentCount, Disqus } from 'gatsby-plugin-disqus';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import highlight from 'highlight.js';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -14,7 +16,6 @@ import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
 import TagPill from '../components/TagPill/TagPill';
 import { getReadingTime } from '../helpers/readingTime';
 import Layout from '../layouts/layout';
-import TextContent from '../sections/TextContent/TextContent';
 
 const PostPage = ({ data, pageContext }) => {
     const post = data.flotiqBlogPost;
@@ -170,7 +171,12 @@ const PostPage = ({ data, pageContext }) => {
                             </div>
                         </Col>
                         <Col>
-                            <TextContent content={post.content.blocks} />
+                            <Content
+                                blocks={post.content.blocks}
+                                quoteProps={{ variant: 'light' }}
+                                tableProps={{ additionalClasses: ['custom-table'] }}
+                                highlight={highlight}
+                            />
                         </Col>
                         <Col lg={1} md={1} sm={0} xs={0} />
                     </Row>
