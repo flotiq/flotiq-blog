@@ -95,9 +95,7 @@ const IndexPage = ({ data, pageContext }) => {
                     ) : null))}
                 </Row>
                 {pageContext.currentPage !== 1 && (
-                    <Row className="pt-5 pb-5 mb-5">
-                        <JoinNewsletter />
-                    </Row>
+                    <JoinNewsletter addMargin />
                 )}
                 <Pagination page={pageContext.currentPage} numOfPages={pageContext.numPages} />
             </Container>
