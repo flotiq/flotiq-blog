@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6, p, a {
 h1 {
   line-height: 130%;
   @include header-defaults-halvar;
-  @include fluid-type(360px, 1920px, 32px, 77px);
+  @include fluid-type(360px, 1920px, 26px, 56px);
 }
 
 h2 {

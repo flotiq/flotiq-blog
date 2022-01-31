@@ -1,5 +1,3 @@
-import './Footer.scss';
-
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 

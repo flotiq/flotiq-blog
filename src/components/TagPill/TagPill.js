@@ -1,5 +1,3 @@
-import './TagPill.scss';
-
 import { Link } from 'gatsby';
 import React from 'react';
 

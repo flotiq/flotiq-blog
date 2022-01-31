@@ -3,14 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
-import Navbar from '../components/Navbar/Navbar';
-import CookieInfo from '../components/CookieInfo/CookieInfo';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
-import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 import Pagination from '../components/Pagination/Pagination';
 import PostCard from '../components/PostCard/PostCard';
-import Footer from '../sections/Footer/Footer';
+import Layout from '../layouts/layout';
+import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 
 const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
@@ -20,7 +17,7 @@ const IndexPage = ({ data, pageContext }) => {
         setUrl(window.location.href.split('/?')[0]);
     }, []);
     return (
-        <main>
+        <Layout>
             <Helmet>
                 <html lang="en" />
                 <title>
@@ -62,7 +59,6 @@ const IndexPage = ({ data, pageContext }) => {
                     />
                 )}
             </Helmet>
-            <Navbar />
             <Container fluid className="container-fluid__bigger-padding mt-5">
                 {pageContext.currentPage === 1 && (
                     <>
@@ -76,13 +72,19 @@ const IndexPage = ({ data, pageContext }) => {
                                 />
                             </Col>
                             <Col>
-                                <PostCard post={posts[1]} key={posts[1].id} additionalClass="post-card__no-height" />
-                                <PostCard post={posts[2]} key={posts[2].id} additionalClass="post-card__no-height" />
+                                <PostCard
+                                    post={posts[1]}
+                                    key={posts[1].id}
+                                    additionalClass="post-card__no-height"
+                                />
+                                <PostCard
+                                    post={posts[2]}
+                                    key={posts[2].id}
+                                    additionalClass="post-card__no-height"
+                                />
                             </Col>
                         </Row>
-                        <Row className="pt-5 pb-5 mb-5">
-                            <JoinNewsletter />
-                        </Row>
+                        <JoinNewsletter addMargin />
                     </>
                 )}
                 <Row xs={1} sm={1} md={2} lg={3}>
@@ -100,10 +102,7 @@ const IndexPage = ({ data, pageContext }) => {
                 <Pagination page={pageContext.currentPage} numOfPages={pageContext.numPages} />
             </Container>
             <FlotiqPlatform />
-            <Footer />
-            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
-        </main>
+        </Layout>
     );
 };
 
