@@ -19,10 +19,10 @@ const JoinNewsletter = ({ addMargin = false }) => {
     };
     const action = 'https://flotiq.us18.list-manage.com/subscribe/post?u=5f7db102d539d8f65a3639f8d&amp;id=da58181767';
     return (
-        (isBrowser() && cookies && !cookies[COOKIE_KEY2])
-            ? (
-                <Row className={addMargin ? 'pt-5 pb-5 mb-5' : ''}>
-                    <Container>
+        <Row className="w-100">
+            {
+                (isBrowser() && cookies && !cookies[COOKIE_KEY2]) ? (
+                    <Container className={addMargin ? 'pt-5 pb-5 mb-5' : ''}>
                         <div id="mc_embed_signup">
                             <form
                                 action={action}
@@ -86,8 +86,9 @@ const JoinNewsletter = ({ addMargin = false }) => {
                             </form>
                         </div>
                     </Container>
-                </Row>
-            ) : null
+                ) : null
+            }
+        </Row>
     );
 };
 
