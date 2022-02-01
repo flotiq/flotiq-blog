@@ -101,7 +101,9 @@
       "status",
       "excerpt",
       "metaDescription",
-      "content"
+      "content",
+      "tags",
+      "author"
     ],
     "additionalProperties": false
   },
