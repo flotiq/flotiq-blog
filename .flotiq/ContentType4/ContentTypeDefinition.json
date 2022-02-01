@@ -1,6 +1,6 @@
 {
-  "name": "features",
-  "label": "Features",
+  "name": "flotiq_main_settings",
+  "label": "Flotiq main settings",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -10,104 +10,359 @@
       {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "minLength": 1
+          "title": {
+            "type": "string"
           },
-          "order": {
-            "type": "number",
-            "default": 1
+          "github_url": {
+            "type": "string"
           },
-          "main_icon": {
+          "reddit_url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "discord_url": {
+            "type": "string"
+          },
+          "twitter_url": {
+            "type": "string"
+          },
+          "youtube_url": {
+            "type": "string"
+          },
+          "facebook_url": {
+            "type": "string"
+          },
+          "linkedin_url": {
+            "type": "string"
+          },
+          "app_store_url": {
+            "type": "string"
+          },
+          "footer_1_column": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "footer_2_column": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "footer_3_column": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "google_play_url": {
+            "type": "string"
+          },
+          "cookie_policy_page": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DataSource"
             },
             "minItems": 0
           },
-          "menu_icon": {
+          "privacy_policy_page": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DataSource"
             },
             "minItems": 0
           },
-          "long_description": {
+          "upper_footer_header": {
             "type": "string"
           },
-          "short_description": {
+          "terms_of_service_page": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "footer_1_column_header": {
             "type": "string"
           },
-          "long_description_header": {
+          "footer_2_column_header": {
+            "type": "string"
+          },
+          "footer_3_column_header": {
+            "type": "string"
+          },
+          "upper_footer_subheader": {
+            "type": "string"
+          },
+          "cookie_policy_popup_text": {
             "type": "string"
           }
         }
       }
     ],
-    "required": [
-      "name"
-    ],
+    "required": [],
     "additionalProperties": false
   },
   "metaDefinition": {
     "order": [
-      "name",
-      "main_icon",
-      "menu_icon",
-      "short_description",
-      "long_description_header",
-      "long_description",
-      "order"
+      "title",
+      "description",
+      "google_play_url",
+      "app_store_url",
+      "github_url",
+      "discord_url",
+      "youtube_url",
+      "twitter_url",
+      "facebook_url",
+      "linkedin_url",
+      "reddit_url",
+      "privacy_policy_page",
+      "terms_of_service_page",
+      "cookie_policy_page",
+      "upper_footer_header",
+      "upper_footer_subheader",
+      "footer_1_column_header",
+      "footer_1_column",
+      "footer_2_column_header",
+      "footer_2_column",
+      "footer_3_column_header",
+      "footer_3_column",
+      "cookie_policy_popup_text"
     ],
     "propertiesConfig": {
-      "name": {
-        "label": "Name",
-        "unique": true,
-        "helpText": "",
-        "inputType": "text",
-        "isTitlePart": true
-      },
-      "order": {
-        "label": "Order",
+      "title": {
+        "label": "Title",
         "unique": false,
         "helpText": "",
-        "inputType": "number"
+        "inputType": "text"
       },
-      "main_icon": {
-        "label": "Main icon",
+      "github_url": {
+        "label": "Github url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "reddit_url": {
+        "label": "Reddit url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "description": {
+        "label": "Description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "discord_url": {
+        "label": "Discord url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "twitter_url": {
+        "label": "Twitter url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "youtube_url": {
+        "label": "Youtube url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "facebook_url": {
+        "label": "Facebook url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "linkedin_url": {
+        "label": "Linkedin url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "app_store_url": {
+        "label": "App store url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "footer_1_column": {
+        "items": {
+          "order": [
+            "text",
+            "url"
+          ],
+          "propertiesConfig": {
+            "url": {
+              "label": "Url",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "text": {
+              "label": "Text",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Footer 1 column",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "footer_2_column": {
+        "items": {
+          "order": [
+            "text",
+            "url"
+          ],
+          "propertiesConfig": {
+            "url": {
+              "label": "Url",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "text": {
+              "label": "Text",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Footer 2 column",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "footer_3_column": {
+        "items": {
+          "order": [
+            "text",
+            "url"
+          ],
+          "propertiesConfig": {
+            "url": {
+              "label": "Url",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "text": {
+              "label": "Text",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Footer 3 column",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "google_play_url": {
+        "label": "Google play url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "cookie_policy_page": {
+        "label": "Cookie policy page",
         "unique": false,
         "helpText": "",
         "inputType": "datasource",
         "validation": {
-          "relationContenttype": "_media"
+          "relationContenttype": "static_pages"
         }
       },
-      "menu_icon": {
-        "label": "Menu icon",
+      "privacy_policy_page": {
+        "label": "Privacy policy page",
         "unique": false,
         "helpText": "",
         "inputType": "datasource",
         "validation": {
-          "relationContenttype": "_media"
+          "relationContenttype": "static_pages"
         }
       },
-      "long_description": {
-        "label": "Long description",
+      "upper_footer_header": {
+        "label": "Upper footer header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "terms_of_service_page": {
+        "label": "Terms of service page",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "static_pages"
+        }
+      },
+      "footer_1_column_header": {
+        "label": "Footer 1 column header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "footer_2_column_header": {
+        "label": "Footer 2 column header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "footer_3_column_header": {
+        "label": "Footer 3 column header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "upper_footer_subheader": {
+        "label": "Upper footer subheader",
         "unique": false,
         "helpText": "",
         "inputType": "textarea"
       },
-      "short_description": {
-        "label": "Short description",
+      "cookie_policy_popup_text": {
+        "label": "Cookie policy popup text",
         "unique": false,
         "helpText": "",
-        "inputType": "textarea"
-      },
-      "long_description_header": {
-        "label": "Long description header",
-        "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "inputType": "richtext"
       }
     }
   }

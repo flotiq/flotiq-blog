@@ -1,0 +1,246 @@
+{
+  "name": "pricing_page_settings",
+  "label": "Pricing page settings",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "header": {
+            "type": "string"
+          },
+          "seo_image": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "seo_title": {
+            "type": "string"
+          },
+          "subheader": {
+            "type": "string"
+          },
+          "uptime_help": {
+            "type": "string"
+          },
+          "explore_text": {
+            "type": "string"
+          },
+          "hosting_help": {
+            "type": "string"
+          },
+          "seo_keywords": {
+            "type": "string"
+          },
+          "support_help": {
+            "type": "string"
+          },
+          "bandwith_help": {
+            "type": "string"
+          },
+          "co_limit_help": {
+            "type": "string"
+          },
+          "ctd_limit_help": {
+            "type": "string"
+          },
+          "explore_header": {
+            "type": "string"
+          },
+          "file_quota_help": {
+            "type": "string"
+          },
+          "seo_description": {
+            "type": "string"
+          },
+          "scoped_docs_help": {
+            "type": "string"
+          },
+          "scoped_keys_help": {
+            "type": "string"
+          },
+          "team_members_help": {
+            "type": "string"
+          },
+          "monthly_calls_help": {
+            "type": "string"
+          },
+          "key_based_identyfication_help": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "required": [
+      "title"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "title",
+      "header",
+      "subheader",
+      "explore_header",
+      "explore_text",
+      "file_quota_help",
+      "ctd_limit_help",
+      "co_limit_help",
+      "bandwith_help",
+      "monthly_calls_help",
+      "key_based_identyfication_help",
+      "scoped_keys_help",
+      "scoped_docs_help",
+      "team_members_help",
+      "uptime_help",
+      "support_help",
+      "hosting_help",
+      "seo_title",
+      "seo_description",
+      "seo_image",
+      "seo_keywords"
+    ],
+    "propertiesConfig": {
+      "title": {
+        "label": "Title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "header": {
+        "label": "Header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "seo_image": {
+        "label": "SEO image",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "seo_title": {
+        "label": "SEO title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "subheader": {
+        "label": "Subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "uptime_help": {
+        "label": "Uptime help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "explore_text": {
+        "label": "Explore text",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "hosting_help": {
+        "label": "Hosting help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "seo_keywords": {
+        "label": "SEO keywords",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "support_help": {
+        "label": "Support help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "bandwith_help": {
+        "label": "Bandwidth help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "co_limit_help": {
+        "label": "CO limit help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "ctd_limit_help": {
+        "label": "CTD limit help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "explore_header": {
+        "label": "Explore header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "file_quota_help": {
+        "label": "File quota help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "seo_description": {
+        "label": "SEO description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "scoped_docs_help": {
+        "label": "Scoped docs help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "scoped_keys_help": {
+        "label": "Scoped keys help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "team_members_help": {
+        "label": "Team members help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "monthly_calls_help": {
+        "label": "Monthly calls help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "key_based_identyfication_help": {
+        "label": "Key based identyfication help",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      }
+    }
+  }
+}

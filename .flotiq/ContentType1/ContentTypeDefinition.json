@@ -1,6 +1,6 @@
 {
-  "name": "flotiqBlogTag",
-  "label": "Blog tag",
+  "name": "contact_sales",
+  "label": "Contact sales",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -10,52 +10,165 @@
       {
         "type": "object",
         "properties": {
-          "tag": {
-            "type": "string",
-            "pattern": "^[a-zA-Z0-9-]*$",
-            "minLength": 1
-          },
-          "tag_name": {
+          "name": {
             "type": "string",
             "minLength": 1
           },
-          "description": {
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "subject": {
+            "type": "string"
+          },
+          "job_title": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "work_email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "job_function": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "privacy_and_terms": {
+            "type": "boolean",
+            "minLength": 1
+          },
+          "expected_number_of_users": {
             "type": "string"
           }
         }
       }
     ],
     "required": [
-      "tag_name",
-      "tag"
+      "name",
+      "work_email",
+      "text",
+      "privacy_and_terms"
     ],
     "additionalProperties": false
   },
   "metaDefinition": {
     "order": [
-      "tag_name",
-      "tag",
-      "description"
+      "name",
+      "last_name",
+      "work_email",
+      "phone_number",
+      "job_title",
+      "job_function",
+      "expected_number_of_users",
+      "subject",
+      "text",
+      "files",
+      "privacy_and_terms"
     ],
     "propertiesConfig": {
-      "tag": {
-        "label": "Tag",
-        "unique": true,
-        "helpText": "Slug for tag",
-        "inputType": "text"
-      },
-      "tag_name": {
-        "label": "Tag name",
-        "unique": true,
+      "name": {
+        "label": "First Name",
+        "unique": false,
         "helpText": "",
         "inputType": "text",
         "isTitlePart": true
       },
-      "description": {
-        "label": "Description",
+      "text": {
+        "label": "Message",
         "unique": false,
         "helpText": "",
         "inputType": "textarea"
+      },
+      "files": {
+        "label": "Upload a screenshot of the issue you’re having, or the site content you'd like to modify, so we can help you more quickly.",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationMultiple": true,
+          "relationContenttype": "_media"
+        }
+      },
+      "subject": {
+        "label": "Subject",
+        "unique": false,
+        "options": [
+          "Enterprise offer",
+          "Request a Demo",
+          "Moving to headless CMS",
+          "Moving from other headless CMS",
+          "Agency",
+          "Other"
+        ],
+        "helpText": "",
+        "inputType": "select"
+      },
+      "job_title": {
+        "label": "Job title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "last_name": {
+        "label": "Last name",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "work_email": {
+        "label": "Work email",
+        "unique": false,
+        "helpText": "",
+        "inputType": "email"
+      },
+      "job_function": {
+        "label": "Job function",
+        "unique": false,
+        "options": [
+          "Digital",
+          "HR",
+          "Marketing",
+          "Sales",
+          "Security",
+          "Other"
+        ],
+        "helpText": "",
+        "inputType": "select"
+      },
+      "phone_number": {
+        "label": "Phone number",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "privacy_and_terms": {
+        "label": "By clicking Submit you agree to our <a href='/privacy-policy/'>Privacy Policy</a> and <a href='/terms-of-service/'>Terms of Service</a>.",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      },
+      "expected_number_of_users": {
+        "label": "Expected number of users",
+        "unique": false,
+        "options": [
+          "1-10",
+          "11-100",
+          "101-1000",
+          ">1000"
+        ],
+        "helpText": "",
+        "inputType": "select"
       }
     }
   }

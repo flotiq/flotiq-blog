@@ -1,0 +1,99 @@
+{
+  "name": "project",
+  "label": "Project",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-_]*$",
+            "minLength": 1
+          },
+          "gallery": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "description": {
+            "type": "string"
+          },
+          "lokalizacja": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "type": "number"
+              },
+              "lon": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    ],
+    "required": [
+      "name",
+      "slug"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "slug",
+      "description",
+      "gallery",
+      "lokalizacja"
+    ],
+    "propertiesConfig": {
+      "name": {
+        "label": "Name",
+        "unique": true,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "slug": {
+        "label": "Slug",
+        "unique": true,
+        "helpText": "Slug can only have alphanumerical characters, - and _",
+        "inputType": "text"
+      },
+      "gallery": {
+        "label": "Gallery",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationMultiple": true,
+          "relationContenttype": "_media"
+        }
+      },
+      "description": {
+        "label": "Description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "richtext"
+      },
+      "lokalizacja": {
+        "label": "lokalizacja",
+        "unique": false,
+        "helpText": "",
+        "inputType": "geo"
+      }
+    }
+  }
+}

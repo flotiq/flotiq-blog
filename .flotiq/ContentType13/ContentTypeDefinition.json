@@ -1,0 +1,172 @@
+{
+  "name": "solutions_page_settings",
+  "label": "Solutions page settings",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "smes": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "header": {
+            "type": "string"
+          },
+          "seo_image": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "seo_title": {
+            "type": "string"
+          },
+          "start_ups": {
+            "type": "string"
+          },
+          "enterprises": {
+            "type": "string"
+          },
+          "testimonial": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "for_business": {
+            "type": "string"
+          },
+          "seo_keywords": {
+            "type": "string"
+          },
+          "for_developers": {
+            "type": "string"
+          },
+          "seo_description": {
+            "type": "string"
+          },
+          "for_content_editors": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "required": [
+      "title"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "title",
+      "header",
+      "for_developers",
+      "for_content_editors",
+      "for_business",
+      "start_ups",
+      "smes",
+      "enterprises",
+      "testimonial",
+      "seo_title",
+      "seo_description",
+      "seo_image",
+      "seo_keywords"
+    ],
+    "propertiesConfig": {
+      "smes": {
+        "label": "SMEs",
+        "unique": false,
+        "helpText": "",
+        "inputType": "richtext"
+      },
+      "title": {
+        "label": "Title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "header": {
+        "label": "Header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "seo_image": {
+        "label": "SEO image",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "seo_title": {
+        "label": "SEO title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "start_ups": {
+        "label": "Start-ups",
+        "unique": false,
+        "helpText": "",
+        "inputType": "richtext"
+      },
+      "enterprises": {
+        "label": "Enterprises",
+        "unique": false,
+        "helpText": "",
+        "inputType": "richtext"
+      },
+      "testimonial": {
+        "label": "Testimonial",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "testimonials"
+        }
+      },
+      "for_business": {
+        "label": "For business",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "seo_keywords": {
+        "label": "SEO keywords",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "for_developers": {
+        "label": "For developers",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "seo_description": {
+        "label": "SEO description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "for_content_editors": {
+        "label": "For content editors",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      }
+    }
+  }
+}

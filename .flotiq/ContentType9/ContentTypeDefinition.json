@@ -1,0 +1,219 @@
+{
+  "name": "plans",
+  "label": "Plans",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "hot": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "order": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "uptime": {
+            "type": "string"
+          },
+          "hosting": {
+            "type": "string"
+          },
+          "support": {
+            "type": "string"
+          },
+          "bandwith": {
+            "type": "string"
+          },
+          "file_quota": {
+            "type": "string"
+          },
+          "button_text": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "scoped_docs": {
+            "type": "boolean"
+          },
+          "scoped_keys": {
+            "type": "string"
+          },
+          "object_types": {
+            "type": "string"
+          },
+          "team_members": {
+            "type": "string"
+          },
+          "monthly_calls": {
+            "type": "string"
+          },
+          "objects_limits": {
+            "type": "string"
+          },
+          "previous_price": {
+            "type": "number"
+          },
+          "key_base_identyfication": {
+            "type": "boolean"
+          }
+        }
+      }
+    ],
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "name",
+      "hot",
+      "price",
+      "previous_price",
+      "button_text",
+      "description",
+      "file_quota",
+      "object_types",
+      "objects_limits",
+      "bandwith",
+      "monthly_calls",
+      "key_base_identyfication",
+      "scoped_keys",
+      "scoped_docs",
+      "team_members",
+      "uptime",
+      "support",
+      "hosting",
+      "order"
+    ],
+    "propertiesConfig": {
+      "hot": {
+        "label": "Hot",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      },
+      "name": {
+        "label": "Name",
+        "unique": true,
+        "helpText": "",
+        "inputType": "text",
+        "isTitlePart": true
+      },
+      "order": {
+        "label": "Order",
+        "unique": false,
+        "helpText": "",
+        "inputType": "number"
+      },
+      "price": {
+        "label": "Price",
+        "unique": false,
+        "helpText": "",
+        "inputType": "number"
+      },
+      "uptime": {
+        "label": "Uptime",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "hosting": {
+        "label": "Hosting",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "support": {
+        "label": "Support",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "bandwith": {
+        "label": "Bandwidth",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "file_quota": {
+        "label": "File quota",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "button_text": {
+        "label": "Button text",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "description": {
+        "label": "Description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "scoped_docs": {
+        "label": "Scoped docs",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      },
+      "scoped_keys": {
+        "label": "Scoped keys",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "object_types": {
+        "label": "Object types",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "team_members": {
+        "label": "Team members",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "monthly_calls": {
+        "label": "Monthly calls",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "objects_limits": {
+        "label": "Objects limits",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "previous_price": {
+        "label": "Previous price",
+        "unique": false,
+        "helpText": "",
+        "inputType": "number"
+      },
+      "key_base_identyfication": {
+        "label": "Key base identyfication",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "name": "flotiq_main_settings",
-  "label": "Flotiq main settings",
+  "name": "flotiqBlogPost",
+  "label": "Blog post",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -10,349 +10,200 @@
       {
         "type": "object",
         "properties": {
+          "slug": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 1
+          },
           "title": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
-          "github_url": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "discord_url": {
-            "type": "string"
-          },
-          "twitter_url": {
-            "type": "string"
-          },
-          "youtube_url": {
-            "type": "string"
-          },
-          "facebook_url": {
-            "type": "string"
-          },
-          "linkedin_url": {
-            "type": "string"
-          },
-          "app_store_url": {
-            "type": "string"
-          },
-          "footer_1_column": {
+          "author": {
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string"
-                },
-                "text": {
-                  "type": "string"
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 1
+          },
+          "status": {
+            "type": "string",
+            "default": "draft",
+            "minLength": 1
+          },
+          "content": {
+            "type": "object",
+            "minLength": 1,
+            "properties": {
+              "time": {
+                "type": "number"
+              },
+              "blocks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "type": {
+                      "type": "string"
+                    }
+                  }
                 }
+              },
+              "version": {
+                "type": "string"
               }
-            }
+            },
+            "additionalProperties": false
           },
-          "footer_2_column": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string"
-                },
-                "text": {
-                  "type": "string"
-                }
-              }
-            }
+          "excerpt": {
+            "type": "string",
+            "minLength": 1
           },
-          "footer_3_column": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string"
-                },
-                "text": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "google_play_url": {
-            "type": "string"
-          },
-          "cookie_policy_page": {
+          "headerImage": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DataSource"
             },
             "minItems": 0
           },
-          "privacy_policy_page": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataSource"
-            },
-            "minItems": 0
+          "publish_date": {
+            "type": "string",
+            "pattern": "^$|^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))T?(([0-1]?[0-9]|2[0-3]):[0-5][0-9])?$"
           },
-          "upper_footer_header": {
-            "type": "string"
-          },
-          "terms_of_service_page": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataSource"
-            },
-            "minItems": 0
-          },
-          "footer_1_column_header": {
-            "type": "string"
-          },
-          "footer_2_column_header": {
-            "type": "string"
-          },
-          "footer_3_column_header": {
-            "type": "string"
-          },
-          "upper_footer_subheader": {
-            "type": "string"
-          },
-          "cookie_policy_popup_text": {
-            "type": "string"
+          "metaDescription": {
+            "type": "string",
+            "minLength": 1
           }
         }
       }
     ],
-    "required": [],
+    "required": [
+      "slug",
+      "title",
+      "status",
+      "excerpt",
+      "metaDescription",
+      "content"
+    ],
     "additionalProperties": false
   },
   "metaDefinition": {
     "order": [
+      "slug",
       "title",
-      "description",
-      "google_play_url",
-      "app_store_url",
-      "github_url",
-      "discord_url",
-      "youtube_url",
-      "twitter_url",
-      "facebook_url",
-      "linkedin_url",
-      "privacy_policy_page",
-      "terms_of_service_page",
-      "cookie_policy_page",
-      "upper_footer_header",
-      "upper_footer_subheader",
-      "footer_1_column_header",
-      "footer_1_column",
-      "footer_2_column_header",
-      "footer_2_column",
-      "footer_3_column_header",
-      "footer_3_column",
-      "cookie_policy_popup_text"
+      "status",
+      "publish_date",
+      "excerpt",
+      "metaDescription",
+      "content",
+      "headerImage",
+      "tags",
+      "author"
     ],
     "propertiesConfig": {
+      "slug": {
+        "label": "Slug",
+        "unique": true,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "tags": {
+        "label": "Tags",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationMultiple": true,
+          "relationContenttype": "flotiqBlogTag"
+        }
+      },
       "title": {
         "label": "Title",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
+        "helpText": "Title of the page - Google displays 50-60 characters.",
+        "inputType": "text",
+        "isTitlePart": true
       },
-      "github_url": {
-        "label": "Github url",
+      "author": {
+        "label": "Author",
         "unique": false,
         "helpText": "",
-        "inputType": "text"
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "flotiqBlogAuthor"
+        }
       },
-      "description": {
-        "label": "Description",
+      "status": {
+        "label": "Status",
         "unique": false,
+        "options": [
+          "draft",
+          "public"
+        ],
         "helpText": "",
+        "inputType": "select"
+      },
+      "content": {
+        "label": "Content",
+        "unique": false,
+        "helpText": "If you wish to add code with specific language highlight add ```language name``` as the first line of the block, it will not be displayed",
+        "inputType": "block",
+        "blockEditorTypes": [
+          "header",
+          "list",
+          "image",
+          "youtubeEmbed",
+          "quote",
+          "warning",
+          "delimiter",
+          "code",
+          "table"
+        ]
+      },
+      "excerpt": {
+        "label": "Excerpt",
+        "unique": false,
+        "helpText": "Article excerpt shown on blog post lists",
         "inputType": "textarea"
       },
-      "discord_url": {
-        "label": "Discord url",
+      "headerImage": {
+        "label": "Header Image",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "twitter_url": {
-        "label": "Twitter url",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "youtube_url": {
-        "label": "Youtube url",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "facebook_url": {
-        "label": "Facebook url",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "linkedin_url": {
-        "label": "Linkedin url",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "app_store_url": {
-        "label": "App store url",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "footer_1_column": {
-        "items": {
-          "order": [
-            "text",
-            "url"
-          ],
-          "propertiesConfig": {
-            "url": {
-              "label": "Url",
-              "unique": false,
-              "helpText": "",
-              "inputType": "text"
-            },
-            "text": {
-              "label": "Text",
-              "unique": false,
-              "helpText": "",
-              "inputType": "text"
-            }
-          }
-        },
-        "label": "Footer 1 column",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
-      },
-      "footer_2_column": {
-        "items": {
-          "order": [
-            "text",
-            "url"
-          ],
-          "propertiesConfig": {
-            "url": {
-              "label": "Url",
-              "unique": false,
-              "helpText": "",
-              "inputType": "text"
-            },
-            "text": {
-              "label": "Text",
-              "unique": false,
-              "helpText": "",
-              "inputType": "text"
-            }
-          }
-        },
-        "label": "Footer 2 column",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
-      },
-      "footer_3_column": {
-        "items": {
-          "order": [
-            "text",
-            "url"
-          ],
-          "propertiesConfig": {
-            "url": {
-              "label": "Url",
-              "unique": false,
-              "helpText": "",
-              "inputType": "text"
-            },
-            "text": {
-              "label": "Text",
-              "unique": false,
-              "helpText": "",
-              "inputType": "text"
-            }
-          }
-        },
-        "label": "Footer 3 column",
-        "unique": false,
-        "helpText": "",
-        "inputType": "object"
-      },
-      "google_play_url": {
-        "label": "Google play url",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "cookie_policy_page": {
-        "label": "Cookie policy page",
-        "unique": false,
-        "helpText": "",
+        "helpText": "Recommended size 1920x1080 (16:9)",
         "inputType": "datasource",
         "validation": {
-          "relationContenttype": "static_pages"
+          "relationContenttype": "_media"
         }
       },
-      "privacy_policy_page": {
-        "label": "Privacy policy page",
+      "publish_date": {
+        "label": "Publish date",
         "unique": false,
         "helpText": "",
-        "inputType": "datasource",
-        "validation": {
-          "relationContenttype": "static_pages"
-        }
+        "inputType": "dateTime"
       },
-      "upper_footer_header": {
-        "label": "Upper footer header",
+      "metaDescription": {
+        "label": "Meta Description",
         "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "terms_of_service_page": {
-        "label": "Terms of service page",
-        "unique": false,
-        "helpText": "",
-        "inputType": "datasource",
-        "validation": {
-          "relationContenttype": "static_pages"
-        }
-      },
-      "footer_1_column_header": {
-        "label": "Footer 1 column header",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "footer_2_column_header": {
-        "label": "Footer 2 column header",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "footer_3_column_header": {
-        "label": "Footer 3 column header",
-        "unique": false,
-        "helpText": "",
-        "inputType": "text"
-      },
-      "upper_footer_subheader": {
-        "label": "Upper footer subheader",
-        "unique": false,
-        "helpText": "",
+        "helpText": "Page description - shown by Google in search results, limited to 160 chars.",
         "inputType": "textarea"
-      },
-      "cookie_policy_popup_text": {
-        "label": "Cookie policy popup text",
-        "unique": false,
-        "helpText": "",
-        "inputType": "richtext"
       }
     }
   }

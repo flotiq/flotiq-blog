@@ -1,0 +1,619 @@
+{
+  "name": "main_page_settings",
+  "label": "Main Page Settings",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "seo_image": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "seo_title": {
+            "type": "string"
+          },
+          "subheader": {
+            "type": "string",
+            "minLength": 1
+          },
+          "about_text": {
+            "type": "string"
+          },
+          "about_header": {
+            "type": "string"
+          },
+          "header_logos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
+          "seo_keywords": {
+            "type": "string"
+          },
+          "create_header": {
+            "type": "string"
+          },
+          "features_header": {
+            "type": "string"
+          },
+          "seo_description": {
+            "type": "string"
+          },
+          "community_header": {
+            "type": "string"
+          },
+          "create_subheader": {
+            "type": "string"
+          },
+          "solutions_header": {
+            "type": "string"
+          },
+          "website_examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "language": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "community_channels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "e_commerce_example": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "language": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "features_subheader": {
+            "type": "string"
+          },
+          "community_subheader": {
+            "type": "string"
+          },
+          "devs_solutions_text": {
+            "type": "string"
+          },
+          "mobile_apps_example": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "language": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "solutions_subheader": {
+            "type": "string"
+          },
+          "testimonials_header": {
+            "type": "string"
+          },
+          "devs_solutions_logos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "logo": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "business_solutions_text": {
+            "type": "string"
+          },
+          "business_solutions_logos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "logo": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "content_managers_solutions_text": {
+            "type": "string"
+          },
+          "content_managers_solutions_logos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "logo": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  },
+                  "minItems": 0
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "required": [
+      "subheader"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "subheader",
+      "header_logos",
+      "create_header",
+      "create_subheader",
+      "website_examples",
+      "e_commerce_example",
+      "mobile_apps_example",
+      "about_header",
+      "about_text",
+      "features_header",
+      "features_subheader",
+      "solutions_header",
+      "solutions_subheader",
+      "devs_solutions_text",
+      "devs_solutions_logos",
+      "content_managers_solutions_text",
+      "content_managers_solutions_logos",
+      "business_solutions_text",
+      "business_solutions_logos",
+      "testimonials_header",
+      "community_header",
+      "community_subheader",
+      "community_channels",
+      "seo_title",
+      "seo_description",
+      "seo_image",
+      "seo_keywords"
+    ],
+    "propertiesConfig": {
+      "seo_image": {
+        "label": "SEO image",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
+      "seo_title": {
+        "label": "SEO title",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "subheader": {
+        "label": "Subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "about_text": {
+        "label": "About text",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "about_header": {
+        "label": "About header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "header_logos": {
+        "label": "Header logos",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationMultiple": true,
+          "relationContenttype": "_media"
+        }
+      },
+      "seo_keywords": {
+        "label": "SEO keywords",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "create_header": {
+        "label": "Create header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "features_header": {
+        "label": "Features header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "seo_description": {
+        "label": "SEO description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "community_header": {
+        "label": "Community header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "create_subheader": {
+        "label": "Create subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "solutions_header": {
+        "label": "Solutions header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "website_examples": {
+        "items": {
+          "order": [
+            "language",
+            "code",
+            "image"
+          ],
+          "propertiesConfig": {
+            "code": {
+              "label": "Code",
+              "unique": false,
+              "helpText": "",
+              "inputType": "textMarkdown"
+            },
+            "image": {
+              "label": "Image",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "language": {
+              "label": "Language",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Website examples",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "community_channels": {
+        "items": {
+          "order": [
+            "icon",
+            "name",
+            "url"
+          ],
+          "propertiesConfig": {
+            "url": {
+              "label": "Url",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "icon": {
+              "label": "Icon",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "name": {
+              "label": "Name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Community channels",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "e_commerce_example": {
+        "items": {
+          "order": [
+            "language",
+            "code",
+            "image"
+          ],
+          "propertiesConfig": {
+            "code": {
+              "label": "Code",
+              "unique": false,
+              "helpText": "",
+              "inputType": "textMarkdown"
+            },
+            "image": {
+              "label": "Image",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "language": {
+              "label": "Language",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "E-commerce example",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "features_subheader": {
+        "label": "Features subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "richtext"
+      },
+      "community_subheader": {
+        "label": "Community subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "devs_solutions_text": {
+        "label": "Devs solutions text",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "mobile_apps_example": {
+        "items": {
+          "order": [
+            "language",
+            "code",
+            "image"
+          ],
+          "propertiesConfig": {
+            "code": {
+              "label": "Code",
+              "unique": false,
+              "helpText": "",
+              "inputType": "textMarkdown"
+            },
+            "image": {
+              "label": "Image",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "language": {
+              "label": "Language",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Mobile apps example",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "solutions_subheader": {
+        "label": "Solutions subheader",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "testimonials_header": {
+        "label": "Testimonials header",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "devs_solutions_logos": {
+        "items": {
+          "order": [
+            "logo",
+            "name"
+          ],
+          "propertiesConfig": {
+            "logo": {
+              "label": "Logo",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "name": {
+              "label": "Name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Devs solutions logos",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "business_solutions_text": {
+        "label": "Business solutions text",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "business_solutions_logos": {
+        "items": {
+          "order": [
+            "logo",
+            "name"
+          ],
+          "propertiesConfig": {
+            "logo": {
+              "label": "Logo",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "name": {
+              "label": "Name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Business solutions logos",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      },
+      "content_managers_solutions_text": {
+        "label": "Content managers solutions text",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "content_managers_solutions_logos": {
+        "items": {
+          "order": [
+            "logo",
+            "name"
+          ],
+          "propertiesConfig": {
+            "logo": {
+              "label": "Logo",
+              "unique": false,
+              "helpText": "",
+              "inputType": "datasource",
+              "validation": {
+                "relationContenttype": "_media"
+              }
+            },
+            "name": {
+              "label": "Name",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "Content managers solutions logos",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
+      }
+    }
+  }
+}

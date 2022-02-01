@@ -1,6 +1,6 @@
 {
-  "name": "faq",
-  "label": "FAQ",
+  "name": "flotiqBlogTag",
+  "label": "Blog tag",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -10,41 +10,52 @@
       {
         "type": "object",
         "properties": {
-          "answer": {
+          "tag": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]*$",
+            "minLength": 1
+          },
+          "tag_name": {
             "type": "string",
             "minLength": 1
           },
-          "question": {
-            "type": "string",
-            "minLength": 1
+          "description": {
+            "type": "string"
           }
         }
       }
     ],
     "required": [
-      "question",
-      "answer"
+      "tag_name",
+      "tag"
     ],
     "additionalProperties": false
   },
   "metaDefinition": {
     "order": [
-      "question",
-      "answer"
+      "tag_name",
+      "tag",
+      "description"
     ],
     "propertiesConfig": {
-      "answer": {
-        "label": "Answer",
-        "unique": false,
-        "helpText": "",
-        "inputType": "richtext"
+      "tag": {
+        "label": "Tag",
+        "unique": true,
+        "helpText": "Slug for tag",
+        "inputType": "text"
       },
-      "question": {
-        "label": "Question",
+      "tag_name": {
+        "label": "Tag name",
         "unique": true,
         "helpText": "",
         "inputType": "text",
         "isTitlePart": true
+      },
+      "description": {
+        "label": "Description",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
       }
     }
   }

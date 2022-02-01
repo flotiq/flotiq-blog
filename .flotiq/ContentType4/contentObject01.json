@@ -1,20 +1,71 @@
 {
-  "id": "features-1",
-  "name": "Easy-to-use content editing",
-  "order": 1,
-  "main_icon": [
+  "id": "flotiq_main_settings-1",
+  "title": "Flotiq",
+  "github_url": "https://github.com/flotiq",
+  "description": "Better flow for devs and marketers",
+  "discord_url": "https://discord.com/invite/FwXcHnX",
+  "twitter_url": "https://twitter.com/flotiq",
+  "youtube_url": "https://www.youtube.com/channel/UC4wpV-D9mIt1JjN_g_iyXXw",
+  "facebook_url": "https://www.facebook.com/flotiq",
+  "linkedin_url": "https://www.linkedin.com/company/flotiq/",
+  "app_store_url": "https://apps.apple.com/app/flotiq-mobile-expo/id1505331246",
+  "footer_1_column": [
     {
-      "type": "internal",
-      "dataUrl": "/api/v1/content/_media/_media-5e39725973d92"
+      "url": "https://flotiq.com/features",
+      "text": "Features"
+    },
+    {
+      "url": "https://flotiq.com/#solutions",
+      "text": "Solutions"
+    },
+    {
+      "url": "https://flotiq.com/pricing",
+      "text": "Pricing"
     }
   ],
-  "menu_icon": [
+  "footer_2_column": [
     {
-      "type": "internal",
-      "dataUrl": "/api/v1/content/_media/_media-5e39725973d91"
+      "url": "https://flotiq.com/blog/",
+      "text": "Blog"
+    },
+    {
+      "url": "https://flotiq.com/docs/",
+      "text": "Docs"
+    },
+    {
+      "url": "https://flotiq.com/docs/faq/",
+      "text": "FAQ"
     }
   ],
-  "long_description": "Effortlessly create content, using familiar tools that let you format text, place images, and structure content on the site. Built-in content validation lets you avoid mistakes.",
-  "short_description": "User-friendly editing workflow",
-  "long_description_header": "User-friendly editing workflow"
+  "footer_3_column": [
+    {
+      "url": "https://flotiq.com/docs/Deep-Dives/wordpress-import/",
+      "text": "Wordpress to Flotiq"
+    }
+  ],
+  "google_play_url": "https://play.google.com/store/apps/details?id=com.flotiqmobiledemo",
+  "cookie_policy_page": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/static_pages/static_pages-3"
+    }
+  ],
+  "privacy_policy_page": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/static_pages/static_pages-1"
+    }
+  ],
+  "upper_footer_header": "Start working. Together",
+  "terms_of_service_page": [
+    {
+      "type": "internal",
+      "dataUrl": "/api/v1/content/static_pages/static_pages-2"
+    }
+  ],
+  "footer_1_column_header": "Flotiq",
+  "footer_2_column_header": "Resources",
+  "footer_3_column_header": "Data flow",
+  "upper_footer_subheader": "Reach common flow which just gets things done.",
+  "cookie_policy_popup_text": "<p>By using our website you agree to our <a href=\"/cookie-policy\">cookie policy</a>.</p>\n"
 }

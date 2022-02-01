@@ -1,6 +1,6 @@
 {
-  "name": "features",
-  "label": "Features",
+  "name": "testimonials",
+  "label": "Testimonials",
   "schemaDefinition": {
     "type": "object",
     "allOf": [
@@ -10,71 +10,65 @@
       {
         "type": "object",
         "properties": {
+          "logo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataSource"
+            },
+            "minItems": 0
+          },
           "name": {
-            "type": "string",
-            "minLength": 1
+            "type": "string"
           },
-          "order": {
-            "type": "number",
-            "default": 1
-          },
-          "main_icon": {
+          "person": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/DataSource"
             },
             "minItems": 0
           },
-          "menu_icon": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DataSource"
-            },
-            "minItems": 0
-          },
-          "long_description": {
+          "company": {
             "type": "string"
           },
-          "short_description": {
+          "testimonial": {
             "type": "string"
           },
-          "long_description_header": {
+          "linkedin_profile": {
             "type": "string"
           }
         }
       }
     ],
-    "required": [
-      "name"
-    ],
+    "required": [],
     "additionalProperties": false
   },
   "metaDefinition": {
     "order": [
+      "testimonial",
       "name",
-      "main_icon",
-      "menu_icon",
-      "short_description",
-      "long_description_header",
-      "long_description",
-      "order"
+      "company",
+      "logo",
+      "person",
+      "linkedin_profile"
     ],
     "propertiesConfig": {
+      "logo": {
+        "label": "Logo",
+        "unique": false,
+        "helpText": "",
+        "inputType": "datasource",
+        "validation": {
+          "relationContenttype": "_media"
+        }
+      },
       "name": {
         "label": "Name",
-        "unique": true,
-        "helpText": "",
-        "inputType": "text",
-        "isTitlePart": true
-      },
-      "order": {
-        "label": "Order",
         "unique": false,
         "helpText": "",
-        "inputType": "number"
+        "inputType": "text"
       },
-      "main_icon": {
-        "label": "Main icon",
+      "person": {
+        "label": "Person",
         "unique": false,
         "helpText": "",
         "inputType": "datasource",
@@ -82,32 +76,23 @@
           "relationContenttype": "_media"
         }
       },
-      "menu_icon": {
-        "label": "Menu icon",
+      "company": {
+        "label": "Company",
         "unique": false,
         "helpText": "",
-        "inputType": "datasource",
-        "validation": {
-          "relationContenttype": "_media"
-        }
+        "inputType": "text"
       },
-      "long_description": {
-        "label": "Long description",
+      "testimonial": {
+        "label": "Testimonial",
         "unique": false,
         "helpText": "",
         "inputType": "textarea"
       },
-      "short_description": {
-        "label": "Short description",
+      "linkedin_profile": {
+        "label": "LinkedIn profile",
         "unique": false,
         "helpText": "",
-        "inputType": "textarea"
-      },
-      "long_description_header": {
-        "label": "Long description header",
-        "unique": false,
-        "helpText": "",
-        "inputType": "textarea"
+        "inputType": "text"
       }
     }
   }

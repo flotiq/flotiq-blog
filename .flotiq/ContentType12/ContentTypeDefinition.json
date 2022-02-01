@@ -1,0 +1,113 @@
+{
+  "name": "request_a_demo",
+  "label": "Request a demo",
+  "schemaDefinition": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "#/components/schemas/AbstractContentTypeSchemaDefinition"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "work_email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "privacy_and_terms": {
+            "type": "boolean",
+            "minLength": 1
+          }
+        }
+      }
+    ],
+    "required": [
+      "work_email",
+      "privacy_and_terms"
+    ],
+    "additionalProperties": false
+  },
+  "metaDefinition": {
+    "order": [
+      "work_email",
+      "first_name",
+      "last_name",
+      "phone_number",
+      "company",
+      "subject",
+      "text",
+      "privacy_and_terms"
+    ],
+    "propertiesConfig": {
+      "text": {
+        "label": "Message",
+        "unique": false,
+        "helpText": "",
+        "inputType": "textarea"
+      },
+      "company": {
+        "label": "Company",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "subject": {
+        "label": "Subject",
+        "unique": false,
+        "options": [
+          "Request a demo"
+        ],
+        "helpText": "",
+        "inputType": "select"
+      },
+      "last_name": {
+        "label": "Last name",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "first_name": {
+        "label": "First name",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "work_email": {
+        "label": "Work email",
+        "unique": false,
+        "helpText": "",
+        "inputType": "email"
+      },
+      "phone_number": {
+        "label": "Phone number",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "privacy_and_terms": {
+        "label": "By clicking REQUEST A DEMO you agree to our <a href='/privacy-policy/'>Privacy Policy</a> and <a href='/terms-of-service/'>Terms of Service</a>.",
+        "unique": false,
+        "helpText": "",
+        "inputType": "checkbox"
+      }
+    }
+  }
+}
