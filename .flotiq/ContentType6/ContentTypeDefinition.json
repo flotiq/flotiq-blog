@@ -16,6 +16,9 @@
           "github_url": {
             "type": "string"
           },
+          "reddit_url": {
+            "type": "string"
+          },
           "description": {
             "type": "string"
           },
@@ -139,6 +142,7 @@
       "twitter_url",
       "facebook_url",
       "linkedin_url",
+      "reddit_url",
       "privacy_policy_page",
       "terms_of_service_page",
       "cookie_policy_page",
@@ -161,6 +165,12 @@
       },
       "github_url": {
         "label": "Github url",
+        "unique": false,
+        "helpText": "",
+        "inputType": "text"
+      },
+      "reddit_url": {
+        "label": "Reddit url",
         "unique": false,
         "helpText": "",
         "inputType": "text"
