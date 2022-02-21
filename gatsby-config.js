@@ -40,7 +40,7 @@ module.exports = {
                 authToken: process.env.FLOTIQ_API_KEY,
                 timeout: 30000,
                 downloadMediaFile: true,
-                forceReload: true,
+                forceReload: false,
                 includeTypes: [
                     '_media',
                     'flotiq_main_settings',
