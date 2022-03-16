@@ -52,6 +52,11 @@
   bottom: 20px;
   left: 0;
   right: 0;
+  z-index: 1;
+  #mc_embed_signup {
+    margin-left: 20px;
+    margin-right: -20px;
+  }
 }
 
 .related {

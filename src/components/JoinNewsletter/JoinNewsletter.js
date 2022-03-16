@@ -11,7 +11,7 @@ const JoinNewsletter = ({ addMargin = false }) => {
     const isBrowser = () => typeof window !== 'undefined';
     const nextWeek = () => {
         const today = new Date();
-        return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+        return new Date(today.getTime() + (7 * 24 * 60 * 60 * 1000));
     };
 
     const dismiss = () => {
