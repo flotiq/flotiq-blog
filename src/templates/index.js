@@ -25,9 +25,16 @@ const IndexPage = ({ data, pageContext }) => {
                 </title>
                 <meta
                     name="description"
-                    content="The Flotiq's blog helps developers and content editors to
-                    simplify workflow and create effortless experience"
+                    content={'The Flotiq\'s blog helps developers and content editors to simplify workflow and create '
+                        + `effortless experience${pageContext.currentPage > 1
+                            ? ` - Page ${pageContext.currentPage}` : ''}`}
                 />
+                {pageContext.currentPage > 1 && (
+                    <link rel="prev" href={`https://flotiq.com/blog/${pageContext.currentPage - 1}`} />
+                )}
+                {pageContext.currentPage + 1 < pageContext.numPages && (
+                    <link rel="next" href={`https://flotiq.com/blog/${pageContext.currentPage + 1}`} />
+                )}
                 <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
                 <meta property="og:type" content="website" />
                 <meta
