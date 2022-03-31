@@ -11,6 +11,7 @@ import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 
 const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
+    const siteMeta = data.site.siteMetadata;
     const skip = pageContext.currentPage === 1 ? 3 : 0;
     const [url, setUrl] = useState('');
     useEffect(() => {
@@ -30,10 +31,16 @@ const IndexPage = ({ data, pageContext }) => {
                             ? ` - Page ${pageContext.currentPage}` : ''}`}
                 />
                 {pageContext.currentPage > 1 && (
-                    <link rel="prev" href={`https://flotiq.com/blog/${pageContext.currentPage - 1}`} />
+                    <link
+                        rel="prev"
+                        href={`${siteMeta.siteUrl}${siteMeta.pathPrefix}/${pageContext.currentPage - 1}`}
+                    />
                 )}
                 {pageContext.currentPage + 1 < pageContext.numPages && (
-                    <link rel="next" href={`https://flotiq.com/blog/${pageContext.currentPage + 1}`} />
+                    <link
+                        rel="next"
+                        href={`${siteMeta.siteUrl}${siteMeta.pathPrefix}/${pageContext.currentPage + 1}`}
+                    />
                 )}
                 <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
                 <meta property="og:type" content="website" />
@@ -177,6 +184,12 @@ export const pageQuery = graphql`
                 description
                 facebook_url
                 twitter_url
+            }
+        }
+        site {
+            siteMetadata {
+                siteUrl
+                pathPrefix
             }
         }
     }
