@@ -186,6 +186,14 @@ const CustomNavbar = () => {
                             >
                                 FAQ
                             </a>
+                            <a
+                                href="https://flotiq.productlift.dev"
+                                className="dropdown-item"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Roadmap
+                            </a>
                         </NavDropdown>
                     </Nav>
                     <Nav className="d-none d-md-flex d-lg-flex">
