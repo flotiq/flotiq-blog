@@ -75,7 +75,7 @@ const PostPage = ({ data, pageContext }) => {
                 {(post.headerImage) && (
                     <meta
                         property="og:image"
-                        content={(origin ?? 'https://flotiq.com/blog/') + post.headerImage[0].localFile.publicURL}
+                        content={(origin ?? data.site.siteMetadata.siteUrl) + post.headerImage[0].localFile.publicURL}
                     />
                 )}
                 <meta property="article:published_time" content={post.publish_date} />
@@ -94,7 +94,7 @@ const PostPage = ({ data, pageContext }) => {
                 {(post.headerImage) && (
                     <meta
                         name="twitter:image"
-                        content={(origin ?? 'https://flotiq.com/blog/') + post.headerImage[0].localFile.publicURL}
+                        content={(origin ?? data.site.siteMetadata.siteUrl) + post.headerImage[0].localFile.publicURL}
                     />
                 )}
                 <meta name="twitter:label1" content="Written by" />
