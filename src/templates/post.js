@@ -25,10 +25,8 @@ const PostPage = ({ data, pageContext }) => {
     const [progressHeight, setProgressHeight] = useState(0);
     const progress = useRef(0);
     const [url, setUrl] = useState('');
-    const [origin, setOrigin] = useState('');
     useEffect(() => {
         setUrl(window.location.href.split('/?')[0]);
-        setOrigin(window.location.origin);
     }, []);
 
     useEffect(() => {
