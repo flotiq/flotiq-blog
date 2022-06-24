@@ -21,7 +21,7 @@ Screenshot
 
     ```bash
    npm install -g flotiq-cli
-   flotiq start [flotiqApiKey] [projectName] https://github.com/flotiq/flotiq-blog.git
+   flotiq start [projectName] https://github.com/flotiq/flotiq-blog.git [flotiqApiKey]
     ```
     * `flotiqApKey` - Read and write API key to your Flotiq account
     * `projectName` - project name or project path (if you wish to start or import data from the current directory - use `.`)
@@ -38,7 +38,7 @@ Screenshot
    If you wish to import example posts, tags and authors to your account, before running `gatsby develop` run:
 
     ```sh
-    flotiq import [flotiqApiKey] .
+    flotiq import . [flotiqApiKey]
     ```
 
    It will add 4 images, 1 tag, 1 author and 3 posts to your Flotiq account.
