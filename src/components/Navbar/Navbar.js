@@ -194,6 +194,14 @@ const CustomNavbar = () => {
                             >
                                 Roadmap
                             </a>
+                            <a
+                                href="https://flotiq.com/starters/"
+                                className="dropdown-item"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Starters
+                            </a>
                         </NavDropdown>
                     </Nav>
                     <Nav className="d-none d-md-flex d-lg-flex">
