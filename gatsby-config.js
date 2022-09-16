@@ -43,6 +43,7 @@ module.exports = {
                 forceReload: false,
                 includeTypes: [
                     '_media',
+                    '_tag',
                     'flotiq_main_settings',
                     'static_pages',
                     'flotiqBlogAuthor',
