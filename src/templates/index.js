@@ -33,7 +33,7 @@ const IndexPage = ({ data, pageContext }) => {
                 {pageContext.currentPage > 1 && (
                     <link
                         rel="prev"
-                        href={`${siteMeta.siteUrl}${siteMeta.pathPrefix}/${pageContext.currentPage - 1}`}
+                        href={pageContext.currentPage > 2 ? `${siteMeta.siteUrl}${siteMeta.pathPrefix}/${pageContext.currentPage - 1}` : `${siteMeta.siteUrl}${siteMeta.pathPrefix}/`}
                     />
                 )}
                 {pageContext.currentPage + 1 < pageContext.numPages && (
