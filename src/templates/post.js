@@ -168,7 +168,7 @@ const PostPage = ({ data, pageContext }) => {
                                 <SharePostButtons />
                             </div>
                         </Col>
-                        <Col>
+                        <Col lg={10} md={10} sm={0} xs={0}>
                             <Content
                                 blocks={post.content.blocks}
                                 quoteProps={{ variant: 'light' }}
