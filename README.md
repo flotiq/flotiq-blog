@@ -54,7 +54,7 @@ Screenshot
     ```
     FLOTIQ_API_KEY=YOUR FLOTIQ API KEY
     SCOPED_FLOTIQ_API_KEY=YOUR SCOPED FOR POSTS SEARCH FLOTIQ API KEY
-    GA_TRACKING_ID=YOUR GA TRACKING KEY
+    GA_MEASUREMENT_ID=YOUR GA4 MEASUREMENT ID
     ```
    
     `FLOTIQ_API_KEY` should be the Read-only Application key and `SCOPED_FLOTIQ_API_KEY` should be Scoped User key with read-only access to blog posts, media, tags and authors.
