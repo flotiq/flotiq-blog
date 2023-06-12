@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import FlotiqLinkButton from '../FlotiqLinkButton/FlotiqLinkButton';
 
 import Logo from '../../assets/Logo3.svg';
 import Logo2 from '../../assets/Logo4.svg';
@@ -92,11 +93,7 @@ const CustomNavbar = () => {
                 </Navbar.Brand>
                 <div className="mobile-header-right">
                     <Nav className="d-inline d-md-none">
-                        <Button click={() => window.open('https://editor.flotiq.com/register.html')}>
-                            <Nav.Item>
-                                Go to Flotiq
-                            </Nav.Item>
-                        </Button>
+                       <FlotiqLinkButton/>
                         <Nav.Item>
                             <form
                                 action={`${data.site.siteMetadata.pathPrefix}/search/`}
@@ -224,22 +221,11 @@ const CustomNavbar = () => {
                                 </Button>
                             </form>
                         </Nav.Item>
-                        <Button click={() => window.open('https://editor.flotiq.com/register.html')}>
-                            <Nav.Item>
-                                Go to Flotiq
-                            </Nav.Item>
-                        </Button>
+                        <FlotiqLinkButton/>
                     </Nav>
                     <div className="d-md-none d-lg-none bottom-mobile-nav">
                         <div>
-                            <Button
-                                click={() => window.open('https://editor.flotiq.com/register.html')}
-                                additionalClasses={['btn-mobile-big']}
-                            >
-                                <Nav.Item>
-                                    Go to Flotiq
-                                </Nav.Item>
-                            </Button>
+                            <FlotiqLinkButton additionalClasses={['btn-mobile-big']} />
                         </div>
                     </div>
                 </Navbar.Collapse>
