@@ -1,6 +1,3 @@
-@import "../../style/variables";
-@import "../../style/typography";
-
 .socials-item {
   width: 36px;
   height: 36px;
@@ -24,22 +21,22 @@
   }
   &.linkedin-share-button {
     em {
-      background-image: url('../../assets/linkedin.svg');
+      background-image: url('../assets/linkedin.svg');
     }
   }
   &.facebook-share-button {
     em {
-      background-image: url('../../assets/facebook.svg');
+      background-image: url('../assets/facebook.svg');
     }
   }
   &.twitter-share-button {
     em {
-      background-image: url('../../assets/twitter.svg');
+      background-image: url('../assets/twitter.svg');
     }
   }
   &.link-share-button {
     em {
-      background-image: url('../../assets/link.svg');
+      background-image: url('../assets/link.svg');
       display: flex;
       align-items: center;
       justify-content: center;

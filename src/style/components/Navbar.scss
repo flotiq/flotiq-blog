@@ -1,9 +1,3 @@
-@import '../../style/variables';
-@import '../../style/typography';
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-
 .navbar {
   padding: 1.5em 2.5rem;
   max-width: 1920px;
@@ -26,7 +20,7 @@
       background: $dark-blue;
       .navbar-toggler {
         &-icon {
-          background: url("../../assets/close.svg") center right no-repeat;
+          background: url("../assets/close.svg") center right no-repeat;
           background-size: 16px 16px;
         }
       }
@@ -109,7 +103,7 @@
     border: none;
     &-icon {
       transition: all .5s;
-      background: url("../../assets/menu.svg") center right no-repeat;
+      background: url("../assets/menu.svg") center right no-repeat;
       background-size: 20px 16px;
     }
   }
@@ -129,7 +123,7 @@
 
 .dropdown-toggle::after {
   border: none;
-  background: url("../../assets/arrow-down.svg") top left no-repeat;
+  background: url("../assets/arrow-down.svg") top left no-repeat;
   background-size: cover;
   width: 10px;
   height: 10px;
@@ -220,7 +214,7 @@
 .search-open-button span {
   width: 20px;
   height: 20px;
-  content: url('../../assets/search.svg');
+  content: url('../assets/search.svg');
 }
 
 .open {
@@ -231,7 +225,7 @@
     right: 1rem;
   }
   .search-open-button span {
-    content: url('../../assets/search-white.svg');
+    content: url('../assets/search-white.svg');
   }
 }
 .bottom-mobile-nav {
@@ -328,7 +322,7 @@
     &:after {
       content: '';
       border: none;
-      background: url("../../assets/arrow-down.svg") top left no-repeat;
+      background: url("../assets/arrow-down.svg") top left no-repeat;
       background-size: cover;
       width: 10px;
       height: 10px;

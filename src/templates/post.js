@@ -1,24 +1,21 @@
+import { Content } from 'flotiq-components-react';
 import { graphql, Link } from 'gatsby';
 import { CommentCount, Disqus } from 'gatsby-plugin-disqus';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import highlight from 'highlight.js';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
 import Sygnet from '../assets/sygnet.svg';
-
-import Navbar from '../components/Navbar/Navbar';
-import CookieInfo from '../components/CookieInfo/CookieInfo';
-import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
+import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import PostCard from '../components/PostCard/PostCard';
 import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
 import TagPill from '../components/TagPill/TagPill';
 import { getReadingTime } from '../helpers/readingTime';
-import Footer from '../sections/Footer/Footer';
-import TextContent from '../sections/TextContent/TextContent';
+import Layout from '../layouts/layout';
 
 const PostPage = ({ data, pageContext }) => {
     const post = data.flotiqBlogPost;
@@ -28,10 +25,8 @@ const PostPage = ({ data, pageContext }) => {
     const [progressHeight, setProgressHeight] = useState(0);
     const progress = useRef(0);
     const [url, setUrl] = useState('');
-    const [origin, setOrigin] = useState('');
     useEffect(() => {
         setUrl(window.location.href.split('/?')[0]);
-        setOrigin(window.location.origin);
     }, []);
 
     useEffect(() => {
@@ -61,7 +56,7 @@ const PostPage = ({ data, pageContext }) => {
         title: post.title,
     };
     return (
-        <main>
+        <Layout>
             <Helmet>
                 <html lang="en" />
                 <title>
@@ -78,7 +73,7 @@ const PostPage = ({ data, pageContext }) => {
                 {(post.headerImage) && (
                     <meta
                         property="og:image"
-                        content={origin + post.headerImage[0].localFile.publicURL}
+                        content={data.site.siteMetadata.siteUrl + post.headerImage[0].localFile.publicURL}
                     />
                 )}
                 <meta property="article:published_time" content={post.publish_date} />
@@ -97,7 +92,7 @@ const PostPage = ({ data, pageContext }) => {
                 {(post.headerImage) && (
                     <meta
                         name="twitter:image"
-                        content={origin + post.headerImage[0].localFile.publicURL}
+                        content={data.site.siteMetadata.siteUrl + post.headerImage[0].localFile.publicURL}
                     />
                 )}
                 <meta name="twitter:label1" content="Written by" />
@@ -120,7 +115,6 @@ const PostPage = ({ data, pageContext }) => {
                 {post.headerImage[0] && <meta property="og:image:width" content={post.headerImage[0].width} />}
                 {post.headerImage[0] && <meta property="og:image:height" content={post.headerImage[0].height} />}
             </Helmet>
-            <Navbar />
             <div ref={progress}>
                 <Container
                     fluid
@@ -128,7 +122,7 @@ const PostPage = ({ data, pageContext }) => {
                     style={{ opacity: visible ? 1 : 0, height: `${progressHeight}px` }}
                 >
                     <div className="post-reading-content">
-                        <img src={Sygnet} alt="Flotiq" />
+                        <Link to="/"><img src={Sygnet} alt="Flotiq" /></Link>
                         <div>
                             <p><strong>{post.title}</strong></p>
                             <span className="reading-time">{getReadingTime(post.content.blocks)}</span>
@@ -156,7 +150,9 @@ const PostPage = ({ data, pageContext }) => {
                         <span>
                             By
                             {' '}
-                            <Link to={`/author/${post.author[0].slug}`}>{post.author[0].name}</Link>
+                            <Link to={`/author/${post.author[0].slug}`}>
+                                {post.author[0].name}
+                            </Link>
                         </span>
                     </div>
                     <div className="pt-3 pb-4 pb-sm-5">
@@ -172,8 +168,13 @@ const PostPage = ({ data, pageContext }) => {
                                 <SharePostButtons />
                             </div>
                         </Col>
-                        <Col>
-                            <TextContent content={post.content.blocks} />
+                        <Col lg={10} md={10} sm={0} xs={0}>
+                            <Content
+                                blocks={post.content.blocks}
+                                quoteProps={{ variant: 'light' }}
+                                tableProps={{ additionalClasses: ['custom-table'] }}
+                                highlight={highlight}
+                            />
                         </Col>
                         <Col lg={1} md={1} sm={0} xs={0} />
                     </Row>
@@ -204,28 +205,37 @@ const PostPage = ({ data, pageContext }) => {
                             <strong>
                                 Posts related to
                                 {' '}
-                                <a href={`/tags/${post.tags[0].tag}`}>{post.tags[0].tag_name}</a>
+                                <Link to={`/tags/${post.tags[0].tag}`}>
+                                    {post.tags[0].tag_name}
+                                </Link>
                             </strong>
-                            <a href={`/tags/${post.tags[0].tag}`} className="see-all">See all</a>
+                            <Link
+                                to={`/tags/${post.tags[0].tag}`}
+                                className="see-all"
+                            >
+                                See all
+                            </Link>
                         </h4>
                         <div className="related-posts">
                             <Row xs={1} sm={1} md={3} lg={3}>
                                 {data.relatedPostsFromTags.nodes.map((relatedPost) => (
-                                    <Col key={relatedPost.id}><PostCard post={relatedPost} /></Col>
+                                    <Col key={relatedPost.id}>
+                                        <PostCard post={relatedPost} pathPrefix={data.site.siteMetadata.pathPrefix} />
+                                    </Col>
                                 ))}
                             </Row>
                         </div>
                     </>
                 )}
-                <DiscoverMoreTopics tags={pageContext.tags} primaryTag={pageContext.primaryTag} />
+                <DiscoverMoreTopics
+                    tags={pageContext.tags}
+                    primaryTag={pageContext.primaryTag}
+                />
             </Container>
-            <Footer />
-            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
             <div className="join-newsletter-floating">
                 <JoinNewsletter />
             </div>
-        </main>
+        </Layout>
     );
 };
 

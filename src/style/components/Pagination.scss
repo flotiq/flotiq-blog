@@ -1,8 +1,3 @@
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
-@import '../../style/variables';
-
 .pagination {
   justify-content: center;
   .visually-hidden {
@@ -20,20 +15,20 @@
     color: $gray-3;
   }
   .page-item:first-child .page-link {
-    content: url('../../assets/text-arrow.svg');
+    content: url('../assets/text-arrow.svg');
     transform: rotate(180deg);
     margin: 0 30px;
   }
   .page-item:last-child .page-link {
-    content: url('../../assets/text-arrow.svg');
+    content: url('../assets/text-arrow.svg');
     margin: 0 30px;
   }
   .page-item:first-child.disabled .page-link {
-    content: url('../../assets/text-arrow-gray.svg');
+    content: url('../assets/text-arrow-gray.svg');
     transform: rotate(180deg);
   }
   .page-item:last-child.disabled .page-link {
-    content: url('../../assets/text-arrow-gray.svg');
+    content: url('../assets/text-arrow-gray.svg');
   }
 
   @include media-breakpoint-down(sm) {
