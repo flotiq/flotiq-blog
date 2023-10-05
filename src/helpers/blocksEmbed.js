@@ -2,7 +2,7 @@ import RegisterBanner from '../components/RegisterBanner/RegisterBanner';
 import React from 'react';
 
 /**
- * map with available shortcodes and their components
+ * object with available shortcodes as keys and their components
  * @type {{register_banner: JSX.Element}}
  */
 const blocksMap = {
