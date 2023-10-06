@@ -10,7 +10,11 @@ export const getReadingTime = (content) => {
         if (block.data.message) {
             numOfWords += block.data.message.replace('&nbsp;', ' ').split(' ').length;
         }
-        if (block.data.text) {
+        if (
+            (block.data.text
+            || block.data.text instanceof String)
+            && typeof block.data.text === 'string'
+        ) {
             numOfWords += block.data.text.replace('&nbsp;', ' ').split(' ').length;
         }
         if (block.data.title) {
@@ -34,7 +38,9 @@ export const getReadingTime = (content) => {
         if (block.data.content) {
             block.data.content.forEach((row) => {
                 row.forEach((column) => {
-                    numOfWords += column.replace('&nbsp;', ' ').split(' ').length;
+                    if (block.data.title) {
+                        numOfWords += column.replace('&nbsp;', ' ').split(' ').length;
+                    }
                 });
             });
         }
