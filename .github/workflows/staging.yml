@@ -35,19 +35,19 @@ jobs:
         npm install -g gatsby-cli@4.25.0
         gatsby clean
         gatsby build --prefix-paths
-        rm -rf public/blog-staging
-        mkdir -p public/blog-staging
-        find public/ -maxdepth 1 -mindepth 1 -not -name blog-staging -exec mv '{}' public/blog-staging/ \;
+        rm -rf public/staging-blog
+        mkdir -p public/staging-blog
+        find public/ -maxdepth 1 -mindepth 1 -not -name staging-blog -exec mv '{}' public/staging-blog/ \;
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
-        wrangler init --site flotiq-blog-staging
+        wrangler init --site flotiq-staging-blog
         sed -i 's+account_id = '\'\''+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml
         sed -i 's+bucket = ""+bucket = "public"+g' wrangler.toml
         sed -i 's+zone_id = '\'\''+zone_id = '"'"$ZONE_ID"'"'+g' wrangler.toml
         sed -i 's+workers_dev = true++g' wrangler.toml
         echo "[env.production]" >> wrangler.toml
-        echo "route = 'flotiq.com/blog-staging/*'" >> wrangler.toml
+        echo "route = 'flotiq.com/staging-blog/*'" >> wrangler.toml
         echo 'zone_id = '"'"$ZONE_ID"'" >> wrangler.toml
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
@@ -55,8 +55,8 @@ jobs:
         cp worker-index.js workers-site/index.js
         wrangler publish --env=production
         # Refresh sitemap in Google and Bing
-        curl "https://www.google.com/webmasters/sitemaps/ping?sitemap=https://flotiq.com/blog-staging/sitemap/sitemap-index.xml"
-        curl "https://www.bing.com/webmaster/ping.aspx?siteMap=https://flotiq.com/blog-staging/sitemap/sitemap-index.xml"
+        curl "https://www.google.com/webmasters/sitemaps/ping?sitemap=https://flotiq.com/staging-blog/sitemap/sitemap-index.xml"
+        curl "https://www.bing.com/webmaster/ping.aspx?siteMap=https://flotiq.com/staging-blog/sitemap/sitemap-index.xml"
       shell: bash
       env:
         API_TOKEN: ${{ secrets.API_TOKEN }}
