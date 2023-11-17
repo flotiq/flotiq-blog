@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    environment: staging
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -38,6 +39,8 @@ jobs:
         rm -rf public/staging-blog
         mkdir -p public/staging-blog
         find public/ -maxdepth 1 -mindepth 1 -not -name staging-blog -exec mv '{}' public/staging-blog/ \;
+      env:
+        PATH_PREFIX ${{PATH_PREFIX}}
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
