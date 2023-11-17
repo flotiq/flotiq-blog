@@ -40,7 +40,7 @@ jobs:
         mkdir -p public/blog
         find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
       env:
-        PATH_PREFIX ${{PATH_PREFIX}}
+        PATH_PREFIX: ${{PATH_PREFIX}}
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
