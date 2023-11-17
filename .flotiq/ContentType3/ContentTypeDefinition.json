@@ -19,7 +19,7 @@
             "items": {
               "$ref": "#/components/schemas/DataSource"
             },
-            "minItems": 0
+            "minItems": 1
           },
           "title": {
             "type": "string",
@@ -30,7 +30,7 @@
             "items": {
               "$ref": "#/components/schemas/DataSource"
             },
-            "minItems": 0
+            "minItems": 1
           },
           "status": {
             "type": "string",
@@ -101,7 +101,9 @@
       "status",
       "excerpt",
       "metaDescription",
-      "content"
+      "content",
+      "tags",
+      "author"
     ],
     "additionalProperties": false
   },
@@ -187,7 +189,7 @@
       "headerImage": {
         "label": "Header Image",
         "unique": false,
-        "helpText": "",
+        "helpText": "Recommended size 1920x1080 (16:9)",
         "inputType": "datasource",
         "validation": {
           "relationContenttype": "_media"

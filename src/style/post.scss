@@ -52,6 +52,11 @@
   bottom: 20px;
   left: 0;
   right: 0;
+  z-index: 1;
+  #mc_embed_signup {
+    margin-left: 20px;
+    margin-right: -20px;
+  }
 }
 
 .related {
@@ -140,3 +145,13 @@
     }
   }
 }
+
+// Highlight.js
+.hljs-tag  {
+  .hljs-name {
+    color: #81a1c1;
+  }
+  .hljs-attr {
+    color: #8fbcbb;
+  }
+} 

@@ -1,0 +1,43 @@
+.register-banner{
+  background-color: #050038;
+  height: 230px;
+  border-radius: 10px;
+  padding: 30px 39px 30px 39px;
+
+  @include media-breakpoint-down(lg) {
+    padding: 20px 29px 20px 29px;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 15px 24px 15px 24px;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding: 10px 19px 10px 19px;
+  }
+
+  h2{
+    font-size:28px;
+    color: white;
+
+    @include media-breakpoint-down(lg) {
+      font-size:15px;
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size:13px;
+    }
+  }
+
+  img{
+    height: 160px;
+
+    @include media-breakpoint-down(lg) {
+      height: 140px;
+    }
+
+    @include media-breakpoint-down(md) {
+      width: 50%;
+    }
+  }
+}

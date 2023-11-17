@@ -1,8 +1,4 @@
-@import '../../style/variables';
-@import '../../style/typography';
-
 .post-card {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,6 +26,12 @@
     }
     .post-card-description {
       padding-right: 0;
+    }
+  }
+  a.post-card-link {
+    color: unset;
+    &:hover {
+      text-decoration: none;
     }
   }
 }

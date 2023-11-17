@@ -3,24 +3,22 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
-import Navbar from '../components/Navbar/Navbar';
-import CookieInfo from '../components/CookieInfo/CookieInfo';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
-import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 import Pagination from '../components/Pagination/Pagination';
 import PostCard from '../components/PostCard/PostCard';
-import Footer from '../sections/Footer/Footer';
+import Layout from '../layouts/layout';
+import FlotiqPlatform from '../sections/FlotiqPlatform/FlotiqPlatform';
 
 const IndexPage = ({ data, pageContext }) => {
     const posts = data.allFlotiqBlogPost.nodes;
+    const siteMeta = data.site.siteMetadata;
     const skip = pageContext.currentPage === 1 ? 3 : 0;
     const [url, setUrl] = useState('');
     useEffect(() => {
         setUrl(window.location.href.split('/?')[0]);
     }, []);
     return (
-        <main>
+        <Layout>
             <Helmet>
                 <html lang="en" />
                 <title>
@@ -28,9 +26,22 @@ const IndexPage = ({ data, pageContext }) => {
                 </title>
                 <meta
                     name="description"
-                    content="The Flotiq's blog helps developers and content editors to
-                    simplify workflow and create effortless experience"
+                    content={'The Flotiq\'s blog helps developers and content editors to simplify workflow and create '
+                        + `effortless experience${pageContext.currentPage > 1
+                            ? ` - Page ${pageContext.currentPage}` : ''}`}
                 />
+                {pageContext.currentPage > 1 && (
+                    <link
+                        rel="prev"
+                        href={pageContext.currentPage > 2 ? `${siteMeta.siteUrl}${siteMeta.pathPrefix}/${pageContext.currentPage - 1}` : `${siteMeta.siteUrl}${siteMeta.pathPrefix}/`}
+                    />
+                )}
+                {pageContext.currentPage + 1 < pageContext.numPages && (
+                    <link
+                        rel="next"
+                        href={`${siteMeta.siteUrl}${siteMeta.pathPrefix}/${pageContext.currentPage + 1}`}
+                    />
+                )}
                 <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
                 <meta property="og:type" content="website" />
                 <meta
@@ -62,7 +73,6 @@ const IndexPage = ({ data, pageContext }) => {
                     />
                 )}
             </Helmet>
-            <Navbar />
             <Container fluid className="container-fluid__bigger-padding mt-5">
                 {pageContext.currentPage === 1 && (
                     <>
@@ -76,13 +86,19 @@ const IndexPage = ({ data, pageContext }) => {
                                 />
                             </Col>
                             <Col>
-                                <PostCard post={posts[1]} key={posts[1].id} additionalClass="post-card__no-height" />
-                                <PostCard post={posts[2]} key={posts[2].id} additionalClass="post-card__no-height" />
+                                <PostCard
+                                    post={posts[1]}
+                                    key={posts[1].id}
+                                    additionalClass="post-card__no-height"
+                                />
+                                <PostCard
+                                    post={posts[2]}
+                                    key={posts[2].id}
+                                    additionalClass="post-card__no-height"
+                                />
                             </Col>
                         </Row>
-                        <Row className="pt-5 pb-5 mb-5">
-                            <JoinNewsletter />
-                        </Row>
+                        <JoinNewsletter addMargin />
                     </>
                 )}
                 <Row xs={1} sm={1} md={2} lg={3}>
@@ -93,17 +109,12 @@ const IndexPage = ({ data, pageContext }) => {
                     ) : null))}
                 </Row>
                 {pageContext.currentPage !== 1 && (
-                    <Row className="pt-5 pb-5 mb-5">
-                        <JoinNewsletter />
-                    </Row>
+                    <JoinNewsletter addMargin />
                 )}
                 <Pagination page={pageContext.currentPage} numOfPages={pageContext.numPages} />
             </Container>
             <FlotiqPlatform />
-            <Footer />
-            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
-        </main>
+        </Layout>
     );
 };
 
@@ -173,6 +184,12 @@ export const pageQuery = graphql`
                 description
                 facebook_url
                 twitter_url
+            }
+        }
+        site {
+            siteMetadata {
+                siteUrl
+                pathPrefix
             }
         }
     }

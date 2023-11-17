@@ -1,4 +1,4 @@
-name: Staging
+name: Deploy staging
 # Controls when the action will run. Triggers the workflow on push
 # events but only for the master branch
 on:
@@ -18,42 +18,45 @@ jobs:
         echo FLOTIQ_BASE_URL=https://api.flotiq.com >> .env.production
         echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env.production
         echo SCOPED_FLOTIQ_API_KEY="$SCOPED_FLOTIQ_API_KEY" >> .env.production
-        echo GA_TRACKING_ID="$GA_TRACKING_ID" >> .env.production
+        echo GA_MEASUREMENT_ID="$GA_MEASUREMENT_ID" >> .env.production
       shell: bash
       env:
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
         SCOPED_FLOTIQ_API_KEY: ${{ secrets.SCOPED_FLOTIQ_API_KEY }}
-        GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+        GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
 
     - uses: actions/setup-node@v1
       with:
         node-version: '14'
-    - run: npm install
+    - run: yarn install
 
     - name: Gatsby
       run: |
-        npm install -g gatsby-cli
+        npm install -g gatsby-cli@4.25.0
         gatsby clean
         gatsby build --prefix-paths
-        rm -rf public/blog
-        mkdir -p public/blog
-        find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
-
+        rm -rf public/blog-staging
+        mkdir -p public/blog-staging
+        find public/ -maxdepth 1 -mindepth 1 -not -name blog-staging -exec mv '{}' public/blog-staging/ \;
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
-        wrangler init --site flotiq-blog
+        wrangler init --site flotiq-blog-staging
         sed -i 's+account_id = '\'\''+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml
         sed -i 's+bucket = ""+bucket = "public"+g' wrangler.toml
         sed -i 's+zone_id = '\'\''+zone_id = '"'"$ZONE_ID"'"'+g' wrangler.toml
         sed -i 's+workers_dev = true++g' wrangler.toml
-        echo "[env.staging]" >> wrangler.toml
-        echo "route = 'staging.flotiq-blog-production.cdwv.workers.dev'" >> wrangler.toml
+        echo "[env.production]" >> wrangler.toml
+        echo "route = 'flotiq.com/blog-staging/*'" >> wrangler.toml
         echo 'zone_id = '"'"$ZONE_ID"'" >> wrangler.toml
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
         cat wrangler.toml
-        wrangler publish --env=staging
+        cp worker-index.js workers-site/index.js
+        wrangler publish --env=production
+        # Refresh sitemap in Google and Bing
+        curl "https://www.google.com/webmasters/sitemaps/ping?sitemap=https://flotiq.com/blog-staging/sitemap/sitemap-index.xml"
+        curl "https://www.bing.com/webmaster/ping.aspx?siteMap=https://flotiq.com/blog-staging/sitemap/sitemap-index.xml"
       shell: bash
       env:
         API_TOKEN: ${{ secrets.API_TOKEN }}

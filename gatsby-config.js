@@ -15,23 +15,22 @@ module.exports = {
     plugins: [
         'gatsby-plugin-sass',
         {
-            resolve: 'gatsby-plugin-google-analytics',
-            options: {
-                trackingId: process.env.GA_TRACKING_ID || '',
-                // Puts tracking script in the head instead of the body
-                head: true,
-                // IP anonymization for GDPR compliance
-                anonymize: true,
-                // Disable analytics for users with `Do Not Track` enabled
-                respectDNT: true,
-                // Avoids sending pageview hits from custom paths
-                exclude: ['/preview/**'],
-                // Specifies what percentage of users should be tracked
-                sampleRate: 100,
-                // Determines how often site speed tracking beacons will be sent
-                siteSpeedSampleRate: 10,
-            },
-        },
+	  resolve: 'gatsby-plugin-google-gtag',
+		options: {
+		    trackingIds: [
+			process.env.GA_MEASUREMENT_ID, // GA Measurement
+		    ],
+		    gtagConfig: {
+			optimize_id: 'OPT_CONTAINER_ID',
+			anonymize_ip: true,
+			cookie_expires: 0,
+		    },
+		    pluginConfig: {
+			head: true,
+			respectDNT: true,
+		    },
+		},
+         },
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-sitemap',
         {
@@ -40,9 +39,10 @@ module.exports = {
                 authToken: process.env.FLOTIQ_API_KEY,
                 timeout: 30000,
                 downloadMediaFile: true,
-                forceReload: true,
+                forceReload: false,
                 includeTypes: [
                     '_media',
+                    '_tag',
                     'flotiq_main_settings',
                     'static_pages',
                     'flotiqBlogAuthor',

@@ -1,5 +1,3 @@
-import './CookieInfo.scss';
-
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
@@ -36,7 +34,7 @@ const CookieInfo = ({ cookieText }) => {
                         />
                     </button>
                 </div>
-            ) : ''
+            ) : null
     );
 };
 

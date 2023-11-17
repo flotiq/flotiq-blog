@@ -1,26 +1,25 @@
-import { graphql, Link } from 'gatsby';
-import { CommentCount, Disqus } from 'gatsby-plugin-disqus';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import {Content} from 'flotiq-components-react';
+import {graphql, Link} from 'gatsby';
+import {CommentCount, Disqus} from 'gatsby-plugin-disqus';
+import {GatsbyImage, getImage} from 'gatsby-plugin-image';
+import highlight from 'highlight.js';
 import moment from 'moment';
-import React, { useEffect, useRef, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { Helmet } from 'react-helmet';
+import React, {useEffect, useRef, useState} from 'react';
+import {Col, Container, Row} from 'react-bootstrap';
+import {Helmet} from 'react-helmet';
 
 import Sygnet from '../assets/sygnet.svg';
-
-import Navbar from '../components/Navbar/Navbar';
-import CookieInfo from '../components/CookieInfo/CookieInfo';
-import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
-import MadeWithFlotiq from '../components/MadeWithFlotiq/MadeWithFlotiq';
+import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import PostCard from '../components/PostCard/PostCard';
 import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
 import TagPill from '../components/TagPill/TagPill';
-import { getReadingTime } from '../helpers/readingTime';
-import Footer from '../sections/Footer/Footer';
-import TextContent from '../sections/TextContent/TextContent';
+import {getReadingTime} from '../helpers/readingTime';
+import Layout from '../layouts/layout';
+import blocksEmbed from "../helpers/blocksEmbed";
 
-const PostPage = ({ data, pageContext }) => {
+
+const PostPage = ({data, pageContext}) => {
     const post = data.flotiqBlogPost;
     const [offset, setOffset] = useState(0);
     const [visible, setVisible] = useState(false);
@@ -28,10 +27,8 @@ const PostPage = ({ data, pageContext }) => {
     const [progressHeight, setProgressHeight] = useState(0);
     const progress = useRef(0);
     const [url, setUrl] = useState('');
-    const [origin, setOrigin] = useState('');
     useEffect(() => {
         setUrl(window.location.href.split('/?')[0]);
-        setOrigin(window.location.origin);
     }, []);
 
     useEffect(() => {
@@ -60,90 +57,93 @@ const PostPage = ({ data, pageContext }) => {
         identifier: post.slug,
         title: post.title,
     };
+
+
+
+
     return (
-        <main>
+        <Layout>
             <Helmet>
-                <html lang="en" />
+                <html lang="en"/>
                 <title>
                     {post.title}
                     {' - '}
                     {data.allFlotiqMainSettings.nodes[0].title}
                 </title>
-                <meta name="description" content={post.metaDescription} />
-                <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title} />
-                <meta property="og:type" content="article" />
-                <meta property="og:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
-                <meta property="og:description" content={post.metaDescription} />
-                <meta property="og:url" content={url} />
+                <meta name="description" content={post.metaDescription}/>
+                <meta property="og:site_name" content={data.allFlotiqMainSettings.nodes[0].title}/>
+                <meta property="og:type" content="article"/>
+                <meta property="og:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`}/>
+                <meta property="og:description" content={post.metaDescription}/>
+                <meta property="og:url" content={url}/>
                 {(post.headerImage) && (
                     <meta
                         property="og:image"
-                        content={origin + post.headerImage[0].localFile.publicURL}
+                        content={data.site.siteMetadata.siteUrl + post.headerImage[0].localFile.publicURL}
                     />
                 )}
-                <meta property="article:published_time" content={post.publish_date} />
+                <meta property="article:published_time" content={post.publish_date}/>
                 {post.tags && (
-                    <meta property="article:tag" content={post.tags[0].tag_name} />
+                    <meta property="article:tag" content={post.tags[0].tag_name}/>
                 )}
 
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
-                    <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
+                    <meta property="article:publisher" content={data.allFlotiqMainSettings.nodes[0].facebook_url}/>)}
                 {data.allFlotiqMainSettings.nodes[0].facebook_url && (
-                    <meta property="article:author" content={data.allFlotiqMainSettings.nodes[0].facebook_url} />)}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`} />
-                <meta name="twitter:description" content={post.metaDescription} />
-                <meta name="twitter:url" content={url} />
+                    <meta property="article:author" content={data.allFlotiqMainSettings.nodes[0].facebook_url}/>)}
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`}/>
+                <meta name="twitter:description" content={post.metaDescription}/>
+                <meta name="twitter:url" content={url}/>
                 {(post.headerImage) && (
                     <meta
                         name="twitter:image"
-                        content={origin + post.headerImage[0].localFile.publicURL}
+                        content={data.site.siteMetadata.siteUrl + post.headerImage[0].localFile.publicURL}
                     />
                 )}
-                <meta name="twitter:label1" content="Written by" />
-                <meta name="twitter:data1" content={post.author[0].name} />
-                <meta name="twitter:label2" content="Filed under" />
-                {post.tags && <meta name="twitter:data2" content={post.tags[0].tag} />}
+                <meta name="twitter:label1" content="Written by"/>
+                <meta name="twitter:data1" content={post.author[0].name}/>
+                <meta name="twitter:label2" content="Filed under"/>
+                {post.tags && <meta name="twitter:data2" content={post.tags[0].tag}/>}
                 {data.allFlotiqMainSettings.nodes[0].twitter_url
-                && (
-                    <meta
-                        name="twitter:site"
-                        content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
-                    />
-                )}
+                    && (
+                        <meta
+                            name="twitter:site"
+                            content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
+                        />
+                    )}
                 {data.allFlotiqMainSettings.nodes[0].twitter_url && (
                     <meta
                         name="twitter:creator"
                         content={`@${data.allFlotiqMainSettings.nodes[0].twitter_url.split('https://twitter.com/')[1]}`}
                     />
                 )}
-                {post.headerImage[0] && <meta property="og:image:width" content={post.headerImage[0].width} />}
-                {post.headerImage[0] && <meta property="og:image:height" content={post.headerImage[0].height} />}
+                {post.headerImage[0] && <meta property="og:image:width" content={post.headerImage[0].width}/>}
+                {post.headerImage[0] && <meta property="og:image:height" content={post.headerImage[0].height}/>}
             </Helmet>
-            <Navbar />
             <div ref={progress}>
                 <Container
                     fluid
                     className="post-reading"
-                    style={{ opacity: visible ? 1 : 0, height: `${progressHeight}px` }}
+                    style={{opacity: visible ? 1 : 0, height: `${progressHeight}px`}}
                 >
                     <div className="post-reading-content">
-                        <img src={Sygnet} alt="Flotiq" />
+                        <Link to="/"><img src={Sygnet} alt="Flotiq"/></Link>
                         <div>
                             <p><strong>{post.title}</strong></p>
                             <span className="reading-time">{getReadingTime(post.content.blocks)}</span>
                         </div>
                     </div>
-                    <div className="post-reading-progress" style={{ width: `${progressBar}%` }} />
+                    <div className="post-reading-progress" style={{width: `${progressBar}%`}}/>
                 </Container>
                 <Container>
                     <p className="text-center post-date pt-4 pb-4">
-                        {moment(post.publish_date).format('DD MMM YYYY') }
+                        {moment(post.publish_date).format('DD MMM YYYY')}
                     </p>
                     <h1 className="text-center px-0 px-sm-3 px-md-5">{post.title}</h1>
                     <div className="text-center py-4">
                         {post.tags.map((tag) => (
-                            <TagPill tag={tag} key={tag.id} />))}
+                            <TagPill tag={tag} key={tag.id}/>))}
                     </div>
                     <h4 className="text-center pb-4 pb-sm-5">{post.excerpt}</h4>
                     <div className="author-box pb-4 pb-sm-5">
@@ -156,7 +156,9 @@ const PostPage = ({ data, pageContext }) => {
                         <span>
                             By
                             {' '}
-                            <Link to={`/author/${post.author[0].slug}`}>{post.author[0].name}</Link>
+                            <Link to={`/author/${post.author[0].slug}`}>
+                                {post.author[0].name}
+                            </Link>
                         </span>
                     </div>
                     <div className="pt-3 pb-4 pb-sm-5">
@@ -169,32 +171,37 @@ const PostPage = ({ data, pageContext }) => {
                     <Row>
                         <Col lg={1} md={1} sm={0} xs={0}>
                             <div className="floating-socials d-none d-md-block">
-                                <SharePostButtons />
+                                <SharePostButtons/>
                             </div>
                         </Col>
-                        <Col>
-                            <TextContent content={post.content.blocks} />
+                        <Col lg={10} md={10} sm={0} xs={0}>
+                            <Content
+                                blocks={blocksEmbed(post.content.blocks)}
+                                quoteProps={{variant: 'light'}}
+                                tableProps={{additionalClasses: ['custom-table']}}
+                                highlight={highlight}
+                            />
                         </Col>
-                        <Col lg={1} md={1} sm={0} xs={0} />
+                        <Col lg={1} md={1} sm={0} xs={0}/>
                     </Row>
                 </Container>
             </div>
             <Container>
                 <Row>
-                    <Col lg={1} md={1} sm={0} xs={0} />
+                    <Col lg={1} md={1} sm={0} xs={0}/>
                     <Col>
                         <div className="mt-5 mb-3 text-center">
                             <p className="link-s bottom-socials-title">Share this article</p>
                             <div className="bottom-socials">
-                                <SharePostButtons />
+                                <SharePostButtons/>
                             </div>
                         </div>
                         <div className="my-5 pb-5">
-                            <CommentCount config={disqusConfig} placeholder="..." />
-                            <Disqus config={disqusConfig} />
+                            <CommentCount config={disqusConfig} placeholder="..."/>
+                            <Disqus config={disqusConfig}/>
                         </div>
                     </Col>
-                    <Col lg={1} md={1} sm={0} xs={0} />
+                    <Col lg={1} md={1} sm={0} xs={0}/>
                 </Row>
             </Container>
             <Container fluid className="container-fluid__bigger-padding">
@@ -204,28 +211,37 @@ const PostPage = ({ data, pageContext }) => {
                             <strong>
                                 Posts related to
                                 {' '}
-                                <a href={`/tags/${post.tags[0].tag}`}>{post.tags[0].tag_name}</a>
+                                <Link to={`/tags/${post.tags[0].tag}`}>
+                                    {post.tags[0].tag_name}
+                                </Link>
                             </strong>
-                            <a href={`/tags/${post.tags[0].tag}`} className="see-all">See all</a>
+                            <Link
+                                to={`/tags/${post.tags[0].tag}`}
+                                className="see-all"
+                            >
+                                See all
+                            </Link>
                         </h4>
                         <div className="related-posts">
                             <Row xs={1} sm={1} md={3} lg={3}>
                                 {data.relatedPostsFromTags.nodes.map((relatedPost) => (
-                                    <Col key={relatedPost.id}><PostCard post={relatedPost} /></Col>
+                                    <Col key={relatedPost.id}>
+                                        <PostCard post={relatedPost} pathPrefix={data.site.siteMetadata.pathPrefix}/>
+                                    </Col>
                                 ))}
                             </Row>
                         </div>
                     </>
                 )}
-                <DiscoverMoreTopics tags={pageContext.tags} primaryTag={pageContext.primaryTag} />
+                <DiscoverMoreTopics
+                    tags={pageContext.tags}
+                    primaryTag={pageContext.primaryTag}
+                />
             </Container>
-            <Footer />
-            <CookieInfo cookieText={data.allFlotiqMainSettings.nodes[0].cookie_policy_popup_text} />
-            <MadeWithFlotiq />
             <div className="join-newsletter-floating">
-                <JoinNewsletter />
+                <JoinNewsletter/>
             </div>
-        </main>
+        </Layout>
     );
 };
 

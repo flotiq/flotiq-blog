@@ -1,0 +1,34 @@
+.custom-table {
+  border: none !important;
+  border-bottom: 1px solid rgba($gray-3, .2) !important;
+  overflow-x: scroll;
+  table-layout: fixed;
+  width: 100%;
+
+  @include media-breakpoint-down(sm) {
+    max-width: 100%;
+    display: block;
+    &::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+  }
+
+  thead {
+    th {
+      background: $primary-2;
+      color: $white;
+      @include font-weight(semi-bold);
+      border: 2px solid $white !important;
+      @include media-breakpoint-down(sm) {
+        @include font-weight(medium);
+      }
+      vertical-align: top;
+    }
+  }
+
+  td {
+    border: none !important;
+    border-top: 1px solid rgba($gray-3, .2) !important;
+  }
+}
