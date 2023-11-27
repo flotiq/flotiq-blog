@@ -41,6 +41,8 @@ jobs:
         chmod +rx ./remove_gatsby_script.sh
         ./remove_gatsby_script.sh
         find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
+        chmod +rx ./remove_gatsby_script.sh
+        ./remove_gatsby_script.sh
       env:
         PATH_PREFIX: ${{ vars.PATH_PREFIX }}
     - name: Cloudflare
