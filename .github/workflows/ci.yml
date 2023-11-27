@@ -37,11 +37,24 @@ jobs:
         gatsby build --prefix-paths
         rm -rf public/blog
         mkdir -p public/blog
+        chmod +x ./remove_gatsby_script.sh
         ./remove_gatsby_script.sh
+        ./sh remove_gatsby_script.sh
         find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
+        script:
+          - ./sh remove_gatsby_script.sh
+      script:
+          - ./sh remove_gatsby_script.sh
 #        find public/blog -name index.html -exec sed -i 's\window.pagePath="\window.pagePath="/blog\g' {} \;
     - name: Remove gatsby script custom bash
         run: bash ./remove_gatsby_script.sh
+        run: ./remove_gatsby_script.sh
+        run: sh remove_gatsby_script.sh
+        steps:
+          - checkout
+          - run:
+            name: Remove gatsby-script-loader
+            command: bash remove_gatsby_script.sh
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
@@ -66,3 +79,11 @@ jobs:
         API_TOKEN: ${{ secrets.API_TOKEN }}
         ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
         ZONE_ID: ${{ secrets.ZONE_ID }}
+    remove-gatsby-loader-script:
+      steps:
+        - checkout
+        - run:
+          name: remove-gatsby-loader
+          command: bash ./remove_gatsby_script.sh
+          command: ./remove_gatsby_script.sh
+          command: ./sh remove_gatsby_script.sh
