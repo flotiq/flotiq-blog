@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    environment: production
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
     - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -38,7 +39,10 @@ jobs:
         rm -rf public/blog
         mkdir -p public/blog
         find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
-#        find public/blog -name index.html -exec sed -i 's\window.pagePath="\window.pagePath="/blog\g' {} \;
+        chmod +rx ./remove_gatsby_script.sh
+        ./remove_gatsby_script.sh
+      env:
+        PATH_PREFIX: ${{ vars.PATH_PREFIX }}
     - name: Cloudflare
       run: |
         npm install -g @cloudflare/wrangler
