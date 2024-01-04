@@ -7,7 +7,7 @@ Flotiq Blog
 
 This is a [Gatsby](https://gatsbyjs.org) starter project for a blog with tags and authors. It's configured to pull recipe data from [Flotiq](https://flotiq.com) and can be easily deployed to your cloud hosting - Heroku, Netlify, Gatsby Cloud, etc.
 
-See it live on [Flotiq/Blog](https://flotiq.com/blog/)
+See it live on [Flotiq/Blog](https://blog.flotiq.com/)
 
 Screenshot
 
