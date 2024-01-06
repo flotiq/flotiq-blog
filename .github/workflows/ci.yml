@@ -48,7 +48,7 @@ jobs:
         sed -i 's+zone_id = '\'\''+zone_id = '"'"$ZONE_ID"'"'+g' wrangler.toml
         sed -i 's+workers_dev = true++g' wrangler.toml
         echo "[env.production]" >> wrangler.toml
-        echo "route = 'flotiq.com/blog/*'" >> wrangler.toml
+        # echo "route = 'flotiq.com/blog/*'" >> wrangler.toml
         # echo "routes = [{ pattern = 'blog.flotiq.com', custom_domain = true }]" >> wrangler.toml
         mkdir -p /home/runner/.wrangler/config/
         echo api_token = '"'"$API_TOKEN"'"' > /home/runner/.wrangler/config/default.toml
