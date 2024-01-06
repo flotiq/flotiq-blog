@@ -41,8 +41,8 @@ jobs:
 #        find public/blog -name index.html -exec sed -i 's\window.pagePath="\window.pagePath="/blog\g' {} \;
     - name: Cloudflare
       run: |
-        npm install -g wrangler
-        wrangler init flotiq-blog
+        npm install -g @cloudflare/wrangler
+        wrangler init --site flotiq-blog
         sed -i 's+account_id = '\'\''+account_id = '"'"$ACCOUNT_ID"'"'+g' wrangler.toml
         sed -i 's+bucket = ""+bucket = "public"+g' wrangler.toml
         sed -i 's+zone_id = '\'\''+zone_id = '"'"$ZONE_ID"'"'+g' wrangler.toml
