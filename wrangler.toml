@@ -1,0 +1,9 @@
+name = "flotiq-blog"
+main = "worker-index.js"
+compatibility_date = "2024-01-09"
+
+[site]
+bucket = "./public"
+
+[env.production]
+name = "flotiq-blog-production"
