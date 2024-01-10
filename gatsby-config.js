@@ -4,13 +4,14 @@ require('dotenv').config({
 });
 
 module.exports = {
-    pathPrefix: '/blog',
+    pathPrefix: '',
     siteMetadata: {
         title: 'Flotiq',
         description: 'Effortless headless CMS',
-        siteUrl: 'https://flotiq.com', // full path to blog - no ending slash
+        siteUrl: 'https://blog.flotiq.com', // full path to blog - no ending slash
         apiKey: process.env.SCOPED_FLOTIQ_API_KEY,
-        pathPrefix: process.env.NODE_ENV === 'production' ? '/blog' : '',
+        pathPrefix: '',
+
     },
     plugins: [
         'gatsby-plugin-sass',
@@ -65,8 +66,8 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-robots-txt',
             options: {
-                host: 'https://flotiq.com',
-                sitemap: 'https://flotiq.com/blog/sitemap.xml',
+                host: 'https://blog.flotiq.com',
+                sitemap: 'https://blog.flotiq.com/sitemap.xml',
                 policy: [{ userAgent: '*', allow: '/' }],
             },
         },
