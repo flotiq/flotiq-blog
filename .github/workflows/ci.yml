@@ -19,11 +19,13 @@ jobs:
         echo FLOTIQ_API_KEY="$FLOTIQ_API_KEY" >> .env.production
         echo SCOPED_FLOTIQ_API_KEY="$SCOPED_FLOTIQ_API_KEY" >> .env.production
         echo GA_MEASUREMENT_ID="$GA_MEASUREMENT_ID" >> .env.production
+        echo GTM_ID="$GTM_ID" >> .env.production
       shell: bash
       env:
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
         SCOPED_FLOTIQ_API_KEY: ${{ secrets.SCOPED_FLOTIQ_API_KEY }}
         GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+        GTM_ID: ${{ secrets.GTM_ID }}
 
     - uses: actions/setup-node@v1
       with:
