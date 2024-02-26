@@ -2326,9 +2326,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@>=16.9.11":
-  version "18.2.58"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.58.tgz#22082d12898d11806f4a1aefb5583116a047493d"
-  integrity sha512-TaGvMNhxvG2Q0K0aYxiKfNDS5m5ZsoIBBbtfUorxdH4NGSXIlYvZxLJI+9Dd3KjeB3780bciLyAb7ylO8pLhPw==
+  version "18.2.59"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.59.tgz#14c7bcab22e2ce71d9eaa02f78d3d55067724d7f"
+  integrity sha512-DE+F6BYEC8VtajY85Qr7mmhTd/79rJKIHCg99MU9SWPB4xvLb6D1za2vYflgZfmPqQVEr6UqJTnLXEwzpVPuOg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4387,9 +4387,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.668:
-  version "1.4.681"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.681.tgz#5f23fad8aa7e1f64cbb7dd9d15c7e39a1cd7e6e3"
-  integrity sha512-1PpuqJUFWoXZ1E54m8bsLPVYwIVCRzvaL+n5cjigGga4z854abDnFRc+cTa2th4S79kyGqya/1xoR7h+Y5G5lg==
+  version "1.4.682"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.682.tgz#27577b88ccccc810e09b05093345cf1830f1bd65"
+  integrity sha512-oCglfs8yYKs9RQjJFOHonSnhikPK3y+0SvSYc/YpYJV//6rqc0/hbwd0c7vgK4vrl6y2gJAwjkhkSGWK+z4KRA==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -5281,10 +5281,10 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.1.tgz#21db470729a6734d4997002f439cb308987f567a"
   integrity sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==
 
-flotiq-components-react@^0.4.13:
-  version "0.4.14"
-  resolved "https://registry.yarnpkg.com/flotiq-components-react/-/flotiq-components-react-0.4.14.tgz#5995e69ffdef7249f6bcb9b5a7149db947daa036"
-  integrity sha512-L6W3Nm5Z0C3kNHDksOMoNh02KM07SORP4Ewy8NdYJTpMyqj2rTDhU9UG69giP2xMUH7eqe8J3LAcWPkOKIuyow==
+flotiq-components-react@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/flotiq-components-react/-/flotiq-components-react-1.1.5.tgz#bce3c51a6b74ab851aca65dc65b2c7e939ce9404"
+  integrity sha512-wmsc0TbxxRUDJEcpYPn9AkGMBn5lZnIxg5eZ/xhy74A+Pj/lt2c9d6wFLbDxexQejXwe/ZugYEv4jfJhKgf8eQ==
 
 follow-redirects@^1.14.0:
   version "1.15.5"
