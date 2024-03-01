@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import React, { useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import FlotiqLinkButton from '../FlotiqLinkButton/FlotiqLinkButton';
@@ -121,16 +121,16 @@ const CustomNavbar = () => {
                         </div>
                     </div>
                 )}
-                <Navbar.Brand href={`${data.site.siteMetadata.pathPrefix}/`}>
+                <Navbar.Brand as={Link} to="https://flotiq.com">
                     <img
-                        src={Logo}
-                        alt="Flotiq"
-                        className="d-none d-lg-inline"
+                      src={Logo}
+                      alt="Flotiq"
+                      className="d-none d-lg-inline"
                     />
                     <img
-                        src={Logo2}
-                        alt="Flotiq"
-                        className="d-inline d-lg-none"
+                      src={Logo2}
+                      alt="Flotiq"
+                      className="d-inline d-lg-none"
                     />
                 </Navbar.Brand>
                 <div className="mobile-header-right">

@@ -10,7 +10,11 @@ const FooterColumns = ({ data }) => (
     <Row className="d-none d-md-flex d-lg-flex">
         <Col>
             <ul className="main-footer-list">
-                <li className="main-footer-list-first-item"><img src={Logo} alt="" /></li>
+                <li className="main-footer-list-first-item">
+                    <a href="https://flotiq.com">
+                        <img src={Logo} alt=""/>
+                    </a>
+                </li>
                 <li>
                     <strong>
                         Download
