@@ -91,7 +91,7 @@ export const pageQuery = graphql`
             }
         }
         allFlotiqBlogPost(
-            sort: {fields: publish_date, order: DESC},
+            sort: {publish_date: DESC},
             limit: 2000,
             filter: {status: {eq: "public"}}
         ) {

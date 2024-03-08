@@ -94,7 +94,7 @@ export const pageQuery = graphql`
         }
         allFlotiqBlogPost(
             limit: 2000,
-            sort: {fields: [publish_date], order: DESC},
+            sort: {publish_date: DESC},
             filter: {
                 tags: {elemMatch: {tag: {eq: $tag}}},
                 status: {eq: "public"}}
