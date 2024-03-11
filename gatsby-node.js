@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const result = await graphql(`
         query MainQuery {
-            allFlotiqBlogPost(sort: {fields: publish_date, order: DESC}, limit: 10000, filter: {status: {eq: "public"}}) {
+            allFlotiqBlogPost(sort: {publish_date: DESC}, limit: 10000, filter: {status: {eq: "public"}}) {
                 edges {
                     node {
                         id

@@ -102,7 +102,7 @@ const query = graphql`
                 title
             }
         }
-        allFlotiqBlogPost(sort: {fields: publish_date, order: DESC}, limit: 10000) {
+        allFlotiqBlogPost(sort: {publish_date: DESC}, limit: 10000) {
             nodes {
                 tags {
                     id

@@ -123,7 +123,7 @@ export default IndexPage;
 export const pageQuery = graphql`
     query blogPageQuery($skip: Int!, $limit: Int!) {
         allFlotiqBlogPost(
-            sort: { fields: [publish_date], order: DESC },
+            sort: { publish_date: DESC },
             limit: $limit,
             skip: $skip,
             filter: {status: {eq: "public"}}
