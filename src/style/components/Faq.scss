@@ -1,0 +1,31 @@
+.faqs {
+  .faq {
+    &__question {
+      font-size: 1rem;
+    }
+
+    &__answer {
+      padding-bottom: .8rem;
+    }
+  }
+
+  .accordion-button {
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    padding-bottom: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      width: .8rem;
+      transform: rotate(180deg);
+      transition: transform .3s;
+    }
+
+    &.collapsed img {
+      transform: rotate(0deg);
+    }
+  }
+}
