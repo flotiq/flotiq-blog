@@ -1,22 +1,29 @@
-import {Content} from 'flotiq-components-react';
 import {graphql, Link} from 'gatsby';
 import {CommentCount, Disqus} from 'gatsby-plugin-disqus';
 import {GatsbyImage, getImage} from 'gatsby-plugin-image';
 import highlight from 'highlight.js';
 import moment from 'moment';
 import React, {useEffect, useRef, useState} from 'react';
-import {Col, Container, Row} from 'react-bootstrap';
 import {Helmet} from 'react-helmet';
 
-import Sygnet from '../assets/sygnet.svg';
+// :: Components
+import {Col, Container, Row} from 'react-bootstrap';
+import {Content} from 'flotiq-components-react';
+import Faq from "../components/Faq/Faq";
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
 import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import PostCard from '../components/PostCard/PostCard';
 import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
 import TagPill from '../components/TagPill/TagPill';
+
+// :: Images
+import Sygnet from '../assets/sygnet.svg';
+
+// :: Helpers
 import {getReadingTime} from '../helpers/readingTime';
 import Layout from '../layouts/layout';
 import blocksEmbed from "../helpers/blocksEmbed";
+
 
 
 const PostPage = ({data, pageContext}) => {
@@ -176,11 +183,12 @@ const PostPage = ({data, pageContext}) => {
                         </Col>
                         <Col lg={10} md={10} sm={0} xs={0}>
                             <Content
-                                blocks={blocksEmbed(post.content.blocks)}
-                                quoteProps={{variant: 'light'}}
-                                tableProps={{additionalClasses: ['custom-table']}}
-                                highlight={highlight}
+                              blocks={blocksEmbed(post.content.blocks)}
+                              quoteProps={{variant: 'light'}}
+                              tableProps={{additionalClasses: ['custom-table']}}
+                              highlight={highlight}
                             />
+                            <Faq faqs={post.faq} />
                         </Col>
                         <Col lg={1} md={1} sm={0} xs={0}/>
                     </Row>
@@ -335,6 +343,10 @@ export const query = graphql`
                         }
                     }
                 }
+            }
+            faq {
+                question
+                answer
             }
         }
         relatedPostsFromTags: allFlotiqBlogPost(

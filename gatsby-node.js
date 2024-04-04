@@ -28,6 +28,10 @@ exports.createPages = async ({ graphql, actions }) => {
                             }
                             bio
                         }
+                        faq {
+                            question
+                            answer
+                        }
                     }
                 }
                 totalCount
