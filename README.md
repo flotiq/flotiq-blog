@@ -31,7 +31,7 @@ Screenshot
     ```bash
     gatsby new flotiq-blog https://github.com/flotiq/flotiq-blog.git
     ```
-4. **Setup "flotiqBlogTag", "flotiqBlogAuthor", and "flotiqBlogPost" Content Type in Flotiq**
+4. **Setup "flotiq_blog_tag", "flotiq_blog_author", and "flotiq_blog_post" Content Type in Flotiq**
 
    This step is optional and is not necessary if you used flotiq-cli to start the project.
 
@@ -98,4 +98,3 @@ Or to Netlify:
 If you wish to talk with us about this project, feel free to hop on our [![Discord Chat](https://img.shields.io/discord/682699728454025410.svg)](https://discord.gg/FwXcHnX).
 
 If you found a bug, please report it in [issues](https://github.com/flotiq/flotiq-blog/issues).
-
