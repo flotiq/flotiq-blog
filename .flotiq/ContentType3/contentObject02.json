@@ -4,14 +4,14 @@
   "tags": [
     {
       "type": "internal",
-      "dataUrl": "/api/v1/content/flotiqBlogTag/flotiqBlogTag-1"
+      "dataUrl": "/api/v1/content/flotiq_blog_tag/flotiqBlogTag-1"
     }
   ],
   "title": "Should I use a CMS?",
   "author": [
     {
       "type": "internal",
-      "dataUrl": "/api/v1/content/flotiqBlogAuthor/flotiqBlogAuthor-1"
+      "dataUrl": "/api/v1/content/flotiq_blog_author/flotiqBlogAuthor-1"
     }
   ],
   "status": "public",
