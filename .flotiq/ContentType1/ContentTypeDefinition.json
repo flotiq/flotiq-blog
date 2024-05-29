@@ -1,5 +1,5 @@
 {
-  "name": "flotiqBlogTag",
+  "name": "flotiq_blog_tag",
   "label": "Blog tag",
   "schemaDefinition": {
     "type": "object",

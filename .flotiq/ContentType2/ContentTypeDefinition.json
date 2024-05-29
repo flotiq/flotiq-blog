@@ -1,5 +1,5 @@
 {
-  "name": "flotiqBlogAuthor",
+  "name": "flotiq_blog_author",
   "label": "Blog author",
   "schemaDefinition": {
     "type": "object",

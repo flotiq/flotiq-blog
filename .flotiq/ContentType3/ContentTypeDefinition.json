@@ -1,5 +1,5 @@
 {
-  "name": "flotiqBlogPost",
+  "name": "flotiq_blog_post",
   "label": "Blog post",
   "schemaDefinition": {
     "type": "object",
@@ -91,6 +91,21 @@
           "metaDescription": {
             "type": "string",
             "minLength": 1
+          },
+          "faq": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [],
+              "properties": {
+                "answer": {
+                  "type": "string"
+                },
+                "question": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -118,6 +133,7 @@
       "content",
       "headerImage",
       "tags",
+      "faq",
       "author"
     ],
     "propertiesConfig": {
@@ -134,7 +150,7 @@
         "inputType": "datasource",
         "validation": {
           "relationMultiple": true,
-          "relationContenttype": "flotiqBlogTag"
+          "relationContenttype": "flotiq_blog_tag"
         }
       },
       "title": {
@@ -150,7 +166,8 @@
         "helpText": "",
         "inputType": "datasource",
         "validation": {
-          "relationContenttype": "flotiqBlogAuthor"
+          "relationMultiple": true,
+          "relationContenttype": "flotiq_blog_author"
         }
       },
       "status": {
@@ -194,6 +211,32 @@
         "validation": {
           "relationContenttype": "_media"
         }
+      },
+      "faq": {
+        "items": {
+          "order": [
+            "question",
+            "answer"
+          ],
+          "propertiesConfig": {
+            "answer": {
+              "label": "Answer",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            },
+            "question": {
+              "label": "Question",
+              "unique": false,
+              "helpText": "",
+              "inputType": "text"
+            }
+          }
+        },
+        "label": "FAQ",
+        "unique": false,
+        "helpText": "",
+        "inputType": "object"
       },
       "publish_date": {
         "label": "Publish date",
