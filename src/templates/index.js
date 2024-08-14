@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 
-import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
+// import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import Pagination from '../components/Pagination/Pagination';
 import PostCard from '../components/PostCard/PostCard';
 import Layout from '../layouts/layout';
@@ -98,7 +98,7 @@ const IndexPage = ({ data, pageContext }) => {
                                 />
                             </Col>
                         </Row>
-                        <JoinNewsletter addMargin />
+                        {/*<JoinNewsletter addMargin />*/}
                     </>
                 )}
                 <Row xs={1} sm={1} md={2} lg={3}>
@@ -108,9 +108,9 @@ const IndexPage = ({ data, pageContext }) => {
                         </Col>
                     ) : null))}
                 </Row>
-                {pageContext.currentPage !== 1 && (
-                    <JoinNewsletter addMargin />
-                )}
+                {/*{pageContext.currentPage !== 1 && (*/}
+                {/*    <JoinNewsletter addMargin />*/}
+                {/*)}*/}
                 <Pagination page={pageContext.currentPage} numOfPages={pageContext.numPages} />
             </Container>
             <FlotiqPlatform />

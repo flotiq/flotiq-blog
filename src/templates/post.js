@@ -11,7 +11,7 @@ import {Col, Container, Row} from 'react-bootstrap';
 import {Content} from 'flotiq-components-react';
 import Faq from "../components/Faq/Faq";
 import DiscoverMoreTopics from '../components/DiscoverMoreTopics/DiscoverMoreTopics';
-import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
+// import JoinNewsletter from '../components/JoinNewsletter/JoinNewsletter';
 import PostCard from '../components/PostCard/PostCard';
 import SharePostButtons from '../components/SharePostButtons/SharePostButtons';
 import TagPill from '../components/TagPill/TagPill';
@@ -247,7 +247,7 @@ const PostPage = ({data, pageContext}) => {
                 />
             </Container>
             <div className="join-newsletter-floating">
-                <JoinNewsletter/>
+                {/*<JoinNewsletter/>*/}
             </div>
         </Layout>
     );
