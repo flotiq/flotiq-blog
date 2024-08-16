@@ -60,18 +60,6 @@ const FooterAccordion = ({ data }) => (
                 </Card.Body>
             </Accordion.Collapse>
         </Card>
-        <Card>
-            <Card.Header>
-                <ContextAwareToggle eventKey="3">Subscribe</ContextAwareToggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="3">
-                <Card.Body>
-                    <ul className="main-footer-list">
-                        <SubscriptionForm />
-                    </ul>
-                </Card.Body>
-            </Accordion.Collapse>
-        </Card>
     </Accordion>
 );
 

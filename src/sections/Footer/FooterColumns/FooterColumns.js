@@ -78,14 +78,6 @@ const FooterColumns = ({ data }) => (
                 ))}
             </ul>
         </Col>
-        <Col lg={4}>
-            <ul className="main-footer-list">
-                <li className="main-footer-list-first-item">
-                    Subscribe
-                </li>
-                <SubscriptionForm />
-            </ul>
-        </Col>
     </Row>
 );
 
