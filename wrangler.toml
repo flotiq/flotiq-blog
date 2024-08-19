@@ -10,4 +10,4 @@ name = "flotiq-blog-production"
 
 [env.staging]
 name = "flotiq-blog-staging"
-route = { pattern = "flotiq.com/staging-blog", zone_name = "flotiq.com", custom_domain = true }
+route = { pattern = "flotiq.com/staging-blog", zone_name = "flotiq.com", custom_domain = false }
