@@ -2,8 +2,6 @@ name: Deploy production
 # Controls when the action will run. Triggers the workflow on push
 # events but only for the master branch
 on:
-  push:
-    branches: [ master ]
   workflow_dispatch:
 
 
@@ -11,8 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
-    - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
+    - name: Fail if not on master branch
+      if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/master'
+      run: |
+        echo "This workflow should only run from master branch"
+        exit 1
+
+    - uses: actions/checkout@v2 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Enter data to .env file
       run: |
         echo FLOTIQ_BASE_URL=https://api.flotiq.com >> .env.production
