@@ -151,8 +151,8 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     left: -2.5rem;
     top: 120%;
-    min-width: 12rem;
-    padding: 28px 0;
+    min-width: 9rem;
+    padding: 10px 0;
     @media screen and (max-width: 1200px) {
       left: -1.5rem;
     }
@@ -172,7 +172,7 @@
 
 
   .dropdown-item {
-    padding: 12px 40px;
+    padding: 12px 1.5rem;
     font-size: 14px;
     line-height: 24px;
     color: $dark-blue;
