@@ -14,7 +14,7 @@ const PostCard = ({ post, showDescription, additionalClass }) => (
             <Link to={`/${post.slug}`} className="post-card-link">
                 {
                 // eslint-disable-next-line no-nested-ternary
-                    post.headerImage ? (
+                    post.headerImage && post.headerImage[0] ? (
                         post.headerImage[0].extension !== 'svg'
                         && post.headerImage[0].localFile
                         && post.headerImage[0].localFile.childImageSharp
