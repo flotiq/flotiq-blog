@@ -20,6 +20,7 @@ jobs:
         echo SCOPED_FLOTIQ_API_KEY="$SCOPED_FLOTIQ_API_KEY" >> .env.production
         echo GA_MEASUREMENT_ID="$GA_MEASUREMENT_ID" >> .env.production
         echo GTM_ID="$GTM_ID" >> .env.production
+        echo POST_STATUSES=draft,public >> .env.production
       shell: bash
       env:
         FLOTIQ_API_KEY: ${{ secrets.FLOTIQ_API_KEY }}
