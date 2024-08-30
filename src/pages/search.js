@@ -22,10 +22,13 @@ const SearchPage = ({ location }) => {
         });
     });
     tags = Object.values(tags);
+
+    // Shows only public posts
+
     useEffect(() => {
         fetch(`https://api.flotiq.com/api/v1/search?q=${q}`
             + '&fields%5B%5D=title^5&fields%5B%5D=content&page=1&limit=200'
-            + '&content_type%5B%5D=flotiqBlogPost&filters%5Bstatus%5D=public'
+            + '&content_type%5B%5D=flotiq_blog_post&filters%5Bstatus%5D=public'
             + `&auth_token=${siteMeta.site.siteMetadata.apiKey}`)
             .then((response) => response.json())
             .then((resultData) => {
@@ -34,7 +37,7 @@ const SearchPage = ({ location }) => {
                     resultData.data.forEach((data) => {
                         ids.push(data.item.id);
                     });
-                    fetch('https://api.flotiq.com/api/v1/content/flotiqBlogPost?limit=200&hydrate=1'
+                    fetch('https://api.flotiq.com/api/v1/content/flotiq_blog_post?limit=200&hydrate=1'
                     + `&ids[]=${ids.join('&ids[]=')}&auth_token=${siteMeta.site.siteMetadata.apiKey}`)
                         .then((response) => response.json())
                         .then((resData) => {

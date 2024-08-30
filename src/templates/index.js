@@ -121,12 +121,12 @@ const IndexPage = ({ data, pageContext }) => {
 export default IndexPage;
 
 export const pageQuery = graphql`
-    query blogPageQuery($skip: Int!, $limit: Int!) {
+    query blogPageQuery($skip: Int!, $limit: Int!, $status: [String!]!) {
         allFlotiqBlogPost(
             sort: { publish_date: DESC },
             limit: $limit,
             skip: $skip,
-            filter: {status: {eq: "public"}}
+            filter: {status: {in: $status}}
         ) {
             nodes {
                 id
