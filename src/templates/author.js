@@ -76,7 +76,7 @@ const AuthorPage = ({ data, pageContext }) => {
 export default AuthorPage;
 
 export const pageQuery = graphql`
-    query($author: String) {
+    query($author: String, $status: [String!]!) {
         flotiqBlogAuthor(slug: {eq: $author}) {
             bio
             id
@@ -93,7 +93,10 @@ export const pageQuery = graphql`
         allFlotiqBlogPost(
             sort: {publish_date: DESC},
             limit: 2000,
-            filter: {status: {eq: "public"}}
+            filter: {
+                author: {elemMatch: {slug: {eq: $author}}}
+                status: {in: $status}
+            }
         ) {
             nodes {
                 content {
