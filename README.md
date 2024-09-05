@@ -38,7 +38,7 @@ Screenshot
    If you wish to import example posts, tags and authors to your account, before running `gatsby develop` run:
 
     ```sh
-    flotiq import . [flotiqApiKey]
+    flotiq import ./flotiq [flotiqApiKey]
     ```
 
    It will add 4 images, 1 tag, 1 author and 3 posts to your Flotiq account.
