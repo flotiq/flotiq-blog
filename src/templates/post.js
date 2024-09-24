@@ -83,7 +83,7 @@ const PostPage = ({data, pageContext}) => {
                 <meta property="og:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`}/>
                 <meta property="og:description" content={post.metaDescription}/>
                 <meta property="og:url" content={url}/>
-                {(post.headerImage) && (
+                {(post.headerImage && post.headerImage[0]) && (
                     <meta
                         property="og:image"
                         content={data.site.siteMetadata.siteUrl + post.headerImage[0].localFile.publicURL}
@@ -102,7 +102,7 @@ const PostPage = ({data, pageContext}) => {
                 <meta name="twitter:title" content={`${post.title} - ${data.allFlotiqMainSettings.nodes[0].title}`}/>
                 <meta name="twitter:description" content={post.metaDescription}/>
                 <meta name="twitter:url" content={url}/>
-                {(post.headerImage) && (
+                {(post.headerImage && post.headerImage[0]) && (
                     <meta
                         name="twitter:image"
                         content={data.site.siteMetadata.siteUrl + post.headerImage[0].localFile.publicURL}
@@ -171,7 +171,7 @@ const PostPage = ({data, pageContext}) => {
                     <div className="pt-3 pb-4 pb-sm-5">
                         <GatsbyImage
                             alt={post.title}
-                            image={getImage(post.headerImage[0].localFile)}
+                            image={getImage(post.headerImage[0]?.localFile)}
                             className="post-image"
                         />
                     </div>
@@ -256,13 +256,13 @@ const PostPage = ({data, pageContext}) => {
 export default PostPage;
 
 export const query = graphql`
-    query($slug: String, $primaryTag: String) {
+    query($slug: String, $primaryTag: String, $status: [String!]!) {
         site {
             siteMetadata {
                 siteUrl
             }
         }
-        flotiqBlogPost( slug: { eq: $slug }, status: {eq: "public"} ) {
+        flotiqBlogPost( slug: { eq: $slug }, status: {in: $status} ) {
             excerpt
             title
             publish_date
@@ -350,7 +350,11 @@ export const query = graphql`
             }
         }
         relatedPostsFromTags: allFlotiqBlogPost(
-            filter:{tags: {elemMatch: {tag: {eq:  $primaryTag } } }, status: {eq: "public"}, slug: {ne: $slug} }
+            filter:{
+                tags: {elemMatch: {tag: {eq:  $primaryTag } } },
+                slug: {ne: $slug},
+                status: {in: $status},
+            }
             limit: 3
         ) {
             totalCount

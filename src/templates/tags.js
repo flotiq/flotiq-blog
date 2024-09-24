@@ -81,7 +81,7 @@ const TagsPage = ({ data, pageContext }) => {
 export default TagsPage;
 
 export const pageQuery = graphql`
-    query($tag: String) {
+    query($tag: String, $status: [String!]!) {
         allFlotiqBlogTag {
             edges {
                 node {
@@ -96,8 +96,9 @@ export const pageQuery = graphql`
             limit: 2000,
             sort: {publish_date: DESC},
             filter: {
-                tags: {elemMatch: {tag: {eq: $tag}}},
-                status: {eq: "public"}}
+                tags: {elemMatch: {tag: {eq: $tag}}}
+                status: {in: $status}
+            }    
         ) {
             nodes {
                 content {

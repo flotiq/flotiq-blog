@@ -4,9 +4,11 @@ const _ = require('lodash');
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
 
+    const status = (process.env.POST_STATUSES ?? 'public').split(',');
+
     const result = await graphql(`
         query MainQuery {
-            allFlotiqBlogPost(sort: {publish_date: DESC}, limit: 10000, filter: {status: {eq: "public"}}) {
+            allFlotiqBlogPost(sort: {publish_date: DESC}, limit: 10000, filter: {status: {in: ${JSON.stringify(status)}}}) {
                 edges {
                     node {
                         id
@@ -74,6 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 skip: i * postsPerPage,
                 numPages,
                 currentPage: i + 1,
+                status,
             },
         });
     });
@@ -100,6 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 next,
                 primaryTag: (node.tags && node.tags[0]) ? node.tags[0].tag : '',
                 tags,
+                status
             },
         });
     });
@@ -114,6 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
             context: {
                 tag: tag.tag,
                 tags,
+                status
             },
         });
     });
@@ -127,6 +132,7 @@ exports.createPages = async ({ graphql, actions }) => {
             context: {
                 author: edge.node.slug,
                 tags,
+                status,
             },
         });
     });

@@ -38,7 +38,7 @@ Screenshot
    If you wish to import example posts, tags and authors to your account, before running `gatsby develop` run:
 
     ```sh
-    flotiq import . [flotiqApiKey]
+    flotiq import .flotiq [flotiqApiKey]
     ```
 
    It will add 4 images, 1 tag, 1 author and 3 posts to your Flotiq account.
@@ -55,10 +55,11 @@ Screenshot
     FLOTIQ_API_KEY=YOUR FLOTIQ API KEY
     SCOPED_FLOTIQ_API_KEY=YOUR SCOPED FOR POSTS SEARCH FLOTIQ API KEY
     GA_MEASUREMENT_ID=YOUR GA4 MEASUREMENT ID
+    POST_STATUSES=public
     ```
    
-    `FLOTIQ_API_KEY` should be the Read-only Application key and `SCOPED_FLOTIQ_API_KEY` should be Scoped User key with read-only access to blog posts, media, tags and authors.
-   
+    - `FLOTIQ_API_KEY` should be the Read-only Application key and `SCOPED_FLOTIQ_API_KEY` should be Scoped User key with read-only access to blog posts, media, tags and authors.
+    - `POST_STATUSES` - comma-separated statuses, for example `draft,public`
 6. **Start developing**
 
     Navigate into your new site’s directory and start it up.
