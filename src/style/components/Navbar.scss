@@ -111,13 +111,38 @@
 
 .navbar-brand {
   margin-right: 4rem;
+  display: flex;
+  align-items: center;
+
+
   @media (max-width: 992px) {
     margin-right: 1rem;
   }
+
   img {
     @media (max-width: 800px) {
       width: 103px;
     }
+  }
+
+  .brand-logo {
+    width: 140px;
+
+    @media (max-width: 800px) {
+      width: 103px;
+    }
+  }
+
+  .brand-blog-badge {
+    width: 50px;
+  }
+
+  .brand-logo--mobile {
+    width: 25px;
+  }
+
+  .brand-blog-badge--mobile {
+    width: 50px;
   }
 }
 
