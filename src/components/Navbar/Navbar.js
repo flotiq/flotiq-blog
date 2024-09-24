@@ -239,13 +239,6 @@ const CustomNavbar = () => {
                             onClick={() => setVisible(false)}
                         >
                             <a
-                                href="/"
-                                className="dropdown-item"
-                                rel="noreferrer"
-                            >
-                                Blog
-                            </a>
-                            <a
                                 href="https://flotiq.com/case-studies/"
                                 className="dropdown-item"
                                 target="_blank"
