@@ -1,6 +1,7 @@
 .navbar {
   padding: 1.5em 2.5rem;
-  max-width: 1920px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   background: $white;
   @media (max-width: 1200px) {
@@ -10,7 +11,7 @@
     padding: 1.5rem .4rem;
   }
   @include media-breakpoint-down(sm) {
-    padding: .5rem .5rem 1rem 1.5rem;
+    padding: .65rem .5rem 1rem 1.5rem;
     transition: background-color .5s;
     height: 64px;
     width: 100%;
@@ -111,13 +112,38 @@
 
 .navbar-brand {
   margin-right: 4rem;
+  display: flex;
+  align-items: center;
+
+
   @media (max-width: 992px) {
     margin-right: 1rem;
   }
+
   img {
     @media (max-width: 800px) {
       width: 103px;
     }
+  }
+
+  .brand-logo {
+    width: 140px;
+
+    @media (max-width: 800px) {
+      width: 103px;
+    }
+  }
+
+  .brand-blog-badge {
+    width: 50px;
+  }
+
+  .brand-logo--mobile {
+    width: 25px;
+  }
+
+  .brand-blog-badge--mobile {
+    width: 50px;
   }
 }
 

@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import FlotiqLinkButton from '../FlotiqLinkButton/FlotiqLinkButton';
 
-import Logo from '../../assets/Logo3.svg';
-import Logo2 from '../../assets/Logo4.svg';
+import FlotiqLogo from '../../assets/Logo.svg';
+import FlotiqBadge from '../../assets/Logo5.svg';
+import BlogBadge from '../../assets/blog-badge.svg';
 import Search from '../../assets/search.svg';
 import Button from '../Button/Button';
 
@@ -121,24 +122,31 @@ const CustomNavbar = () => {
                         </div>
                     </div>
                 )}
-                <Navbar.Brand as={Link} to="https://flotiq.com">
-                    <img
-                      src={Logo}
-                      alt="Flotiq"
-                      className="d-none d-lg-inline"
-                    />
-                    <img
-                      src={Logo2}
-                      alt="Flotiq"
-                      className="d-inline d-lg-none"
-                    />
+                <Navbar.Brand>
+                    <div className="d-none d-lg-flex align-items-center">
+                        <a href="https://flotiq.com/">
+                            <img src={FlotiqLogo} className="brand-logo" alt="Flotiq" />
+                        </a>
+                        <a href="/">
+                            <img src={BlogBadge} className="brand-blog-badge ml-3" alt="Flotiq Blog" />
+                        </a>
+                    </div>
+                    <div className="d-inline-flex align-items-center d-lg-none">
+                        <a href="https://flotiq.com/">
+                            <img src={FlotiqBadge} className="brand-logo--mobile" alt="Flotiq"/>
+                        </a>
+                        <a href="/">
+                            <img src={BlogBadge} className="brand-blog-badge--mobile ml-3" alt="Flotiq Blog"/>
+                        </a>
+                    </div>
+
                 </Navbar.Brand>
                 <div className="mobile-header-right">
                     <Nav className="d-inline d-md-none">
-                        <FlotiqLinkButton />
+                        <FlotiqLinkButton/>
                         <Nav.Item>
                             <form
-                                action={`${data.site.siteMetadata.pathPrefix}/search/`}
+                              action={`${data.site.siteMetadata.pathPrefix}/search/`}
                                 className={`search ${searchOpen ? 'open' : ''}`}
                             >
                                 <div className="position-relative">
@@ -230,13 +238,6 @@ const CustomNavbar = () => {
                             id="basic-nav-dropdown"
                             onClick={() => setVisible(false)}
                         >
-                            <a
-                                href="/"
-                                className="dropdown-item"
-                                rel="noreferrer"
-                            >
-                                Blog
-                            </a>
                             <a
                                 href="https://flotiq.com/case-studies/"
                                 className="dropdown-item"
