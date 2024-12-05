@@ -42,9 +42,9 @@ jobs:
         npm install -g gatsby-cli@5.13.2
         gatsby clean
         gatsby build --prefix-paths
-#        rm -rf public/blog
-#        mkdir -p public/blog
-#        find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
+        rm -rf public/blog
+        mkdir -p public/blog
+        find public/ -maxdepth 1 -mindepth 1 -not -name blog -exec mv '{}' public/blog/ \;
 #        find public/blog -name index.html -exec sed -i 's\window.pagePath="\window.pagePath="/blog\g' {} \;
     - name: Cloudflare Deploy
       uses: cloudflare/wrangler-action@v3
@@ -55,6 +55,6 @@ jobs:
     - name: After deployment scripts
       run: |
         # Refresh sitemap in Google and Bing
-        curl "https://www.google.com/webmasters/sitemaps/ping?sitemap=https://flotiq.com/blog/sitemap/sitemap-index.xml"
+        curl "https://www.google.com/webmasters/flotiq.com/blogsitemaps/ping?sitemap=https://flotiq.com/blog/sitemap/sitemap-index.xml"
         curl "https://www.bing.com/webmaster/ping.aspx?siteMap=https://flotiq.com/blog/sitemap/sitemap-index.xml"
     
