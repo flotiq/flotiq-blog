@@ -1,13 +1,13 @@
 name = "flotiq-blog"
 main = "worker-index.js"
-compatibility_date = "2024-01-09"
+compatibility_date = "2024-12-05"
 
 [site]
 bucket = "./public"
 
 [env.production]
 name = "flotiq-blog-production"
-
-[env.staging]
-name = "flotiq-blog-staging"
-route = { pattern = "flotiq.com/staging-blog", zone_name = "flotiq.com", custom_domain = false }
+routes = [
+    { pattern = "flotiq.com/blog", zone_name = "flotiq.com", custom_domain = false},
+    { pattern = "flotiq.com/blog/*", zone_name = "flotiq.com", custom_domain = false}
+]
