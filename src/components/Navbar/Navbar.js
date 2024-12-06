@@ -127,7 +127,7 @@ const CustomNavbar = () => {
                         <a href="https://flotiq.com/">
                             <img src={FlotiqLogo} className="brand-logo" alt="Flotiq" />
                         </a>
-                        <a href="/">
+                        <a href="/blog">
                             <img src={BlogBadge} className="brand-blog-badge ml-3" alt="Flotiq Blog" />
                         </a>
                     </div>
@@ -135,7 +135,7 @@ const CustomNavbar = () => {
                         <a href="https://flotiq.com/">
                             <img src={FlotiqBadge} className="brand-logo--mobile" alt="Flotiq"/>
                         </a>
-                        <a href="/">
+                        <a href="/blog">
                             <img src={BlogBadge} className="brand-blog-badge--mobile ml-3" alt="Flotiq Blog"/>
                         </a>
                     </div>
