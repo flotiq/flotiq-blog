@@ -215,15 +215,39 @@ const CustomNavbar = () => {
                                 </a>
                             ))}
                         </NavDropdown>
-                        <Nav.Link
-                            href="https://flotiq.com/solutions/"
-                            onClick={() => {
-                                setIsOpen(false);
-                                setVisible(false);
-                            }}
+                        <NavDropdown
+                          title="Solutions"
+                          id="basic-nav-dropdown"
+                          onClick={() => setVisible(false)}
                         >
-                            Solutions
-                        </Nav.Link>
+                            <a
+                              href="https://flotiq.com/solutions/mobile-apps"
+                              className="dropdown-item pl-2 pl-lg-4"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-event-category="Page navbar events"
+                            >
+                                Mobile Apps
+                            </a>
+                            <a
+                              href="https://flotiq.com/solutions/intranet"
+                              className="dropdown-item pl-2 pl-lg-4"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-event-category="Page navbar events"
+                            >
+                                Intranet
+                            </a>
+                            <a
+                              href="https://flotiq.com/solutions/websites"
+                              className="dropdown-item pl-2 pl-lg-4"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-event-category="Page navbar events"
+                            >
+                                Websites
+                            </a>
+                        </NavDropdown>
                         <Nav.Link
                             href="https://flotiq.com/pricing/"
                             onClick={() => {
