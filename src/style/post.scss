@@ -94,11 +94,13 @@
     display: flex;
     align-items: center;
     padding-left: 70px;
+
     img {
       height: 50px;
       margin-right: 40px;
     }
   }
+
   &-progress {
     height: 5px;
     background: $primary;
@@ -112,9 +114,11 @@
   .post-reading {
     height: 3px !important;
     background-color: transparent;
+
     &-content {
-      display: none;
+      display: none !important;
     }
+
     &-progress {
       height: 3px;
     }
@@ -154,4 +158,4 @@
   .hljs-attr {
     color: #8fbcbb;
   }
-} 
+}

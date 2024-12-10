@@ -218,11 +218,12 @@ const CustomNavbar = () => {
                         <NavDropdown
                           title="Solutions"
                           id="basic-nav-dropdown"
+                          className="pr-2"
                           onClick={() => setVisible(false)}
                         >
                             <a
                               href="https://flotiq.com/solutions/mobile-apps"
-                              className="dropdown-item pl-2 pl-lg-4"
+                              className="dropdown-item pl-0 pl-md-4"
                               target="_blank"
                               rel="noreferrer"
                               data-event-category="Page navbar events"
@@ -231,7 +232,7 @@ const CustomNavbar = () => {
                             </a>
                             <a
                               href="https://flotiq.com/solutions/intranet"
-                              className="dropdown-item pl-2 pl-lg-4"
+                              className="dropdown-item pl-0 pl-md-4"
                               target="_blank"
                               rel="noreferrer"
                               data-event-category="Page navbar events"
@@ -240,7 +241,7 @@ const CustomNavbar = () => {
                             </a>
                             <a
                               href="https://flotiq.com/solutions/websites"
-                              className="dropdown-item pl-2 pl-lg-4"
+                              className="dropdown-item pl-0 pl-md-4"
                               target="_blank"
                               rel="noreferrer"
                               data-event-category="Page navbar events"
