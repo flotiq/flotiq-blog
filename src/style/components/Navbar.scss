@@ -179,6 +179,7 @@
     top: 120%;
     min-width: 9rem;
     padding: 10px 0;
+    z-index: 1031;
     @media screen and (max-width: 1200px) {
       left: -1.5rem;
     }
@@ -202,6 +203,7 @@
     font-size: 14px;
     line-height: 24px;
     color: $dark-blue;
+    z-index: 1031;
     @include font-weight(medium);
 
     &:hover, &:active, &:focus {

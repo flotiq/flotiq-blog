@@ -134,7 +134,7 @@ const PostPage = ({data, pageContext}) => {
                     className="post-reading"
                     style={{opacity: visible ? 1 : 0, height: `${progressHeight}px`}}
                 >
-                    <div className="post-reading-content">
+                    <div className="post-reading-content" style={{display: visible ? 'flex' : 'none'}}>
                         <Link to="/"><img src={Sygnet} alt="Flotiq"/></Link>
                         <div>
                             <p><strong>{post.title}</strong></p>
